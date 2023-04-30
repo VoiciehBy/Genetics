@@ -1,4 +1,4 @@
-from objects import first_parent, second_parent, first_parent_id, second_parent_id, population_0, population_1,population_2,population_3
+from objects import first_parent, second_parent, first_parent_id, second_parent_id, population_0, population_1, population_2, population_3
 import population
 
 

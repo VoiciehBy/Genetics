@@ -1,10 +1,8 @@
 from individual import individual
 from sprite import sprite
 from pygame import Rect
-from constants import clearColor, screen, default_horse_name
+from constants import clearColor, screen, default_horse_name, TITLE_THE_INVISIBLE_TXT, TITLE_THE_BALD_TXT, TITLE_THE_STRONG_TXT, TITLE_THE_WEAK_TXT
 from color import color, green, blue, black, red
-
-# Names: #Koń# Pony #Ferus #Equus #Caballus
 
 
 class horse():
@@ -65,6 +63,9 @@ class horse():
     def bald(self) -> bool:
         return clearColor == self.mane_color().toPyGameColor()
 
+    def fitness(self) -> int:
+        return int(self.genetics.fitness())
+
     def strong(self) -> bool:
         return self.fitness() >= 5
 
@@ -75,41 +76,23 @@ class horse():
         if(self.genetics.parents != None):
             return list(self.genetics.parents)
 
-    def fitness(self) -> int:
-        return int(self.genetics.fitness())
-
-    def debug_lines(self) -> list:
-        lines = []
-        if(self.parents() != None):
-            lines.append(str("parent:") + str(self.parents()[0]))
-            lines.append(str("parent:") + str(self.parents()[1]))
-
-        lines.append(str("genes:") + str(self.genetics))
-        lines.append(str("coat color:") + str(self.coat_color()))
-        lines.append(str("mane color:") + str(self.mane_color()))
-        lines.append(str("eye color:") + str(self.eye_color()))
-        lines.append(str("nose color:") + str(self.nose_color()))
-        lines.append(str("foot color:") + str(self.foot_color()))
-        lines.append(str("invisible:") + str(self.invisible()))
-        lines.append(str("bald:") + str(self.bald()))
-        return lines
-
     def updateTitles(self):
         titles = []
         if(str(self.coat_color().name())):
-            titles.append(str(self.coat_color().name()).capitalize())
+            colorTitle = str(self.coat_color().name()).capitalize()
+            titles.append(colorTitle)
         if(self.invisible()):
-            titles.append(" The Invisible")
+            titles.append(' ' + TITLE_THE_INVISIBLE_TXT)
         elif(self.bald()):
-            titles.append(" The Bald")
+            titles.append(' ' + TITLE_THE_BALD_TXT)
         elif(self.strong()):
-            titles.append(" The Strong")
+            titles.append(' ' + TITLE_THE_STRONG_TXT)
         elif(self.weak()):
-            titles.append(" The Weak")
+            titles.append(' ' + TITLE_THE_WEAK_TXT)
 
         name = ''
         for title in titles:
-            name = name + str(title)
+            name += str(title)
         name = self.name + ' ' + name
         self.name = name
 
@@ -119,14 +102,5 @@ class horse():
 
     def __str__(self) -> str:
         self.updateTitles()
-        lines = []
-        lines.append(str("name:") + str(self.name))
         self.update_sprite_overText()
-        #debug = False
-        # if(debug):
-        #    lines.append(self.debug_lines())
-
-        result = ''
-        for line in lines:
-            result = result + str(line + "\n")
-        return str(result)
+        return str("name:") + str(self.name) + str("\n")

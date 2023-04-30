@@ -1,6 +1,7 @@
 from objects import first_parent, second_parent, first_parent_id, second_parent_id
 from horse import horse
 
+
 def setFirstParent(object):
     global first_parent
     first_parent = object

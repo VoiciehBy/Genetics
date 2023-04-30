@@ -10,7 +10,7 @@ def onHover(object):
         object.draw()
 
 
-def handleEvents(horses,n=4):
+def handleEvents(horses, n=4):
     object = None
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -18,7 +18,7 @@ def handleEvents(horses,n=4):
         if event.type == pygame.KEYDOWN:
             hUI.handleUserInputViaKeyboard(event)
         if event.type == pygame.MOUSEBUTTONDOWN:
-            object = hUI.handleMouseClick(horses, event,n)
+            object = hUI.handleMouseClick(horses, event, n)
         else:
             for horse in horses:
                 onHover(horse)

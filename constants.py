@@ -32,3 +32,9 @@ if(s_s_m_m):
     default_horse_name = "Miku"
 else:
     default_horse_name = "Ferus"
+
+
+TITLE_THE_INVISIBLE_TXT = "The Invisible"
+TITLE_THE_BALD_TXT = "The Bald"
+TITLE_THE_STRONG_TXT = "The Strong"
+TITLE_THE_WEAK_TXT = "The Weak"

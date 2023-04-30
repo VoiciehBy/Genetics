@@ -1,4 +1,4 @@
-from pygame import Color,Rect
+from pygame import Color, Rect
 from pygame_utils import drawImageOverRect, mvPygameRect
 import indicator as i
 import overText as oT
@@ -20,5 +20,5 @@ class sprite():
     def move(self, x, y):
         self.rect = mvPygameRect(self.rect, x, y)
 
-    def set_over_text_active(self,b=True):
+    def set_over_text_active(self, b=True):
         self.overText.active = b
