@@ -46,10 +46,7 @@ def generationAIPopulationByMax():
     fitnesses = []
     for individual in pop_1:
         fitnesses.append(individual.fitness())
-    print(fitnesses)
-
     n = len(pop_1)
-
     first_max = -1
     first_max_id = -1
     second_max = -1
@@ -80,7 +77,6 @@ def generationAIPopulationByMin():
     fitnesses = []
     for individual in pop_1:
         fitnesses.append(individual.fitness())
-    print(fitnesses)
 
     n = len(pop_1)
 
@@ -89,7 +85,7 @@ def generationAIPopulationByMin():
     second_min = -1
     second_min_id = -1
     for i in range(n):
-        if(pop_1[i].fitness() == max(fitnesses)):
+        if(pop_1[i].fitness() == min(fitnesses)):
             first_max = pop_1[i].fitness()
             first_min_id = i
             break
