@@ -8,7 +8,7 @@ from horse import horse
 
 def getHorseImage() -> Surface:
     if(c.s_s_m_m):
-        horse = image.load("horse_c_s_m_m.png")
+        horse = image.load("horse_s_s_m_m.png")
     else:
         horse = image.load("horse.png")
     return horse
