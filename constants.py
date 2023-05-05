@@ -2,11 +2,12 @@ from color import black, white, brown, red, green, blue, magenta, cyan
 from pygame.display import set_mode
 from pygame import DOUBLEBUF, SRCALPHA
 
-margin_x = 40
+margin_x = 32
 margin_y = 80
 horse_image_side = 128
 windowShape = (1200, 600)
 font_size = 16
+default_rect_border_radius = 20
 
 windowName = "Genetics by VociehBy"
 

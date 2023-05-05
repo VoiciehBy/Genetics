@@ -22,7 +22,7 @@ def generateFourPopulations():
         pop_2, margin_x=0, margin_y=0, offset=side*4 + margin_x, offset_1=margin_y/2)
 
     ponies_1 = generateHorsesArrayWithOffset(
-        pop_3, offset=side*4 + 3*margin_x, offset_1=side)
+        pop_3, offset=side*4 + 4*margin_x, offset_1=side)
 
     for pony in ponies:
         pony.name = "Pony"

@@ -1,9 +1,9 @@
 from pygame import draw, font, Rect, mouse
-from constants import font_size
+from constants import font_size, default_rect_border_radius
 
 
-def drawPygameRect(surface, color, rect):
-    draw.rect(surface, color, rect)
+def drawPygameRect(surface, color, rect, border_radius=default_rect_border_radius):
+    draw.rect(surface, color, rect, border_radius=border_radius)
 
 
 def drawImageOverRect(surface, image, rect):
