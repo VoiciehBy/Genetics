@@ -2,11 +2,11 @@ import pygame
 from pygame_utils import checkIfMouseOverRect
 import handleUserInput as hUI
 
-
 def onHover(object):
     if checkIfMouseOverRect(object):
         object.set_sprite_over_text_active()
         object.updateName()
+        object.flip()
         object.draw()
 
 

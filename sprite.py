@@ -1,5 +1,5 @@
 from pygame import Color, Rect
-from pygame_utils import drawImageOverRect, mvPygameRect
+from pygame_utils import drawImageOverRect, mvPygameRect, flipSurfaceHorizontally
 import indicator as i
 import overText as oT
 
@@ -11,6 +11,9 @@ class sprite():
         self.texture = texture
         self.overText = oT.overText(self.rect)
         self.indicator = i.indicator(self.rect, self.color)
+
+    def flip(self):
+        self.texture = flipSurfaceHorizontally(self.texture)
 
     def draw(self, surface):
         self.indicator.draw(surface, self.color)

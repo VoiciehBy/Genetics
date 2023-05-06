@@ -1,4 +1,4 @@
-from pygame import draw, font, Rect, mouse
+from pygame import draw, font, Rect, mouse, transform, Surface
 from constants import font_size, default_rect_border_radius
 
 
@@ -15,7 +15,6 @@ def drawText(surface, text, rect):
     txtSurface = txt.render(text, False, (0, 0, 0))
     surface.blit(txtSurface, rect)
 
-
 def mvPygameRect(rect, x, y) -> Rect:
     return rect.move(x, y)
 
@@ -23,3 +22,15 @@ def mvPygameRect(rect, x, y) -> Rect:
 def checkIfMouseOverRect(object):
     mousePosition = mouse.get_pos()
     return object.sprite_rect().collidepoint(mousePosition)
+
+
+def flipSurface(surface, horizontally, vertically) -> Surface:
+    return transform.flip(surface, horizontally, vertically)
+
+
+def flipSurfaceHorizontally(surface) -> Surface:
+    return flipSurface(surface, True, False)
+
+
+def flipSurfaceVertically(surface) -> Surface:
+    return flipSurface(surface, False, True)
