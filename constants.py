@@ -39,3 +39,7 @@ TITLE_THE_INVISIBLE_TXT = "The Invisible"
 TITLE_THE_BALD_TXT = "The Bald"
 TITLE_THE_STRONG_TXT = "The Strong"
 TITLE_THE_WEAK_TXT = "The Weak"
+
+TUTORIAL_LINES_PL = ["Krzyżuj konie dowoli...", "Wybór pierwszego rodzica [LPM]",
+             "Wybór drugiego rodzica [RPM]", "Krzyżuj [Spacja]", 
+             "Wyświetl ponownie to okno [P]", "Rozpocznij grę/Wznów grę [ENTER]"]
