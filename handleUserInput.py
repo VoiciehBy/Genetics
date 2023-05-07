@@ -4,15 +4,23 @@ import gettersAndSetter as gAS
 from pygame_utils import checkIfMouseOverRect
 from generateHorsePopulations import generateHorsePopulations
 
+from game import game
+
 
 def on_space_pressed():
     generateHorsePopulations()
 
 
 def handleUserInputViaKeyboard(event):
-    if(event.key == pygame.K_SPACE):
+    if(event.key == pygame.K_RETURN):
+        game.start_game()
+    elif(event.key == pygame.K_p):
+        game.pause_game()
+    elif(event.key == pygame.K_SPACE):
         print("Ok")
         on_space_pressed()
+    elif(event.key == pygame.K_ESCAPE):
+        pygame.quit()
 
 
 def handleLeftMouseButtonClick(objects, i):

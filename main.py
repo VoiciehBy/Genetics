@@ -7,6 +7,9 @@ from update import update
 from constants import screen, margin_x, margin_y
 from handleEvents import handleEvents
 
+from game import game
+from pygame_utils import drawTutorial
+
 
 def generateFourPopulations():
     side = 128
@@ -43,35 +46,54 @@ def generateFourPopulations():
 def main():
     init()
     clearScreen()
+
+    while(game.getCurrentState() == "Paused"):
+        drawTutorial(screen)
+        update(screen.get_rect())
+
+        handleEvents()
+        clearScreen()
+
     update(screen.get_rect())
 
     while(1):
-        horses = generateFourPopulations()
-        side = 128
+        if(game.getCurrentState() == "Playing"):
+            horses = generateFourPopulations()
+            side = 128
 
-        h = handleEvents(horses, n=16)
-        clearScreen()
+            h = handleEvents(horses, n=16)
+            update(screen.get_rect())
+            clearScreen()
 
-        for horse in horses[:4]:
-            if(h):
-                if(h == horse):
-                    horse.sprite.color = h.sprite.color
-            horse.draw()
-            update(horse.sprite.rect)
-            update(horse.sprite.indicator.rect)
+            for horse in horses[:4]:
+                horse.sprite.indicator.active = True
+                if(h):
+                    if(h == horse):
+                        horse.sprite.color = h.sprite.color
+                horse.draw()
+                update(horse.sprite.rect)
+                update(horse.sprite.indicator.rect)
 
-        for pony in horses[4:8]:
-            pony.draw()
-            update(pony.sprite.rect)
+            for pony in horses[4:8]:
+                pony.draw()
+                update(pony.sprite.rect)
 
-        for horse in horses[8:12]:
-            horse.draw()
-            update(horse.sprite.rect)
-            update(horse.sprite.indicator.rect)
+            for horse in horses[8:12]:
+                horse.sprite.indicator.active = True
+                horse.draw()
+                update(horse.sprite.rect)
+                update(horse.sprite.indicator.rect)
 
-        for pony in horses[12:]:
-            pony.draw()
-            update(pony.sprite.rect)
+            for pony in horses[12:]:
+                pony.draw()
+                update(pony.sprite.rect)
+
+        elif(game.getCurrentState() == "Paused"):
+            drawTutorial(screen)
+            update(screen.get_rect())
+
+            handleEvents()
+            clearScreen()
 
 
 main()
