@@ -1,5 +1,9 @@
 from pygame import draw, font, Rect, mouse, transform, Surface
-from constants import font_size, default_rect_border_radius, TUTORIAL_LINES_PL
+from constants import screen, clearColor, font_size, default_rect_border_radius, TUTORIAL_LINES_PL
+
+
+def clearScreen():
+    screen.fill(clearColor)
 
 
 def drawPygameRect(surface, color, rect, border_radius=default_rect_border_radius):

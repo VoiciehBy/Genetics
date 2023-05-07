@@ -2,7 +2,7 @@ from populationsGetters import getPopulation_0, getPopulation_1, getPopulation_2
 from horse_utils import generateHorsesArray, generateHorsesArrayWithOffset
 from numpy import array
 from init import init
-from clearScreen import clearScreen
+from pygame_utils import clearScreen
 from update import update
 from constants import horse_image_side, screen, margin_x, margin_y
 from handleEvents import handleEvents
@@ -48,7 +48,7 @@ def drawHorses(horses, currentHorse):
     clearScreen()
 
     for horse in horses[:4]:
-        horse.sprite.indicator.active = True
+        horse.set_sprite_indicator_active(True)
         if(currentHorse):
             if(currentHorse == horse):
                 horse.sprite.color = currentHorse.sprite.color

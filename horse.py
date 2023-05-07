@@ -30,6 +30,9 @@ class horse():
     def set_sprite_over_text_active(self, b=True):
         self.sprite.set_over_text_active(b)
 
+    def set_sprite_indicator_active(self,b=True):
+        self.sprite.set_indicator_active(b)
+
     def flip(self):
         self.sprite.flip()
 
@@ -38,7 +41,7 @@ class horse():
 
     def move(self, x, y):
         self.sprite.move(x, y)
-    
+
     def rect(self) -> Rect:
         return Rect(self.sprite.rect)
 
