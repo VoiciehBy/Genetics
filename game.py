@@ -15,7 +15,11 @@ class game:
     def pause_game():
         if(game.currentState == state.Playing):
             game.currentState = state.Paused
-    
+
+    @staticmethod
+    def isGamePaused():
+        return game.currentState == state.Paused
+
     @staticmethod
     def getCurrentState() -> str:
         if(game.currentState == state.Playing):
