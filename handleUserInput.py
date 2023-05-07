@@ -1,5 +1,5 @@
 import pygame
-import gettersAndSetter as gAS
+import gettersAndSetters as gAS
 
 from pygame_utils import checkIfMouseOverRect
 from generateHorsePopulations import generateHorsePopulations
