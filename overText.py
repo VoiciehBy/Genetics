@@ -9,6 +9,9 @@ class overText:
         self.txt = txt
         self.active = active
 
+    def setTxt(self,txt):
+        self.txt = txt
+
     def draw(self, surface):
         if(self.active):
             drawText(surface, self.txt, self.rect)

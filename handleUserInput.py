@@ -24,7 +24,6 @@ def handleUserInputViaKeyboard(event):
 
 
 def handleLeftMouseButtonClick(objects, i):
-    first_parent = gAS.getFirstParent()
     second_parent = gAS.getSecondParent()
 
     if(second_parent):

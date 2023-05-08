@@ -25,9 +25,9 @@ def generateBinaryArray(n) -> array:
     return a
 
 
-def generateTwoDifferentNumbers(a, b) -> list:
-    n_0 = randint(0, b)
-    n_1 = randint(0, b)
+def generateTwoDifferentNumbers(a=0, b=1) -> list:
+    n_0 = randint(a, b)
+    n_1 = randint(a, b)
     while(n_1 == n_0):
-        n_1 = randint(0, b)
+        n_1 = randint(a, b)
     return list([n_0, n_1])

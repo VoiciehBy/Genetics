@@ -10,6 +10,12 @@ class chromosome:
     def __eq__(self, o) -> bool:
         return self.length == o.length and (self.genes == o.genes).all()
 
+    def getLength(self):
+        return self.length
+
+    def getGenes(self):
+        return self.genes
+
     def fitness(self) -> int:
         c = 0
         for gene in self.genes:

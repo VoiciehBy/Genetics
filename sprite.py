@@ -23,8 +23,13 @@ class sprite:
     def move(self, x, y):
         self.rect = mvPygameRect(self.rect, x, y)
 
+    def set_over_text_txt(self,txt):
+        self.overText.setTxt(txt)
+
     def set_over_text_active(self, b=True):
         self.overText.active = b
 
     def set_indicator_active(self, b=True):
         self.indicator.active = b
+    def get_rect(self) -> Rect:
+        return self.rect

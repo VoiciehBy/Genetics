@@ -16,10 +16,13 @@ class individual:
         return self.genotype.fitness()
 
     def chromosome_length(self) -> int:
-        return self.genotype.length
+        return self.genotype.getLength()
 
     def genes(self) -> array:
-        return self.genotype.genes
+        return self.genotype.getGenes()
+
+    def getParents(self):
+        return self.parents
 
     def color_trait(self) -> color:
         multiplier = 64

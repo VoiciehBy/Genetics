@@ -1,5 +1,5 @@
 import gettersAndSetters as gAS
-from objects import getPopulation_0, getPopulation_1, getPopulation_2, getPopulation_3
+from objects import getPopulation_0, getPopulation_1
 from horse_utils import generateHorsesArray
 from utils import generateTwoDifferentNumbers
 
@@ -47,13 +47,10 @@ def generationAIPopulationByMax():
     for individual in pop_1:
         fitnesses.append(individual.fitness())
     n = len(pop_1)
-    first_max = -1
     first_max_id = -1
-    second_max = -1
     second_max_id = -1
     for i in range(n):
         if(pop_1[i].fitness() == max(fitnesses)):
-            first_max = pop_1[i].fitness()
             first_max_id = i
             break
 
@@ -61,7 +58,6 @@ def generationAIPopulationByMax():
 
     for i in range(n):
         if(i != first_max_id and pop_1[i].fitness() == max(fitnesses)):
-            second_max = pop_1[i].fitness()
             second_max_id = i
             break
 
@@ -80,13 +76,10 @@ def generationAIPopulationByMin():
 
     n = len(pop_1)
 
-    first_min = -1
     first_min_id = -1
-    second_min = -1
     second_min_id = -1
     for i in range(n):
         if(pop_1[i].fitness() == min(fitnesses)):
-            first_max = pop_1[i].fitness()
             first_min_id = i
             break
 
@@ -94,7 +87,6 @@ def generationAIPopulationByMin():
 
     for i in range(n):
         if(i != first_min_id and pop_1[i].fitness() == min(fitnesses)):
-            second_min = pop_1[i].fitness()
             second_min_id = i
             break
 

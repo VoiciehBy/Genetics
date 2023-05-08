@@ -37,7 +37,6 @@ def drawTutorial(surface):
     lines = TUTORIAL_LINES_PL
 
     n = len(lines)
-    r_rect = rect
     for i in range(n):
         r_rect = Rect(rect.left, rect.top + 2*i *
                       font_size*3, rect.width, rect.height)

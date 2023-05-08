@@ -79,7 +79,6 @@ def generateHorsesArrayWithOffset(individuals, n=4, margin_x=c.margin_x, margin_
     horses = zeros(n, dtype=horse)
     side = c.horse_image_side
 
-    i = 0
     offset_x = 0
     offset_y = 0
     for i in range(n):
@@ -87,7 +86,6 @@ def generateHorsesArrayWithOffset(individuals, n=4, margin_x=c.margin_x, margin_
         y = margin_y + offset_y + 2*offset_1
         rect = Rect([x, y, side, side])
         horses[i] = generateHorse(individuals[i], rect)
-        i = i + 1
         offset_x = offset_x + side
     return horses
 

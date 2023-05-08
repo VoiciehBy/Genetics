@@ -25,7 +25,7 @@ class horse():
         self.set_sprite_color(blue)
 
     def update_sprite_overText(self):
-        self.sprite.overText.txt = self.name
+        self.sprite.set_over_text_txt(self.name)
 
     def set_sprite_over_text_active(self, b=True):
         self.sprite.set_over_text_active(b)
@@ -43,10 +43,10 @@ class horse():
         self.sprite.move(x, y)
 
     def rect(self) -> Rect:
-        return Rect(self.sprite.rect)
+        return Rect(self.sprite.get_rect())
 
     def sprite_rect(self) -> Rect:
-        return self.sprite.rect
+        return self.sprite.get_rect()
 
     def coat_color(self) -> color:
         return self.genetics.color_trait()
@@ -58,11 +58,11 @@ class horse():
         return self.coat_color().inverse() - self.coat_color()
 
     @staticmethod
-    def nose_color(self) -> color:
+    def nose_color() -> color:
         return red
 
     @staticmethod
-    def foot_color(self) -> color:
+    def foot_color() -> color:
         return black
 
     def invisible(self) -> bool:
@@ -81,8 +81,9 @@ class horse():
         return self.fitness() <= 2
 
     def parents(self) -> list:
-        if(self.genetics.parents):
-            return list(self.genetics.parents)
+        result = self.genetics.getParents()
+        if(result):
+            return list(result)
 
     def updateTitles(self):
         titles = []
