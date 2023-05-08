@@ -15,7 +15,7 @@ def handleEvents(horses=None, n=16):
     object = None
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
+            exit()
         if event.type == pygame.KEYDOWN:
             hUI.handleUserInputViaKeyboard(event)
         if(horses != None):

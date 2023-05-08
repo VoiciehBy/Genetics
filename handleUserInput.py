@@ -20,7 +20,7 @@ def handleUserInputViaKeyboard(event):
         print("Ok")
         on_space_pressed()
     elif(event.key == pygame.K_ESCAPE):
-        pygame.quit()
+        exit()
 
 
 def handleLeftMouseButtonClick(objects, i):
