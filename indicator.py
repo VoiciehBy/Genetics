@@ -9,6 +9,9 @@ class indicator:
         self.color = color
         self.active = active
 
+    def setActive(self):
+        self.active = True
+
     def draw(self, surface, color=None):
         if(self.active):
             if(color):

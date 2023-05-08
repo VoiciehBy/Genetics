@@ -29,8 +29,8 @@ class population():
         if(a.chromosome_length() != b.chromosome_length()):
             print("Not same length")
 
-        l = a.chromosome_length()
-        h_l = int(l/2)
+        a_length = a.chromosome_length()
+        h_l = int(a_length/2)
 
         # Python slicing
         first_half_a = a.genes()[:h_l]
@@ -44,28 +44,28 @@ class population():
 
         if(variant == 0):
             offsprings[0] = (individual(
-                parents, chromosome(l, c(first_half_a, last_half_b))))
+                parents, chromosome(a_length, c(first_half_a, last_half_b))))
 
             offsprings[1] = (individual(
-                parents, chromosome(l, c(first_half_b, last_half_a))))
+                parents, chromosome(a_length, c(first_half_b, last_half_a))))
 
             offsprings[2] = (individual(parents, chromosome(
-                l, c(first_half_a, first_half_b))))
+                a_length, c(first_half_a, first_half_b))))
 
             offsprings[3] = (individual(
-                parents, chromosome(l, c(last_half_a, last_half_b))))
+                parents, chromosome(a_length, c(last_half_a, last_half_b))))
         else:
             offsprings[0] = (individual(
-                parents, chromosome(l, c(last_half_b, first_half_a))))
+                parents, chromosome(a_length, c(last_half_b, first_half_a))))
 
             offsprings[1] = (individual(
-                parents, chromosome(l, c(last_half_a, first_half_b))))
+                parents, chromosome(a_length, c(last_half_a, first_half_b))))
 
             offsprings[2] = (individual(parents, chromosome(
-                l, c(first_half_b, first_half_a))))
+                a_length, c(first_half_b, first_half_a))))
 
             offsprings[3] = (individual(
-                parents, chromosome(l, c(last_half_b, last_half_a))))
+                parents, chromosome(a_length, c(last_half_b, last_half_a))))
 
         #last_generation = self.pop
         # for i in last_generation:

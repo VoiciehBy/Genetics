@@ -48,27 +48,27 @@ def drawHorses(horses, currentHorse):
     clearScreen()
 
     for horse in horses[:4]:
-        horse.set_sprite_indicator_active(True)
+        horse.set_sprite_indicator_active()
         if(currentHorse):
             if(currentHorse == horse):
-                horse.sprite.color = currentHorse.sprite.color
+                horse.horseSprite.color = currentHorse.horseSprite.color
         horse.draw()
-        update(horse.sprite.rect)
-        update(horse.sprite.indicator.rect)
+        update(horse.sprite_rect())
+        update(horse.horseSprite.spriteIndicator.rect)
 
-        for pony in horses[4:8]:
-            pony.draw()
-            update(pony.sprite.rect)
+    for pony in horses[4:8]:
+        pony.draw()
+        update(pony.sprite_rect())
 
-        for horse in horses[8:12]:
-            horse.sprite.indicator.active = True
-            horse.draw()
-            update(horse.sprite.rect)
-            update(horse.sprite.indicator.rect)
+    for horse in horses[8:12]:
+        horse.set_sprite_indicator_active()
+        horse.draw()
+        update(horse.sprite_rect())
+        update(horse.horseSprite.spriteIndicator.rect)
 
-        for pony in horses[12:]:
-            pony.draw()
-            update(pony.sprite.rect)
+    for pony in horses[12:]:
+        pony.draw()
+        update(pony.sprite_rect())
 
 
 def main():

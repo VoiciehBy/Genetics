@@ -25,6 +25,7 @@ population_3.generate_initial_population(8, pop)
 pop_0 = population_0.pop
 horses = generateHorsesArray(pop_0)
 
+
 def getPopulation_0() -> population:
     return population_0
 

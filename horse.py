@@ -1,22 +1,25 @@
+from utils import generateId
 from individual import individual
 from sprite import sprite
 from pygame import Rect
-from constants import clearColor, screen, default_horse_name, TITLE_THE_INVISIBLE_TXT, TITLE_THE_BALD_TXT, TITLE_THE_STRONG_TXT, TITLE_THE_WEAK_TXT
+from constants import clearColor, screen, default_horse_name
+from constants import TITLE_THE_INVISIBLE_TXT, TITLE_THE_BALD_TXT, TITLE_THE_STRONG_TXT, TITLE_THE_WEAK_TXT
 from color import color, green, blue, black, red
 
 
-class horse():
+class horse:
     def __init__(self, name=default_horse_name, genetics=individual, g_sprite=sprite):
+        self.id = generateId()
         self.name = name
         self.genetics = genetics
-        self.sprite = g_sprite
-        self.sprite.text = self.name
+        self.horseSprite = g_sprite
+        self.horseSprite.text = self.name
 
     def __eq__(self, o) -> bool:
-        return self.genetics == o.genetics
+        return self.id == o.id and self.name == o.name and self.genetics == o.genetics
 
     def set_sprite_color(self, sprite_color):
-        self.sprite.color = sprite_color.toPyGameColor()
+        self.horseSprite.color = sprite_color.toPyGameColor()
 
     def set_sprite_color_green(self):
         self.set_sprite_color(green)
@@ -25,28 +28,29 @@ class horse():
         self.set_sprite_color(blue)
 
     def update_sprite_overText(self):
-        self.sprite.set_over_text_txt(self.name)
+        name = self.name
+        self.horseSprite.set_over_text_txt(name)
 
-    def set_sprite_over_text_active(self, b=True):
-        self.sprite.set_over_text_active(b)
+    def set_sprite_over_text_active(self):
+        self.horseSprite.set_over_text_active()
 
-    def set_sprite_indicator_active(self, b=True):
-        self.sprite.set_indicator_active(b)
+    def set_sprite_indicator_active(self):
+        self.horseSprite.set_indicator_active()
 
     def flip(self):
-        self.sprite.flip()
+        self.horseSprite.flip()
 
     def draw(self, surface=screen):
-        self.sprite.draw(surface)
+        self.horseSprite.draw(surface)
 
     def move(self, x, y):
-        self.sprite.move(x, y)
+        self.horseSprite.move(x, y)
 
     def rect(self) -> Rect:
-        return Rect(self.sprite.get_rect())
+        return Rect(self.horseSprite.get_rect())
 
     def sprite_rect(self) -> Rect:
-        return self.sprite.get_rect()
+        return self.horseSprite.get_rect()
 
     def coat_color(self) -> color:
         return self.genetics.color_trait()

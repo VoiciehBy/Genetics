@@ -9,8 +9,11 @@ class overText:
         self.txt = txt
         self.active = active
 
-    def setTxt(self,txt):
+    def setTxt(self, txt):
         self.txt = txt
+
+    def setActive(self):
+        self.active = True
 
     def draw(self, surface):
         if(self.active):

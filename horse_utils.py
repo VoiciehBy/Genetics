@@ -1,13 +1,18 @@
 from numpy import array, zeros
 import color
 from pygame import Surface, Rect, image  # , SRCALPHA
-import constants as c
+from constants import s_s_m_m
+from constants import horse_image_side as side
+from constants import color_white, color_cyan, color_black
+from constants import color_magenta, color_red, color_blue, color_brown, color_green
+from constants import margin_x as m_x
+from constants import margin_y as m_y
 from sprite import sprite
 from horse import horse
 
 
 def getHorseImage() -> Surface:
-    if(c.s_s_m_m):
+    if(s_s_m_m):
         horseImage = image.load("horse_s_s_m_m.png")
     else:
         horseImage = image.load("horse.png")
@@ -19,21 +24,20 @@ def generateHorseSSMMImageForPygame(individual) -> array:
     individual_color = individual.color_trait().toPyGameColor()
     inverted_individual_color = individual.color_trait().inverse().toPyGameColor()
     theColor = inverted_individual_color - individual_color
-    side = c.horse_image_side
 
     for i in range(side):
         for j in range(side):
             horse_color = horseImage.get_at((i, j))
 
-            if horse_color == c.color_white:
+            if horse_color == color_white:
                 horseImage.set_at((i, j), individual_color)
-            elif horse_color == c.color_cyan:
+            elif horse_color == color_cyan:
                 horseImage.set_at((i, j), inverted_individual_color)
-            elif horse_color in [c.color_black, c.color_magenta]:
+            elif horse_color in [color_black, color_magenta]:
                 pass
-            elif horse_color == c.color_red:
-                horseImage.set_at((i, j), c.color_black)
-            elif horse_color == c.color_blue:
+            elif horse_color == color_red:
+                horseImage.set_at((i, j), color_black)
+            elif horse_color == color_blue:
                 horseImage.set_at((i, j), theColor)
     return horseImage
 
@@ -43,30 +47,29 @@ def generateHorseImageForPygame(individual) -> array:
     individual_color = individual.color_trait().toPyGameColor()
     inverted_individual_color = individual.color_trait().inverse().toPyGameColor()
     theColor = inverted_individual_color - individual_color
-    side = c.horse_image_side
 
     for i in range(side):
         for j in range(side):
             horse_color = horseImage.get_at((i, j))
 
-            if horse_color == c.color_brown:
+            if horse_color == color_brown:
                 horseImage.set_at((i, j), individual_color)
-            elif horse_color == c.color_white:
+            elif horse_color == color_white:
                 horseImage.set_at((i, j), inverted_individual_color)
 
-            elif horse_color == c.color_black:
+            elif horse_color == color_black:
                 pass
-            elif horse_color == c.color_red:
-                horseImage.set_at((i, j), c.color_black)
-            elif horse_color == c.color_green:
-                horseImage.set_at((i, j), c.color_red)
-            elif horse_color == c.color_blue:
+            elif horse_color == color_red:
+                horseImage.set_at((i, j), color_black)
+            elif horse_color == color_green:
+                horseImage.set_at((i, j), color_red)
+            elif horse_color == color_blue:
                 horseImage.set_at((i, j), theColor)
     return horseImage
 
 
 def generateHorse(individual, rect) -> horse:
-    if(c.s_s_m_m):
+    if(s_s_m_m):
         horseImage = generateHorseSSMMImageForPygame(individual)
     else:
         horseImage = generateHorseImageForPygame(individual)
@@ -75,9 +78,8 @@ def generateHorse(individual, rect) -> horse:
     return h
 
 
-def generateHorsesArrayWithOffset(individuals, n=4, margin_x=c.margin_x, margin_y=c.margin_x, offset=c.horse_image_side, offset_1=c.horse_image_side) -> array:
+def generateHorsesArrayWithOffset(individuals, n=4, margin_x=m_x, margin_y=m_y, offset=side, offset_1=side) -> array:
     horses = zeros(n, dtype=horse)
-    side = c.horse_image_side
 
     offset_x = 0
     offset_y = 0
@@ -91,6 +93,5 @@ def generateHorsesArrayWithOffset(individuals, n=4, margin_x=c.margin_x, margin_
 
 
 def generateHorsesArray(individuals, n=4) -> array:
-    horses = generateHorsesArrayWithOffset(
-        individuals, n, c.margin_x, c.margin_y, 0, 0)
+    horses = generateHorsesArrayWithOffset(individuals, n, m_x, m_y, 0, 0)
     return horses

@@ -1,19 +1,28 @@
-from numpy import zeros, uint8
+from numpy import array, zeros, uint8
 
 
 class chromosome:
-    def __init__(self, length=0, genes=zeros):
+    def __init__(self, length=0, genes=None):
         self.length = length
-        self.genes = zeros(self.length, dtype=uint8)
-        self.genes = genes
+        if(genes is None):
+            self.genes = zeros(self.length, dtype=uint8)
+        else:
+            self.genes = genes
 
     def __eq__(self, o) -> bool:
-        return self.length == o.length and (self.genes == o.genes).all()
+        if(self.length != o.length):
+            return False
+        else:
+            n = self.length
+            for i in range(n):
+                if(self.genes[i] != o.genes[i]):
+                    return False
+            return True
 
-    def getLength(self):
-        return self.length
+    def getLength(self) -> int:
+        return int(self.length)
 
-    def getGenes(self):
+    def getGenes(self) -> array:
         return self.genes
 
     def fitness(self) -> int:

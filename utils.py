@@ -7,22 +7,26 @@ def clamp(x, a, b) -> int:
 
 
 def combine(a, b) -> array:
-    l = a.shape[0]
-    l_1 = b.shape[0]
-    result = zeros(l + l_1, dtype=uint8)
+    a_length = a.shape[0]
+    b_length = b.shape[0]
+    result = zeros(a_length + b_length, dtype=uint8)
 
-    for i in range(l):
+    for i in range(a_length):
         result[i] = a[i]
-    for i in range(l_1):
-        result[l - 1 + i] = b[i]
+    for i in range(b_length):
+        result[a_length - 1 + i] = b[i]
     return result
+
+
+def generateId() -> int:
+    return randint(0, 100)
 
 
 def generateBinaryArray(n) -> array:
     a = zeros(n, dtype=uint8)
     for i in range(n):
         a[i] = randint(0, 1)
-    return a
+    return array(a)
 
 
 def generateTwoDifferentNumbers(a=0, b=1) -> list:
