@@ -4,8 +4,8 @@ import webcolors
 
 
 class color:
-    def __init__(self, red, green, blue):
-        self.bgr = [blue, green, red]
+    def __init__(self, g_red, g_green, g_blue):
+        self.bgr = [g_blue, g_green, g_red]
         self.bgr[0] = clamp(self.bgr[0], 0, 255)
         self.bgr[1] = clamp(self.bgr[1], 0, 255)
         self.bgr[2] = clamp(self.bgr[2], 0, 255)

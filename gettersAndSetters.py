@@ -2,14 +2,14 @@ from objects import first_parent, second_parent, first_parent_id, second_parent_
 from horse import horse
 
 
-def setFirstParent(object):
+def setFirstParent(g_object):
     global first_parent
-    first_parent = object
+    first_parent = g_object
 
 
-def setSecondParent(object):
+def setSecondParent(g_object):
     global second_parent
-    second_parent = object
+    second_parent = g_object
 
 
 def setFirstParentId(i):

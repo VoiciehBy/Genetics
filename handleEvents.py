@@ -3,25 +3,25 @@ from pygame_utils import checkIfMouseOverRect
 import handleUserInput as hUI
 
 
-def onHover(object):
-    if checkIfMouseOverRect(object):
-        object.set_sprite_over_text_active()
-        object.updateName()
-        object.flip()
-        object.draw()
+def onHover(g_object):
+    if checkIfMouseOverRect(g_object):
+        g_object.set_sprite_over_text_active()
+        g_object.updateName()
+        g_object.flip()
+        g_object.draw()
 
 
 def handleEvents(horses=None, n=16):
-    object = None
+    g_object = None
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
         if event.type == pygame.KEYDOWN:
             hUI.handleUserInputViaKeyboard(event)
-        if(horses != None):
+        if(horses is not None):
             if event.type == pygame.MOUSEBUTTONDOWN:
-                object = hUI.handleMouseClick(horses, event, n)
+                g_object = hUI.handleMouseClick(horses, event, n)
             else:
                 for horse in horses:
                     onHover(horse)
-    return object
+    return g_object

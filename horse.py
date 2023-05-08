@@ -6,17 +6,17 @@ from color import color, green, blue, black, red
 
 
 class horse():
-    def __init__(self, name=default_horse_name, genetics=individual, sprite=sprite):
+    def __init__(self, name=default_horse_name, genetics=individual, g_sprite=sprite):
         self.name = name
         self.genetics = genetics
-        self.sprite = sprite
+        self.sprite = g_sprite
         self.sprite.text = self.name
 
     def __eq__(self, o) -> bool:
         return self.genetics == o.genetics
 
-    def set_sprite_color(self, color):
-        self.sprite.color = color.toPyGameColor()
+    def set_sprite_color(self, sprite_color):
+        self.sprite.color = sprite_color.toPyGameColor()
 
     def set_sprite_color_green(self):
         self.set_sprite_color(green)
@@ -30,7 +30,7 @@ class horse():
     def set_sprite_over_text_active(self, b=True):
         self.sprite.set_over_text_active(b)
 
-    def set_sprite_indicator_active(self,b=True):
+    def set_sprite_indicator_active(self, b=True):
         self.sprite.set_indicator_active(b)
 
     def flip(self):
@@ -57,11 +57,13 @@ class horse():
     def eye_color(self) -> color:
         return self.coat_color().inverse() - self.coat_color()
 
+    @staticmethod
     def nose_color(self) -> color:
-        return color.red
+        return red
 
+    @staticmethod
     def foot_color(self) -> color:
-        return color.black
+        return black
 
     def invisible(self) -> bool:
         return clearColor == self.coat_color().toPyGameColor()
@@ -79,7 +81,7 @@ class horse():
         return self.fitness() <= 2
 
     def parents(self) -> list:
-        if(self.genetics.parents != None):
+        if(self.genetics.parents):
             return list(self.genetics.parents)
 
     def updateTitles(self):
@@ -105,8 +107,3 @@ class horse():
     def updateName(self):
         self.updateTitles()
         self.update_sprite_overText()
-
-    def __str__(self) -> str:
-        self.updateTitles()
-        self.update_sprite_overText()
-        return str("name:") + str(self.name) + str("\n")

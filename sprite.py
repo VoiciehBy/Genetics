@@ -4,7 +4,7 @@ import indicator as i
 import overText as oT
 
 
-class sprite():
+class sprite:
     def __init__(self, color, rect, texture):
         self.color = Color(color.rgb())
         self.rect = Rect(rect)

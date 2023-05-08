@@ -14,8 +14,8 @@ def drawImageOverRect(surface, image, rect):
     surface.blit(image, rect)
 
 
-def drawText(surface, text, rect, font_size=font_size):
-    txt = font.Font(None, font_size)
+def drawText(surface, text, rect, text_font_size=font_size):
+    txt = font.Font(None, text_font_size)
     txtSurface = txt.render(text, False, (0, 0, 0))
     surface.blit(txtSurface, rect)
 
@@ -48,9 +48,9 @@ def mvPygameRect(rect, x, y) -> Rect:
     return rect.move(x, y)
 
 
-def checkIfMouseOverRect(object):
+def checkIfMouseOverRect(g_object):
     mousePosition = mouse.get_pos()
-    return object.sprite_rect().collidepoint(mousePosition)
+    return g_object.sprite_rect().collidepoint(mousePosition)
 
 
 def flipSurface(surface, horizontally, vertically) -> Surface:

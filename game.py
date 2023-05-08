@@ -1,30 +1,33 @@
-from enum import Enum as enum
+from enum import Enum
 
-state = enum("state", ["Playing", "Paused"])
+
+class state(Enum):
+    PLAYING = "Playing",
+    PAUSED = "Paused"
 
 
 class game:
-    currentState = state.Paused
+    currentState = state.PAUSED
 
     @staticmethod
     def start_game():
-        if(game.currentState == state.Paused):
-            game.currentState = state.Playing
+        if(game.currentState == state.PAUSED):
+            game.currentState = state.PLAYING
 
     @staticmethod
     def pause_game():
-        if(game.currentState == state.Playing):
-            game.currentState = state.Paused
+        if(game.currentState == state.PLAYING):
+            game.currentState = state.PAUSED
 
     @staticmethod
     def isGamePaused():
-        return game.currentState == state.Paused
+        return game.currentState == state.PAUSED
 
     @staticmethod
     def getCurrentState() -> str:
-        if(game.currentState == state.Playing):
+        if(game.currentState == state.PLAYING):
             return "Playing"
-        elif(game.currentState == state.Paused):
+        elif(game.currentState == state.PAUSED):
             return "Paused"
         else:
             return "NoState"

@@ -46,11 +46,11 @@ def handleRightMouseButtonClick(objects, i):
 
 
 def handleMouseClick(objects, event, n):
-    object = None
+    g_object = None
     for i in range(n):
         if checkIfMouseOverRect(objects[i]):
             if event.button == 1:
-                object = handleLeftMouseButtonClick(objects, i)
+                g_object = handleLeftMouseButtonClick(objects, i)
             if event.button == 3:
-                object = handleRightMouseButtonClick(objects, i)
-    return object
+                g_object = handleRightMouseButtonClick(objects, i)
+    return g_object

@@ -8,7 +8,7 @@ class chromosome:
         self.genes = genes
 
     def __eq__(self, o) -> bool:
-        return self.length == o.length and self.genes.all == o.genes.all
+        return self.length == o.length and (self.genes == o.genes).all()
 
     def fitness(self) -> int:
         c = 0
