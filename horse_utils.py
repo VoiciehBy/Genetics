@@ -1,6 +1,6 @@
 from numpy import array, zeros
 import color
-from pygame import Surface, Rect, image #, SRCALPHA
+from pygame import Surface, Rect, image  # , SRCALPHA
 import constants as c
 from sprite import sprite
 from horse import horse

@@ -1,6 +1,18 @@
-from objects import first_parent, second_parent, first_parent_id, second_parent_id
+from objects import horses
 from horse import horse
 
+global first_parent_id
+global second_parent_id
+
+first_parent_id = 0
+second_parent_id = 1
+
+
+global first_parent
+global second_parent
+
+first_parent = horses[0]
+second_parent = horses[1]
 
 def setFirstParent(g_object):
     global first_parent

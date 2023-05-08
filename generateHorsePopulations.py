@@ -1,5 +1,5 @@
 import gettersAndSetters as gAS
-from populationsGetters import getPopulation_0, getPopulation_1, getPopulation_2, getPopulation_3
+from objects import getPopulation_0, getPopulation_1, getPopulation_2, getPopulation_3
 from horse_utils import generateHorsesArray
 from utils import generateTwoDifferentNumbers
 

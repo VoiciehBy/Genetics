@@ -22,17 +22,20 @@ population_2.generate_initial_population(8, pop)
 population_3 = population(pop)
 population_3.generate_initial_population(8, pop)
 
-global first_parent_id
-global second_parent_id
-
-first_parent_id = 0
-second_parent_id = 1
-
-global first_parent
-global second_parent
-
 pop_0 = population_0.pop
 horses = generateHorsesArray(pop_0)
 
-first_parent = horses[0]
-second_parent = horses[1]
+def getPopulation_0() -> population:
+    return population_0
+
+
+def getPopulation_1() -> population:
+    return population_1
+
+
+def getPopulation_2() -> population:
+    return population_2
+
+
+def getPopulation_3() -> population:
+    return population_3
