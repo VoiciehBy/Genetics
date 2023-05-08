@@ -1,5 +1,5 @@
 # Genetics
- Game based mainly on genetics algoritms.
+ Game based mainly on genetics algorithms.
 
 Inspirations: \
 Crusader's Kings I, II, III \

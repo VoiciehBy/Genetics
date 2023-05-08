@@ -58,10 +58,10 @@ class horse():
         return self.coat_color().inverse() - self.coat_color()
 
     def nose_color(self) -> color:
-        return c.red
+        return color.red
 
     def foot_color(self) -> color:
-        return c.black
+        return color.black
 
     def invisible(self) -> bool:
         return clearColor == self.coat_color().toPyGameColor()

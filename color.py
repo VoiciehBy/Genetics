@@ -45,10 +45,10 @@ class color:
     def __str__(self) -> str:
         rgb = (self.rgb()[0], self.rgb()[1], self.rgb()[2])
         try:
-            str = webcolors.rgb_to_name(rgb)
+            txt = webcolors.rgb_to_name(rgb)
         except ValueError:
-            str = "Unknown"
-        return str(self.rgb()) + ' ' + str
+            txt = "Unknown"
+        return str(self.rgb) + ' ' + txt
 
 
 black = color(0, 0, 0)
