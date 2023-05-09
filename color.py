@@ -32,7 +32,7 @@ class color:
     def inverse(self):
         return color(self.bgr[0], self.bgr[1], self.bgr[2])
 
-    def toPyGameColor(self) -> Color:
+    def to_pygame_color(self) -> Color:
         return Color(self.bgr[2], self.bgr[1], self.bgr[0])
 
     def name(self) -> str:
@@ -58,5 +58,5 @@ red = color(255, 0, 0)
 green = color(0, 255, 0)
 blue = color(0, 0, 255)
 magenta = color(255, 0, 255)
-#yellow = color(255, 255, 0)
+
 cyan = color(0, 255, 255)

@@ -2,13 +2,12 @@ import pygame
 import gettersAndSetters as gAS
 
 from pygame_utils import checkIfMouseOverRect
-from generateHorsePopulations import generateHorsePopulations
-
+from generateHorsePopulations import generate_horse_populations
 from game import game
 
 
 def on_space_pressed():
-    generateHorsePopulations()
+    generate_horse_populations()
 
 
 def handleUserInputViaKeyboard(event):
@@ -25,7 +24,6 @@ def handleUserInputViaKeyboard(event):
 
 def handleLeftMouseButtonClick(objects, i):
     second_parent = gAS.getSecondParent()
-
     if(second_parent):
         if(objects[i] != second_parent):
             gAS.setFirstParent(objects[i])

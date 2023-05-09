@@ -3,49 +3,48 @@ import color
 from pygame import Surface, Rect, image  # , SRCALPHA
 from constants import s_s_m_m
 from constants import horse_image_side as side
-from constants import color_white, color_cyan, color_black
-from constants import color_magenta, color_red, color_blue, color_brown, color_green
+from pygame_colors import *
 from constants import margin_x as m_x
 from constants import margin_y as m_y
 from sprite import sprite
 from horse import horse
 
 
-def getHorseImage() -> Surface:
+def get_horse_image() -> Surface:
     if(s_s_m_m):
-        horseImage = image.load("horse_s_s_m_m.png")
+        horse_image = image.load("horse_s_s_m_m.png")
     else:
-        horseImage = image.load("horse.png")
-    return horseImage
+        horse_image = image.load("horse.png")
+    return horse_image
 
 
-def generateHorseSSMMImageForPygame(individual) -> array:
-    horseImage = getHorseImage()
-    individual_color = individual.color_trait().toPyGameColor()
-    inverted_individual_color = individual.color_trait().inverse().toPyGameColor()
-    theColor = inverted_individual_color - individual_color
+def generate_ssmm_horse_image_for_pygame(individual) -> array:
+    horse_image = get_horse_image()
+    individual_color = individual.color_trait().to_pygame_color()
+    inverted_individual_color = individual.color_trait().inverse().to_pygame_color()
+    the_color = inverted_individual_color - individual_color
 
     for i in range(side):
         for j in range(side):
-            horse_color = horseImage.get_at((i, j))
+            horse_color = horse_image.get_at((i, j))
 
             if horse_color == color_white:
-                horseImage.set_at((i, j), individual_color)
+                horse_image.set_at((i, j), individual_color)
             elif horse_color == color_cyan:
-                horseImage.set_at((i, j), inverted_individual_color)
+                horse_image.set_at((i, j), inverted_individual_color)
             elif horse_color in [color_black, color_magenta]:
                 pass
             elif horse_color == color_red:
-                horseImage.set_at((i, j), color_black)
+                horse_image.set_at((i, j), color_black)
             elif horse_color == color_blue:
-                horseImage.set_at((i, j), theColor)
-    return horseImage
+                horse_image.set_at((i, j), the_color)
+    return horse_image
 
 
 def generateHorseImageForPygame(individual) -> array:
-    horseImage = getHorseImage()
-    individual_color = individual.color_trait().toPyGameColor()
-    inverted_individual_color = individual.color_trait().inverse().toPyGameColor()
+    horseImage = get_horse_image()
+    individual_color = individual.color_trait().to_pygame_color()
+    inverted_individual_color = individual.color_trait().inverse().to_pygame_color()
     theColor = inverted_individual_color - individual_color
 
     for i in range(side):
@@ -70,7 +69,7 @@ def generateHorseImageForPygame(individual) -> array:
 
 def generateHorse(individual, rect) -> horse:
     if(s_s_m_m):
-        horseImage = generateHorseSSMMImageForPygame(individual)
+        horseImage = generate_ssmm_horse_image_for_pygame(individual)
     else:
         horseImage = generateHorseImageForPygame(individual)
     s = sprite(color.white, rect, horseImage)

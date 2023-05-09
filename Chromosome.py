@@ -1,7 +1,7 @@
 from numpy import array, zeros, uint8
 
 
-class chromosome:
+class Chromosome:
     def __init__(self, length=0, genes=None):
         self.length = length
         if(genes is None):
@@ -19,10 +19,10 @@ class chromosome:
                     return False
             return True
 
-    def getLength(self) -> int:
+    def get_length(self) -> int:
         return int(self.length)
 
-    def getGenes(self) -> array:
+    def get_genes(self) -> array:
         return self.genes
 
     def fitness(self) -> int:

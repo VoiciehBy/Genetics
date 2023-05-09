@@ -1,10 +1,10 @@
 import gettersAndSetters as gAS
 from objects import getPopulation_0, getPopulation_1
 from horse_utils import generateHorsesArray
-from utils import generateTwoDifferentNumbers
+from utils import generate_two_different_numbers
 
 
-def resetParents():
+def reset_parents():
     population_0 = getPopulation_0()
     pop_0 = population_0.pop
 
@@ -17,7 +17,7 @@ def resetParents():
     gAS.setSecondParent(horses[1])
 
 
-def generatePlayerPopulation():
+def generate_player_population():
     population_0 = getPopulation_0()
 
     first_parent = gAS.getFirstParent()
@@ -26,20 +26,20 @@ def generatePlayerPopulation():
     if(first_parent != second_parent):
         population_0.cross_over(
             first_parent.genetics, second_parent.genetics)
-        resetParents()
+        reset_parents()
 
 
-def generationAIPopulationRandomly():
+def generate_ai_population_randomly():
     population_1 = getPopulation_1()
 
-    ab = generateTwoDifferentNumbers(0, population_1.size()-1)
+    ab = generate_two_different_numbers(0, population_1.size() - 1)
     pop_1 = population_1.pop
     first_parent_genetics = pop_1[ab[0]]
     second_parent_genetics = pop_1[ab[1]]
     population_1.cross_over(first_parent_genetics, second_parent_genetics)
 
 
-def generationAIPopulationByMax():
+def generate_ai_population_by_max():
     population_1 = getPopulation_1()
     pop_1 = population_1.pop
 
@@ -66,7 +66,7 @@ def generationAIPopulationByMax():
     population_1.cross_over(first_parent_genetics, second_parent_genetics)
 
 
-def generationAIPopulationByMin():
+def generate_ai_population_by_min():
     population_1 = getPopulation_1()
     pop_1 = population_1.pop
 
@@ -95,8 +95,8 @@ def generationAIPopulationByMin():
     population_1.cross_over(first_parent_genetics, second_parent_genetics)
 
 
-def generateHorsePopulations():
-    generatePlayerPopulation()
-    generationAIPopulationRandomly()
+def generate_horse_populations():
+    generate_player_population()
+    generate_ai_population_randomly()
     # generationAIPopulationByMax()
     # generationAIPopulationByMin()

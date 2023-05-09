@@ -1,4 +1,4 @@
-from utils import generateId
+from utils import generate_id
 from individual import individual
 from sprite import sprite
 from pygame import Rect
@@ -9,7 +9,7 @@ from color import color, green, blue, black, red
 
 class horse:
     def __init__(self, name=default_horse_name, genetics=individual, g_sprite=sprite):
-        self.id = generateId()
+        self.id = generate_id()
         self.name = name
         self.genetics = genetics
         self.horseSprite = g_sprite
@@ -19,7 +19,7 @@ class horse:
         return self.id == o.id and self.name == o.name and self.genetics == o.genetics
 
     def set_sprite_color(self, sprite_color):
-        self.horseSprite.color = sprite_color.toPyGameColor()
+        self.horseSprite.color = sprite_color.to_pygame_color()
 
     def set_sprite_color_green(self):
         self.set_sprite_color(green)
@@ -70,10 +70,10 @@ class horse:
         return black
 
     def invisible(self) -> bool:
-        return clearColor == self.coat_color().toPyGameColor()
+        return clearColor == self.coat_color().to_pygame_color()
 
     def bald(self) -> bool:
-        return clearColor == self.mane_color().toPyGameColor()
+        return clearColor == self.mane_color().to_pygame_color()
 
     def fitness(self) -> int:
         return int(self.genetics.fitness())

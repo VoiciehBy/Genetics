@@ -18,18 +18,18 @@ def combine(a, b) -> array:
     return result
 
 
-def generateId() -> int:
+def generate_id() -> int:
     return randint(0, 100)
 
 
-def generateBinaryArray(n) -> array:
+def generate_binary_array(n) -> array:
     a = zeros(n, dtype=uint8)
     for i in range(n):
         a[i] = randint(0, 1)
     return array(a)
 
 
-def generateTwoDifferentNumbers(a=0, b=1) -> list:
+def generate_two_different_numbers(a=0, b=1) -> list:
     n_0 = randint(a, b)
     n_1 = randint(a, b)
     while(n_1 == n_0):

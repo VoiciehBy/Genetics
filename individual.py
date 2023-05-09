@@ -1,11 +1,11 @@
-from chromosome import chromosome
+from Chromosome import Chromosome
 from numpy import array
 from color import color
 from utils import clamp
 
 
 class individual:
-    def __init__(self, parents=None, genotype=chromosome):
+    def __init__(self, parents=None, genotype=Chromosome):
         self.parents = parents
         self.genotype = genotype
 
@@ -16,10 +16,10 @@ class individual:
         return self.genotype.fitness()
 
     def chromosome_length(self) -> int:
-        return self.genotype.getLength()
+        return self.genotype.get_length()
 
     def genes(self) -> array:
-        return self.genotype.getGenes()
+        return self.genotype.get_genes()
 
     def getParents(self):
         return self.parents
