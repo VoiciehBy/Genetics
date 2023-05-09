@@ -1,30 +1,39 @@
-from objects import getPopulation_0, getPopulation_1, getPopulation_2, getPopulation_3
-from horse_utils import generateHorsesArray, generateHorsesArrayWithOffset
+from objects import get_population_0, get_population_1
+from population import population
+from horse_utils import generate_horses_array, generate_horses_array_with_offset
 from numpy import array
 from init import init
 from pygame_utils import clearScreen
 from update import update
-from constants import horse_image_side, screen, margin_x, margin_y
+from constants import horse_image_side as side
+from constants import default_population_size as pop
+from constants import screen, margin_x, margin_y
 from handleEvents import handleEvents
 
-from game import game
+from Game import Game
 from drawTutorialScreen import drawTutorialScreen
 
+population_2 = population(pop)
+population_2.generate_initial_population(8, pop)
 
-def generateFourPopulations():
-    side = horse_image_side
+population_3 = population(pop)
+population_3.generate_initial_population(8, pop)
 
-    pop_0 = getPopulation_0().pop
-    pop_1 = getPopulation_1().pop
-    pop_2 = getPopulation_2().pop
-    pop_3 = getPopulation_3().pop
 
-    horses = generateHorsesArray(pop_0)
-    ponies = generateHorsesArrayWithOffset(pop_1)
-    horses_1 = generateHorsesArrayWithOffset(
+def generateFourPopulations() -> array:
+    pop_0 = get_population_0().pop
+    pop_1 = get_population_1().pop
+
+    pop_2 = population_2.pop
+    pop_3 = population_3.pop
+
+    horses = generate_horses_array(pop_0)
+    ponies = generate_horses_array_with_offset(pop_1)
+
+    horses_1 = generate_horses_array_with_offset(
         pop_2, margin_x=0, margin_y=0, offset=side*4 + margin_x, offset_1=margin_y/2)
 
-    ponies_1 = generateHorsesArrayWithOffset(
+    ponies_1 = generate_horses_array_with_offset(
         pop_3, offset=side*4 + 4*margin_x, offset_1=side)
 
     for pony in ponies:
@@ -43,18 +52,18 @@ def generateFourPopulations():
     return array(result)
 
 
-def drawHorses(horses, currentHorse):
+def drawHorses(horses, current_horse):
     update(screen.get_rect())
     clearScreen()
 
     for horse in horses[:4]:
         horse.set_sprite_indicator_active()
-        if(currentHorse):
-            if(currentHorse == horse):
-                horse.horseSprite.color = currentHorse.horseSprite.color
+        if(current_horse):
+            if(current_horse == horse):
+                horse.horseSprite.color = current_horse.horseSprite.color
         horse.draw()
         update(horse.sprite_rect())
-        update(horse.horseSprite.spriteIndicator.rect)
+        update(horse.sprite_indicator_rect())
 
     for pony in horses[4:8]:
         pony.draw()
@@ -64,7 +73,7 @@ def drawHorses(horses, currentHorse):
         horse.set_sprite_indicator_active()
         horse.draw()
         update(horse.sprite_rect())
-        update(horse.horseSprite.spriteIndicator.rect)
+        update(horse.sprite_indicator_rect())
 
     for pony in horses[12:]:
         pony.draw()
@@ -76,7 +85,7 @@ def main():
     clearScreen()
 
     while(1):
-        if(game.isGamePaused()):
+        if(Game.is_game_paused()):
             drawTutorialScreen()
         else:
             horses = generateFourPopulations()

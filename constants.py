@@ -1,6 +1,7 @@
 from pygame.display import set_mode
 from pygame import DOUBLEBUF, SRCALPHA, Color
 
+default_population_size = 4
 margin_x = 32
 margin_y = 80
 horse_image_side = 128

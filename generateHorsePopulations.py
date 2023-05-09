@@ -1,27 +1,24 @@
 import gettersAndSetters as gAS
-from objects import getPopulation_0, getPopulation_1
-from horse_utils import generateHorsesArray
+from objects import get_population_0, get_population_1
+from horse_utils import generate_horses_array
 from utils import generate_two_different_numbers
 
 
 def reset_parents():
-    population_0 = getPopulation_0()
+    population_0 = get_population_0()
     pop_0 = population_0.pop
 
-    horses = generateHorsesArray(pop_0)
+    horses = generate_horses_array(pop_0)
 
-    gAS.setFirstParentId(0)
-    gAS.setSecondParentId(1)
-
-    gAS.setFirstParent(horses[0])
-    gAS.setSecondParent(horses[1])
+    gAS.set_first_parent(horses[0])
+    gAS.set_second_parent(horses[1])
 
 
 def generate_player_population():
-    population_0 = getPopulation_0()
+    population_0 = get_population_0()
 
-    first_parent = gAS.getFirstParent()
-    second_parent = gAS.getSecondParent()
+    first_parent = gAS.get_first_parent()
+    second_parent = gAS.get_second_parent()
 
     if(first_parent != second_parent):
         population_0.cross_over(
@@ -30,7 +27,7 @@ def generate_player_population():
 
 
 def generate_ai_population_randomly():
-    population_1 = getPopulation_1()
+    population_1 = get_population_1()
 
     ab = generate_two_different_numbers(0, population_1.size() - 1)
     pop_1 = population_1.pop
@@ -40,7 +37,7 @@ def generate_ai_population_randomly():
 
 
 def generate_ai_population_by_max():
-    population_1 = getPopulation_1()
+    population_1 = get_population_1()
     pop_1 = population_1.pop
 
     fitnesses = []
@@ -67,7 +64,7 @@ def generate_ai_population_by_max():
 
 
 def generate_ai_population_by_min():
-    population_1 = getPopulation_1()
+    population_1 = get_population_1()
     pop_1 = population_1.pop
 
     fitnesses = []

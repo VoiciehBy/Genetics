@@ -1,8 +1,6 @@
-
-
 import numpy
 from Chromosome import Chromosome
-from individual import individual
+from Individual import Individual
 from utils import generate_binary_array
 from utils import combine as c
 
@@ -19,11 +17,11 @@ class population:
         return int(len(self.pop))
 
     def generate_initial_population(self, chromosome_length, population_size):
-        self.pop = numpy.zeros(population_size, dtype=individual)
+        self.pop = numpy.zeros(population_size, dtype=Individual)
         for i in range(population_size):
             genes = generate_random_genes(chromosome_length)
             g = Chromosome(chromosome_length, genes)
-            self.pop[i] = (individual(genotype=g))
+            self.pop[i] = (Individual(genotype=g))
 
     def cross_over(self, a, b, variant=0):
         if(a.chromosome_length() != b.chromosome_length()):
@@ -40,38 +38,38 @@ class population:
         last_half_b = b.genes()[h_l:]
 
         parents = [a, b]
-        offsprings = numpy.zeros(4, dtype=individual)
+        offsprings = numpy.zeros(4, dtype=Individual)
 
         if(variant == 0):
-            offsprings[0] = (individual(
+            offsprings[0] = (Individual(
                 parents, Chromosome(a_length, c(first_half_a, last_half_b))))
 
-            offsprings[1] = (individual(
+            offsprings[1] = (Individual(
                 parents, Chromosome(a_length, c(first_half_b, last_half_a))))
 
-            offsprings[2] = (individual(parents, Chromosome(
+            offsprings[2] = (Individual(parents, Chromosome(
                 a_length, c(first_half_a, first_half_b))))
 
-            offsprings[3] = (individual(
+            offsprings[3] = (Individual(
                 parents, Chromosome(a_length, c(last_half_a, last_half_b))))
         else:
-            offsprings[0] = (individual(
+            offsprings[0] = (Individual(
                 parents, Chromosome(a_length, c(last_half_b, first_half_a))))
 
-            offsprings[1] = (individual(
+            offsprings[1] = (Individual(
                 parents, Chromosome(a_length, c(last_half_a, first_half_b))))
 
-            offsprings[2] = (individual(parents, Chromosome(
+            offsprings[2] = (Individual(parents, Chromosome(
                 a_length, c(first_half_b, first_half_a))))
 
-            offsprings[3] = (individual(
+            offsprings[3] = (Individual(
                 parents, Chromosome(a_length, c(last_half_b, last_half_a))))
 
         #last_generation = self.pop
         # for i in last_generation:
         #    print(i)
         del self.pop
-        self.pop = numpy.zeros(4, dtype=individual)
+        self.pop = numpy.zeros(4, dtype=Individual)
         for i in range(4):
             self.pop[i] = offsprings[i]
         # return last_generation

@@ -3,7 +3,7 @@ import gettersAndSetters as gAS
 
 from pygame_utils import checkIfMouseOverRect
 from generateHorsePopulations import generate_horse_populations
-from game import game
+from Game import Game
 
 
 def on_space_pressed():
@@ -12,9 +12,9 @@ def on_space_pressed():
 
 def handleUserInputViaKeyboard(event):
     if(event.key == pygame.K_RETURN):
-        game.start_game()
+        Game.start_game()
     elif(event.key == pygame.K_p):
-        game.pause_game()
+        Game.pause_game()
     elif(event.key == pygame.K_SPACE):
         print("Ok")
         on_space_pressed()
@@ -22,32 +22,30 @@ def handleUserInputViaKeyboard(event):
         exit()
 
 
-def handleLeftMouseButtonClick(objects, i):
-    second_parent = gAS.getSecondParent()
+def on_left_mouse_button_click(objects, i):
+    second_parent = gAS.get_second_parent()
     if(second_parent):
         if(objects[i] != second_parent):
-            gAS.setFirstParent(objects[i])
-            gAS.setFirstParentId(i)
+            gAS.set_first_parent(objects[i])
             objects[i].set_sprite_color_green()
             return objects[i]
 
 
-def handleRightMouseButtonClick(objects, i):
-    first_parent = gAS.getFirstParent()
+def on_right_mouse_button_click(objects, i):
+    first_parent = gAS.get_first_parent()
     if(first_parent):
         if(objects[i] != first_parent):
-            gAS.setSecondParent(objects[i])
-            gAS.setSecondParentId(i)
+            gAS.set_second_parent(objects[i])
             objects[i].set_sprite_color_blue()
             return objects[i]
 
 
-def handleMouseClick(objects, event, n):
+def on_mouse_click(objects, event, n):
     g_object = None
     for i in range(n):
         if checkIfMouseOverRect(objects[i]):
             if event.button == 1:
-                g_object = handleLeftMouseButtonClick(objects, i)
+                g_object = on_left_mouse_button_click(objects, i)
             if event.button == 3:
-                g_object = handleRightMouseButtonClick(objects, i)
+                g_object = on_right_mouse_button_click(objects, i)
     return g_object

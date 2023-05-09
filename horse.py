@@ -1,14 +1,14 @@
 from utils import generate_id
-from individual import individual
-from sprite import sprite
+from Individual import Individual
+from GSprite import GSprite
 from pygame import Rect
 from constants import clearColor, screen, default_horse_name
 from constants import TITLE_THE_INVISIBLE_TXT, TITLE_THE_BALD_TXT, TITLE_THE_STRONG_TXT, TITLE_THE_WEAK_TXT
-from color import color, green, blue, black, red
+from GColor import GColor, green, blue, black, red
 
 
 class horse:
-    def __init__(self, name=default_horse_name, genetics=individual, g_sprite=sprite):
+    def __init__(self, name=default_horse_name, genetics=Individual, g_sprite=GSprite):
         self.id = generate_id()
         self.name = name
         self.genetics = genetics
@@ -28,8 +28,7 @@ class horse:
         self.set_sprite_color(blue)
 
     def update_sprite_overText(self):
-        name = self.name
-        self.horseSprite.set_over_text_txt(name)
+        self.horseSprite.set_over_text_txt(self.name)
 
     def set_sprite_over_text_active(self):
         self.horseSprite.set_over_text_active()
@@ -52,21 +51,24 @@ class horse:
     def sprite_rect(self) -> Rect:
         return self.horseSprite.get_rect()
 
-    def coat_color(self) -> color:
+    def sprite_indicator_rect(self) -> Rect:
+        return self.horseSprite.get_indicator_rect()
+
+    def coat_color(self) -> GColor:
         return self.genetics.color_trait()
 
-    def mane_color(self) -> color:
+    def mane_color(self) -> GColor:
         return self.coat_color().inverse()
 
-    def eye_color(self) -> color:
+    def eye_color(self) -> GColor:
         return self.coat_color().inverse() - self.coat_color()
 
     @staticmethod
-    def nose_color() -> color:
+    def nose_color() -> GColor:
         return red
 
     @staticmethod
-    def foot_color() -> color:
+    def foot_color() -> GColor:
         return black
 
     def invisible(self) -> bool:
@@ -85,7 +87,7 @@ class horse:
         return self.fitness() <= 2
 
     def parents(self) -> list:
-        result = self.genetics.getParents()
+        result = self.genetics.get_parents()
         if(result):
             return list(result)
 

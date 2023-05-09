@@ -1,4 +1,4 @@
-from color import brown
+from GColor import brown
 from pygame import Color
 
 color_black = Color("black")
