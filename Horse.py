@@ -1,13 +1,13 @@
 from utils import generate_id
 from Individual import Individual
 from GSprite import GSprite
-from pygame import Rect
+from pygame import Rect, Color
 from constants import clearColor, screen, default_horse_name
 from constants import TITLE_THE_INVISIBLE_TXT, TITLE_THE_BALD_TXT, TITLE_THE_STRONG_TXT, TITLE_THE_WEAK_TXT
 from GColor import GColor, green, blue, black, red
 
 
-class horse:
+class Horse:
     def __init__(self, name=default_horse_name, genetics=Individual, g_sprite=GSprite):
         self.id = generate_id()
         self.name = name
@@ -19,7 +19,10 @@ class horse:
         return self.id == o.id and self.name == o.name and self.genetics == o.genetics
 
     def set_sprite_color(self, sprite_color):
-        self.horseSprite.color = sprite_color.to_pygame_color()
+        self.horseSprite.set_color(sprite_color.to_pygame_color())
+
+    def set_sprite_color_using_pygame_color(self, sprite_color):
+        self.horseSprite.set_color(sprite_color)
 
     def set_sprite_color_green(self):
         self.set_sprite_color(green)
@@ -27,7 +30,7 @@ class horse:
     def set_sprite_color_blue(self):
         self.set_sprite_color(blue)
 
-    def update_sprite_overText(self):
+    def update_sprite_over_text(self):
         self.horseSprite.set_over_text_txt(self.name)
 
     def set_sprite_over_text_active(self):
@@ -35,6 +38,9 @@ class horse:
 
     def set_sprite_indicator_active(self):
         self.horseSprite.set_indicator_active()
+
+    def sprite_color(self) -> Color:
+        return self.horseSprite.get_color()
 
     def flip(self):
         self.horseSprite.flip()
@@ -44,9 +50,6 @@ class horse:
 
     def move(self, x, y):
         self.horseSprite.move(x, y)
-
-    def rect(self) -> Rect:
-        return Rect(self.horseSprite.get_rect())
 
     def sprite_rect(self) -> Rect:
         return self.horseSprite.get_rect()
@@ -91,26 +94,23 @@ class horse:
         if(result):
             return list(result)
 
-    def updateTitles(self):
-        titles = []
-        if(str(self.coat_color().name())):
-            colorTitle = str(self.coat_color().name()).capitalize()
-            titles.append(colorTitle)
-        if(self.invisible()):
-            titles.append(' ' + TITLE_THE_INVISIBLE_TXT)
-        elif(self.bald()):
-            titles.append(' ' + TITLE_THE_BALD_TXT)
-        elif(self.strong()):
-            titles.append(' ' + TITLE_THE_STRONG_TXT)
-        elif(self.weak()):
-            titles.append(' ' + TITLE_THE_WEAK_TXT)
-
+    def update_titles(self):
         name = ''
-        for title in titles:
-            name += str(title)
-        name = self.name + ' ' + name
-        self.name = name
+        if(str(self.coat_color().name())):
+            name += str(self.coat_color().name()).capitalize()
+        if(self.invisible()):
+            name += TITLE_THE_INVISIBLE_TXT
+        elif(self.bald()):
+            name += TITLE_THE_BALD_TXT
+        elif(self.strong()):
+            name += TITLE_THE_STRONG_TXT
+        elif(self.weak()):
+            name += TITLE_THE_WEAK_TXT
+        self.name = self.name + ' ' + name
 
-    def updateName(self):
-        self.updateTitles()
-        self.update_sprite_overText()
+    def set_name(self, name):
+        self.name = name
+        self.update_titles()
+
+    def __str__(self):
+        return str(self.id) + ' ' + str(self.name)

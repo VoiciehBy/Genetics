@@ -23,6 +23,9 @@ class GSprite:
     def move(self, x, y):
         self.rect = mvPygameRect(self.rect, x, y)
 
+    def set_color(self, color):
+        self.color = color
+
     def set_over_text_txt(self, txt):
         self.overTxt.set_txt(txt)
 
@@ -37,3 +40,6 @@ class GSprite:
 
     def get_indicator_rect(self) -> Rect:
         return Rect(self.spriteIndicator.get_rect())
+
+    def get_color(self):
+        return Color(self.color)

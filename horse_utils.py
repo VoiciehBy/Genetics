@@ -7,7 +7,7 @@ from pygame_colors import *
 from constants import margin_x as m_x
 from constants import margin_y as m_y
 from GSprite import GSprite
-from horse import horse
+from Horse import Horse
 
 
 def get_horse_image() -> Surface:
@@ -67,18 +67,19 @@ def generate_horse_image_for_pygame(individual) -> array:
     return horse_image
 
 
-def generate_horse(individual, rect) -> horse:
+def generate_horse(individual, rect) -> Horse:
     if(s_s_m_m):
         horse_image = generate_ssmm_horse_image_for_pygame(individual)
     else:
         horse_image = generate_horse_image_for_pygame(individual)
     s = GSprite(white, rect, horse_image)
-    h = horse(genetics=individual, g_sprite=s)
+    h = Horse(genetics=individual, g_sprite=s)
     return h
 
 
-def generate_horses_array_with_offset(individuals, n=4, margin_x=m_x, margin_y=m_y, offset=side, offset_1=side) -> array:
-    horses = zeros(n, dtype=horse)
+def generate_horses_array_with_offset(individuals, n=4, margin_x=m_x, margin_y=m_y,
+                                      offset=side, offset_1=side) -> array:
+    horses = zeros(n, dtype=Horse)
 
     offset_x = 0
     offset_y = 0

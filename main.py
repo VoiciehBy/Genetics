@@ -7,7 +7,7 @@ from pygame_utils import clearScreen
 from update import update
 from constants import horse_image_side as side
 from constants import default_population_size as pop
-from constants import screen, margin_x, margin_y
+from constants import names, screen, margin_x, margin_y
 from handleEvents import handleEvents
 
 from Game import Game
@@ -36,17 +36,11 @@ def generateFourPopulations() -> array:
     ponies_1 = generate_horses_array_with_offset(
         pop_3, offset=side*4 + 4*margin_x, offset_1=side)
 
-    for pony in ponies:
-        pony.name = "Pony"
-
-    for horse in horses_1:
-        horse.name = "Equus"
-
-    for pony in ponies:
-        pony.name = "Pony"
-
-    for pony in ponies_1:
-        pony.name = "Caballus"
+    for i in range(4):
+        ponies[i].set_name(names[1])
+        horses[i].set_name(names[2])
+        horses_1[i].set_name(names[3])
+        ponies_1[i].set_name(names[4])
 
     result = list(horses) + list(ponies) + list(horses_1) + list(ponies_1)
     return array(result)
@@ -60,7 +54,7 @@ def drawHorses(horses, current_horse):
         horse.set_sprite_indicator_active()
         if(current_horse):
             if(current_horse == horse):
-                horse.horseSprite.color = current_horse.horseSprite.color
+                horse.set_sprite_color_using_pygame_color(current_horse.sprite_color())
         horse.draw()
         update(horse.sprite_rect())
         update(horse.sprite_indicator_rect())
@@ -89,8 +83,8 @@ def main():
             drawTutorialScreen()
         else:
             horses = generateFourPopulations()
-            currentHorse = handleEvents(horses, n=16)
-            drawHorses(horses, currentHorse)
+            current_horses = handleEvents(horses, n=16)
+            drawHorses(horses, current_horses)
 
 
 main()

@@ -5,9 +5,13 @@ from utils import clamp
 
 
 class Individual:
+    count = 0
+
     def __init__(self, parents=None, genotype=Chromosome):
+        self.id = Individual.count
         self.parents = parents
         self.genotype = genotype
+        Individual.count += 1
 
     def __eq__(self, o) -> bool:
         return self.genotype == o.genotype
@@ -36,4 +40,4 @@ class Individual:
         return GColor(red, green, blue)
 
     def __str__(self) -> str:
-        return str(self.genotype)
+        return str(self.id) + ' ' + str(self.genotype)
