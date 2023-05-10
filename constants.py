@@ -17,12 +17,12 @@ clearColor = Color("cyan")
 
 s_s_m_m = False
 
-# Names: #Koń# Pony #Ferus #Equus #Caballus
+names = ["Koń", "Pony", "Ferus", "Equus", "Caballus"]
 
 if(s_s_m_m):
     default_horse_name = "Miku"
 else:
-    default_horse_name = "Ferus"
+    default_horse_name = names[2]
 
 
 TITLE_THE_INVISIBLE_TXT = "The Invisible"
