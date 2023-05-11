@@ -6,7 +6,7 @@ from utils import generate_two_different_numbers
 
 def reset_parents():
     population_0 = get_population_0()
-    pop_0 = population_0.pop
+    pop_0 = population_0.get_pop()
 
     horses = generate_horses_array(pop_0)
 
@@ -30,7 +30,7 @@ def generate_ai_population_randomly():
     population_1 = get_population_1()
 
     ab = generate_two_different_numbers(0, population_1.size() - 1)
-    pop_1 = population_1.pop
+    pop_1 = population_1.get_pop()
     first_parent_genetics = pop_1[ab[0]]
     second_parent_genetics = pop_1[ab[1]]
     population_1.cross_over(first_parent_genetics, second_parent_genetics)
@@ -38,7 +38,7 @@ def generate_ai_population_randomly():
 
 def generate_ai_population_by_max():
     population_1 = get_population_1()
-    pop_1 = population_1.pop
+    pop_1 = population_1.get_pop()
 
     fitnesses = []
     for individual in pop_1:
@@ -65,7 +65,7 @@ def generate_ai_population_by_max():
 
 def generate_ai_population_by_min():
     population_1 = get_population_1()
-    pop_1 = population_1.pop
+    pop_1 = population_1.get_pop()
 
     fitnesses = []
     for individual in pop_1:

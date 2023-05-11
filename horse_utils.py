@@ -1,6 +1,7 @@
+from pygame import Surface, Rect, image  # , SRCALPHA
+from Individual import Individual
 from numpy import array, zeros
 from GColor import white
-from pygame import Surface, Rect, image  # , SRCALPHA
 from constants import s_s_m_m
 from constants import horse_image_side as side
 from pygame_colors import *
@@ -18,7 +19,7 @@ def get_horse_image() -> Surface:
     return horse_image
 
 
-def generate_ssmm_horse_image_for_pygame(individual) -> array:
+def generate_ssmm_horse_image_for_pygame(individual: Individual) -> array:
     horse_image = get_horse_image()
     individual_color = individual.color_trait().to_pygame_color()
     inverted_individual_color = individual.color_trait().inverse().to_pygame_color()
@@ -41,7 +42,7 @@ def generate_ssmm_horse_image_for_pygame(individual) -> array:
     return horse_image
 
 
-def generate_horse_image_for_pygame(individual) -> array:
+def generate_horse_image_for_pygame(individual: Individual) -> array:
     horse_image = get_horse_image()
     individual_color = individual.color_trait().to_pygame_color()
     inverted_individual_color = individual.color_trait().inverse().to_pygame_color()
@@ -67,7 +68,7 @@ def generate_horse_image_for_pygame(individual) -> array:
     return horse_image
 
 
-def generate_horse(individual, rect) -> Horse:
+def generate_horse(individual: Individual, rect: Rect) -> Horse:
     if(s_s_m_m):
         horse_image = generate_ssmm_horse_image_for_pygame(individual)
     else:
@@ -77,7 +78,7 @@ def generate_horse(individual, rect) -> Horse:
     return h
 
 
-def generate_horses_array_with_offset(individuals, n=4, margin_x=m_x, margin_y=m_y,
+def generate_horses_array_with_offset(individuals: array, n=4, margin_x=m_x, margin_y=m_y,
                                       offset=side, offset_1=side) -> array:
     horses = zeros(n, dtype=Horse)
 
@@ -92,6 +93,6 @@ def generate_horses_array_with_offset(individuals, n=4, margin_x=m_x, margin_y=m
     return horses
 
 
-def generate_horses_array(individuals, n=4) -> array:
+def generate_horses_array(individuals: array, n=4) -> array:
     horses = generate_horses_array_with_offset(individuals, n, m_x, m_y, 0, 0)
     return horses

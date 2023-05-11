@@ -40,7 +40,7 @@ class GColor:
         try:
             return webcolors.rgb_to_name(rgb)
         except ValueError:
-            return ""
+            return ''
 
     def __str__(self) -> str:
         rgb = (self.rgb()[0], self.rgb()[1], self.rgb()[2])

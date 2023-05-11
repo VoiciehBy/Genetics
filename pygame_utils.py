@@ -6,25 +6,24 @@ def clearScreen():
     screen.fill(clearColor)
 
 
-def drawPygameRect(surface, color, rect, border_radius=default_rect_border_radius):
+def drawPygameRect(surface: Surface, color, rect: Rect, border_radius=default_rect_border_radius):
     draw.rect(surface, color, rect, border_radius=border_radius)
 
 
-def drawImageOverRect(surface, image, rect):
+def drawImageOverRect(surface: Surface, image: Surface, rect: Rect):
     surface.blit(image, rect)
 
 
-def drawText(surface, text, rect, text_font_size=font_size):
+def drawText(surface: Surface, text: str, rect: Rect, text_font_size=font_size):
     txt = font.Font(None, text_font_size)
-    txtSurface = txt.render(text, False, (0, 0, 0))
-    surface.blit(txtSurface, rect)
+    txt_surface = txt.render(text, False, (0, 0, 0))
+    surface.blit(txt_surface, rect)
 
 
-def drawTutorial(surface):
-    surfaceRect = surface.get_rect()
+def drawTutorial(surface: Surface):
+    surface_rect = Rect(surface.get_rect())
 
-    rect = Rect(10, 10,
-                surfaceRect.width - 20, surfaceRect.height - 20)
+    rect = Rect(10, 10, surface_rect.width - 20, surface_rect.height - 20)
     drawPygameRect(surface, (255, 0, 0), rect)
 
     left = int(rect.width/4)
@@ -43,22 +42,22 @@ def drawTutorial(surface):
         drawText(surface, lines[i], r_rect, font_size*3)
 
 
-def mvPygameRect(rect, x, y) -> Rect:
+def mvPygameRect(rect: Rect, x: int, y: int) -> Rect:
     return rect.move(x, y)
 
 
 def checkIfMouseOverRect(g_object):
-    mousePosition = mouse.get_pos()
-    return g_object.sprite_rect().collidepoint(mousePosition)
+    mouse_position = mouse.get_pos()
+    return g_object.sprite_rect().collidepoint(mouse_position)
 
 
-def flipSurface(surface, horizontally, vertically) -> Surface:
+def flipSurface(surface: Surface, horizontally: bool, vertically: bool) -> Surface:
     return transform.flip(surface, horizontally, vertically)
 
 
-def flipSurfaceHorizontally(surface) -> Surface:
+def flipSurfaceHorizontally(surface: Surface) -> Surface:
     return flipSurface(surface, True, False)
 
 
-def flipSurfaceVertically(surface) -> Surface:
+def flipSurfaceVertically(surface: Surface) -> Surface:
     return flipSurface(surface, False, True)

@@ -1,13 +1,14 @@
-from pygame import Color, Rect
+from GColor import GColor
+from pygame import Color, Rect, Surface
 from pygame_utils import drawImageOverRect, mvPygameRect, flipSurfaceHorizontally
 from Indicator import Indicator
 from OverText import OverText
 
 
 class GSprite:
-    def __init__(self, color, rect, texture):
+    def __init__(self, color: GColor, rect: Rect, texture):
         self.color = Color(color.rgb())
-        self.rect = Rect(rect)
+        self.rect = rect
         self.texture = texture
         self.overTxt = OverText(self.rect)
         self.spriteIndicator = Indicator(self.rect, self.color)
@@ -15,12 +16,12 @@ class GSprite:
     def flip(self):
         self.texture = flipSurfaceHorizontally(self.texture)
 
-    def draw(self, surface):
+    def draw(self, surface: Surface):
         self.spriteIndicator.draw(surface, self.color)
         self.overTxt.draw(surface)
         drawImageOverRect(surface, self.texture, self.rect)
 
-    def move(self, x, y):
+    def move(self, x: int, y: int):
         self.rect = mvPygameRect(self.rect, x, y)
 
     def set_color(self, color):

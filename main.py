@@ -1,5 +1,5 @@
 from objects import get_population_0, get_population_1
-from population import population
+from Population import Population
 from horse_utils import generate_horses_array, generate_horses_array_with_offset
 from numpy import array
 from init import init
@@ -13,19 +13,19 @@ from handleEvents import handleEvents
 from Game import Game
 from drawTutorialScreen import drawTutorialScreen
 
-population_2 = population(pop)
+population_2 = Population(pop)
 population_2.generate_initial_population(8, pop)
 
-population_3 = population(pop)
+population_3 = Population(pop)
 population_3.generate_initial_population(8, pop)
 
 
 def generateFourPopulations() -> array:
-    pop_0 = get_population_0().pop
-    pop_1 = get_population_1().pop
+    pop_0 = get_population_0().get_pop()
+    pop_1 = get_population_1().get_pop()
 
-    pop_2 = population_2.pop
-    pop_3 = population_3.pop
+    pop_2 = population_2.get_pop()
+    pop_3 = population_3.get_pop()
 
     horses = generate_horses_array(pop_0)
     ponies = generate_horses_array_with_offset(pop_1)

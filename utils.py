@@ -6,7 +6,7 @@ def clamp(x, a, b) -> int:
     return int(max(a, min(x, b)))
 
 
-def combine(a, b) -> array:
+def combine(a: array, b: array) -> array:
     a_length = a.shape[0]
     b_length = b.shape[0]
     result = zeros(a_length + b_length, dtype=uint8)
@@ -22,7 +22,7 @@ def generate_id() -> int:
     return randint(0, 100)
 
 
-def generate_binary_array(n) -> array:
+def generate_binary_array(n: int) -> array:
     a = zeros(n, dtype=uint8)
     for i in range(n):
         a[i] = randint(0, 1)

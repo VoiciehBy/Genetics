@@ -10,7 +10,7 @@ def on_space_pressed():
     generate_horse_populations()
 
 
-def handleUserInputViaKeyboard(event):
+def handleUserInputViaKeyboard(event: pygame.event):
     if(event.key == pygame.K_RETURN):
         Game.start_game()
     elif(event.key == pygame.K_p):
@@ -22,7 +22,7 @@ def handleUserInputViaKeyboard(event):
         exit()
 
 
-def on_left_mouse_button_click(objects, i):
+def on_left_mouse_button_click(objects, i: int):
     second_parent = gAS.get_second_parent()
     if(second_parent):
         if(objects[i] != second_parent):
@@ -31,7 +31,7 @@ def on_left_mouse_button_click(objects, i):
             return objects[i]
 
 
-def on_right_mouse_button_click(objects, i):
+def on_right_mouse_button_click(objects, i: int):
     first_parent = gAS.get_first_parent()
     if(first_parent):
         if(objects[i] != first_parent):
@@ -40,7 +40,7 @@ def on_right_mouse_button_click(objects, i):
             return objects[i]
 
 
-def on_mouse_click(objects, event, n):
+def on_mouse_click(objects, event: pygame.event, n: int):
     g_object = None
     for i in range(n):
         if checkIfMouseOverRect(objects[i]):

@@ -1,29 +1,32 @@
-import numpy
+from numpy import array, zeros
 from Chromosome import Chromosome
 from Individual import Individual
 from utils import generate_binary_array
 from utils import combine as c
 
 
-def generate_random_genes(length):
+def generate_random_genes(length: int):
     return generate_binary_array(length)
 
 
-class population:
-    def __init__(self, pop):
+class Population:
+    def __init__(self, pop: array):
         self.pop = pop
+
+    def get_pop(self):
+        return self.pop
 
     def size(self) -> int:
         return int(len(self.pop))
 
-    def generate_initial_population(self, chromosome_length, population_size):
-        self.pop = numpy.zeros(population_size, dtype=Individual)
+    def generate_initial_population(self, chromosome_length: int, population_size: int):
+        self.pop = zeros(population_size, dtype=Individual)
         for i in range(population_size):
             genes = generate_random_genes(chromosome_length)
             g = Chromosome(chromosome_length, genes)
             self.pop[i] = (Individual(genotype=g))
 
-    def cross_over(self, a, b, variant=0):
+    def cross_over(self, a: Individual, b: Individual, variant=0):
         if(a.chromosome_length() != b.chromosome_length()):
             print("Not same length")
 
@@ -38,7 +41,7 @@ class population:
         last_half_b = b.genes()[h_l:]
 
         parents = [a, b]
-        offsprings = numpy.zeros(4, dtype=Individual)
+        offsprings = zeros(4, dtype=Individual)
 
         if(variant == 0):
             offsprings[0] = (Individual(
@@ -69,7 +72,7 @@ class population:
         # for i in last_generation:
         #    print(i)
         del self.pop
-        self.pop = numpy.zeros(4, dtype=Individual)
+        self.pop = zeros(4, dtype=Individual)
         for i in range(4):
             self.pop[i] = offsprings[i]
         # return last_generation

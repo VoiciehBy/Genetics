@@ -2,9 +2,11 @@ from utils import generate_id
 from Individual import Individual
 from GSprite import GSprite
 from pygame import Rect, Color
-from constants import clearColor, screen, default_horse_name
-from constants import TITLE_THE_INVISIBLE_TXT, TITLE_THE_BALD_TXT, TITLE_THE_STRONG_TXT, TITLE_THE_WEAK_TXT
+from constants import screen, default_horse_name
+
 from GColor import GColor, green, blue, black, red
+
+from trait_utils import surname, strong_weak, invisible_bald
 
 
 class Horse:
@@ -18,10 +20,10 @@ class Horse:
     def __eq__(self, o) -> bool:
         return self.id == o.id and self.name == o.name and self.genetics == o.genetics
 
-    def set_sprite_color(self, sprite_color):
+    def set_sprite_color(self, sprite_color: GColor):
         self.horseSprite.set_color(sprite_color.to_pygame_color())
 
-    def set_sprite_color_using_pygame_color(self, sprite_color):
+    def set_sprite_color_using_pygame_color(self, sprite_color: GColor):
         self.horseSprite.set_color(sprite_color)
 
     def set_sprite_color_green(self):
@@ -74,43 +76,21 @@ class Horse:
     def foot_color() -> GColor:
         return black
 
-    def invisible(self) -> bool:
-        return clearColor == self.coat_color().to_pygame_color()
-
-    def bald(self) -> bool:
-        return clearColor == self.mane_color().to_pygame_color()
-
     def fitness(self) -> int:
         return int(self.genetics.fitness())
-
-    def strong(self) -> bool:
-        return self.fitness() >= 5
-
-    def weak(self) -> bool:
-        return self.fitness() <= 2
 
     def parents(self) -> list:
         result = self.genetics.get_parents()
         if(result):
             return list(result)
 
-    def update_titles(self):
-        name = ''
-        if(str(self.coat_color().name())):
-            name += str(self.coat_color().name()).capitalize()
-        if(self.invisible()):
-            name += TITLE_THE_INVISIBLE_TXT
-        elif(self.bald()):
-            name += TITLE_THE_BALD_TXT
-        elif(self.strong()):
-            name += TITLE_THE_STRONG_TXT
-        elif(self.weak()):
-            name += TITLE_THE_WEAK_TXT
-        self.name = self.name + ' ' + name
-
-    def set_name(self, name):
+    def set_name(self, name: str):
         self.name = name
-        self.update_titles()
+        titles = ''
+        titles += surname(self.coat_color())
+        titles += invisible_bald(self.coat_color())
+        titles += strong_weak(self.fitness())
+        self.name = self.name + ' ' + titles
 
     def __str__(self):
         return str(self.id) + ' ' + str(self.name)
