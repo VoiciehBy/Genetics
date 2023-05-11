@@ -3,7 +3,8 @@ from enum import Enum
 
 class State(Enum):
     PLAYING = "Playing",
-    PAUSED = "Paused"
+    PAUSED = "Paused",
+    BREEDING = "Breeding"
 
 
 class Game:
@@ -20,8 +21,22 @@ class Game:
             Game.currentState = State.PAUSED
 
     @staticmethod
-    def is_game_paused():
+    def start_breeding_state():
+        if(Game.currentState == State.PLAYING):
+            Game.currentState = State.BREEDING
+
+    @staticmethod
+    def stop_breeding_state():
+        if (Game.currentState == State.BREEDING):
+            Game.currentState = State.PLAYING
+
+    @staticmethod
+    def is_game_paused() -> bool:
         return Game.currentState == State.PAUSED
+
+    @staticmethod
+    def is_in_breeding_state() -> bool:
+        return Game.currentState == State.BREEDING
 
     @staticmethod
     def get_current_state() -> str:
@@ -29,5 +44,7 @@ class Game:
             return "Playing"
         elif(Game.currentState == State.PAUSED):
             return "Paused"
+        elif(Game.currentState == State.BREEDING):
+            return "Breeding"
         else:
             return "NoState"

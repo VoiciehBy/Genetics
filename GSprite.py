@@ -33,6 +33,9 @@ class GSprite:
     def set_over_text_active(self):
         self.overTxt.set_active()
 
+    def set_over_text_inactive(self):
+        self.overTxt.set_inactive()
+
     def set_indicator_active(self):
         self.spriteIndicator.set_active()
 

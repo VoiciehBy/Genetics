@@ -1,4 +1,4 @@
-from pygame import draw, font, Rect, mouse, transform, Surface
+from pygame import draw, font, Rect, mouse, transform, Surface, time
 from constants import screen, clearColor, font_size, default_rect_border_radius, TUTORIAL_LINES_PL
 
 
@@ -61,3 +61,7 @@ def flipSurfaceHorizontally(surface: Surface) -> Surface:
 
 def flipSurfaceVertically(surface: Surface) -> Surface:
     return flipSurface(surface, False, True)
+
+
+def wait(milliseconds: int):
+    time.wait(milliseconds)

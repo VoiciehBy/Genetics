@@ -3,7 +3,8 @@ from Population import Population
 from horse_utils import generate_horses_array, generate_horses_array_with_offset
 from numpy import array
 from init import init
-from pygame_utils import clearScreen
+from pygame_utils import clearScreen, wait
+from pygame_colors import color_white
 from update import update
 from constants import horse_image_side as side
 from constants import default_population_size as pop
@@ -54,7 +55,8 @@ def drawHorses(horses, current_horse):
         horse.set_sprite_indicator_active()
         if(current_horse):
             if(current_horse == horse):
-                horse.set_sprite_color_using_pygame_color(current_horse.sprite_color())
+                horse.set_sprite_color_using_pygame_color(
+                    current_horse.sprite_color())
         horse.draw()
         update(horse.sprite_rect())
         update(horse.sprite_indicator_rect())
@@ -77,14 +79,19 @@ def drawHorses(horses, current_horse):
 def main():
     init()
     clearScreen()
-
+    horses = generateFourPopulations()
     while(1):
         if(Game.is_game_paused()):
             drawTutorialScreen()
         else:
-            horses = generateFourPopulations()
-            current_horses = handleEvents(horses, n=16)
-            drawHorses(horses, current_horses)
+            if(Game.is_in_breeding_state()):
+                horses = generateFourPopulations()
+                Game.stop_breeding_state()
+            current_horse = handleEvents(horses, n=16)
+            drawHorses(horses, current_horse)
+            if(current_horse):
+                wait(64)
+                current_horse.set_sprite_color_using_pygame_color(color_white)
 
 
 main()

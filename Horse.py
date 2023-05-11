@@ -38,6 +38,9 @@ class Horse:
     def set_sprite_over_text_active(self):
         self.horseSprite.set_over_text_active()
 
+    def set_sprite_over_text_inactive(self):
+        self.horseSprite.set_over_text_inactive()
+
     def set_sprite_indicator_active(self):
         self.horseSprite.set_indicator_active()
 

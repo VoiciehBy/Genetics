@@ -17,6 +17,7 @@ def handleUserInputViaKeyboard(event: pygame.event):
         Game.pause_game()
     elif(event.key == pygame.K_SPACE):
         print("Ok")
+        Game.start_breeding_state()
         on_space_pressed()
     elif(event.key == pygame.K_ESCAPE):
         exit()

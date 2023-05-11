@@ -6,9 +6,9 @@ import handleUserInput as hUI
 def on_hover(g_object):
     if checkIfMouseOverRect(g_object):
         g_object.set_sprite_over_text_active()
-        g_object.update_sprite_over_text()
-        g_object.flip()
-        g_object.draw()
+        g_object.update_sprite_over_text()  # g_object.flip()
+    else:
+        g_object.set_sprite_over_text_inactive()  # g_object.flip()
 
 
 def handleEvents(horses=None, n=16):
