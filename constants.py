@@ -30,6 +30,11 @@ TITLE_THE_BALD_TXT = " The Bald"
 TITLE_THE_STRONG_TXT = " The Strong"
 TITLE_THE_WEAK_TXT = " The Weak"
 
+BLACK_HORSE_TXT_PL = "Czarny " + names[0] + ' '
+FOUND_TXT_PL = " znaleziony"
+
+ENDING_TXT_PL = ["Czarne Konie Apokalipsy...", "doprowadziły do końca świata jakiego znamy...", "KONIEC", "xDddddddd","FIN"]
+
 TUTORIAL_LINES_PL = ["Krzyżuj konie dowoli...", "Wybór pierwszego rodzica [LPM]",
                      "Wybór drugiego rodzica [RPM]", "Krzyżuj [Spacja]",
                      "Wyświetl ponownie to okno [P]", "Rozpocznij grę/Wznów grę [ENTER]"]

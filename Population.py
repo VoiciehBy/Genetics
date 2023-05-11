@@ -68,11 +68,9 @@ class Population:
             offsprings[3] = (Individual(
                 parents, Chromosome(a_length, c(last_half_b, last_half_a))))
 
-        #last_generation = self.pop
-        # for i in last_generation:
-        #    print(i)
+        last_generation = self.pop
         del self.pop
         self.pop = zeros(4, dtype=Individual)
         for i in range(4):
             self.pop[i] = offsprings[i]
-        # return last_generation
+        return last_generation

@@ -3,6 +3,7 @@ from numpy import array
 from GColor import GColor
 from utils import clamp
 
+import json
 
 class Individual:
     count = 0
@@ -16,6 +17,9 @@ class Individual:
     def __eq__(self, o) -> bool:
         return self.genotype == o.genotype
 
+    def id(self):
+        return self.id
+
     def fitness(self) -> int:
         return self.genotype.fitness()
 
@@ -25,7 +29,7 @@ class Individual:
     def genes(self) -> array:
         return self.genotype.get_genes()
 
-    def get_parents(self):
+    def get_parents(self) -> list:
         return self.parents
 
     def color_trait(self) -> GColor:
@@ -38,6 +42,16 @@ class Individual:
         green = clamp(green*multiplier, 0, 255)
         blue = clamp(blue*multiplier, 0, 255)
         return GColor(red, green, blue)
+
+    def to_json(self) -> str:
+        genotype = str(self.genotype)
+        parents = self.get_parents()
+        if(parents):
+            result = str(parents[0].id) + ' ' + str(parents[1].id)
+            parents = result
+        else:
+            parents = ''
+        return json.dumps({"id" : self.id,"genes" : genotype, "parents": parents})
 
     def __str__(self) -> str:
         return str(self.id) + ' ' + str(self.genotype)

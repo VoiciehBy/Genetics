@@ -4,7 +4,8 @@ from enum import Enum
 class State(Enum):
     PLAYING = "Playing",
     PAUSED = "Paused",
-    BREEDING = "Breeding"
+    BREEDING = "Breeding",
+    END = "END"
 
 
 class Game:
@@ -31,12 +32,25 @@ class Game:
             Game.currentState = State.PLAYING
 
     @staticmethod
+    def end_game():
+        if (Game.currentState in [State.PLAYING,State.BREEDING]):
+            Game.currentState = State.END
+
+    @staticmethod
     def is_game_paused() -> bool:
         return Game.currentState == State.PAUSED
 
     @staticmethod
+    def is_game_playing() -> bool:
+        return Game.currentState == State.PLAYING
+
+    @staticmethod
     def is_in_breeding_state() -> bool:
         return Game.currentState == State.BREEDING
+
+    @staticmethod
+    def is_it_the_end() -> bool:
+        return Game.currentState == State.END
 
     @staticmethod
     def get_current_state() -> str:
@@ -46,5 +60,7 @@ class Game:
             return "Paused"
         elif(Game.currentState == State.BREEDING):
             return "Breeding"
+        elif (Game.currentState == State.END):
+            return "End"
         else:
             return "NoState"

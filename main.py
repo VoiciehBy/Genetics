@@ -13,6 +13,7 @@ from handleEvents import handleEvents
 
 from Game import Game
 from drawTutorialScreen import drawTutorialScreen
+from drawEndScreen import drawEndScreen
 
 population_2 = Population(pop)
 population_2.generate_initial_population(8, pop)
@@ -77,21 +78,38 @@ def drawHorses(horses, current_horse):
 
 
 def main():
+    with open("horses.json", "w", encoding="utf-8") as file:
+        file.write("{\n\"horses\" : [\n")
+    with open("ai_horses.json", "w", encoding="utf-8") as file:
+        file.write("{\n\"horses\" : [\n")
     init()
     clearScreen()
     horses = generateFourPopulations()
     while(1):
         if(Game.is_game_paused()):
             drawTutorialScreen()
-        else:
-            if(Game.is_in_breeding_state()):
-                horses = generateFourPopulations()
-                Game.stop_breeding_state()
+        elif(Game.is_in_breeding_state()):
+            horses = generateFourPopulations()
+            Game.stop_breeding_state()
+        elif(Game.is_game_playing()):
             current_horse = handleEvents(horses, n=16)
             drawHorses(horses, current_horse)
             if(current_horse):
                 wait(64)
                 current_horse.set_sprite_color_using_pygame_color(color_white)
+        elif(Game.is_it_the_end()):
+            drawEndScreen()
+            wait(2000)
+            with open("ai_horses.json", "a", encoding="utf-8") as file:
+                file.write(']\n}')
+            txt = ''
+            with open("ai_horses.json", "r", encoding="utf-8") as file:
+                txt = file.read()
+                n = len(txt)
+                txt = txt[:n-5] + txt[n-4:]
+            with open("ai_horses.json", "w", encoding="utf-8") as file:
+                file.write(txt)
+            break
 
 
 main()

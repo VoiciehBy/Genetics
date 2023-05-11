@@ -1,11 +1,11 @@
 from constants import screen
-from pygame_utils import drawTutorial, clearScreen
+from pygame_utils import drawEnd, clearScreen
 from update import update
 from handleEvents import handleEvents
 
 
-def drawTutorialScreen():
-    drawTutorial(screen)
+def drawEndScreen():
+    drawEnd(screen)
     update(screen.get_rect())
 
     handleEvents()
