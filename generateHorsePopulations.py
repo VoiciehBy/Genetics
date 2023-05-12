@@ -1,13 +1,15 @@
 import gettersAndSetters as gAS
-from objects import get_population_0, get_population_1
+from objects import get_population_0
 from horse_utils import generate_horses_array
 from Game import Game
-from utils import generate_two_different_numbers
 
-from constants import HORSES_JSON_FILE_NAME, AI_HORSES_JSON_FILE_NAME
+from constants import HORSES_JSON_FILE_NAME
 
 from logging import jsonify_last_generation
 
+from generateAIPopulation import generate_ai_population_randomly
+from generateAIPopulation import generate_ai_population_by_min
+from generateAIPopulation import generate_ai_population_by_max
 
 def reset_parents():
     population_0 = get_population_0()
@@ -32,114 +34,24 @@ def generate_player_population():
 
         reset_parents()
 
-        counter = 0
         pop_size = len(population_0.get_pop())
+        counter = 0
         for individual in last_generation:
-            if(counter != pop_size and individual.fitness() == 0):
+            if (counter != pop_size and individual.fitness() == 0):
                 counter += 1
-            if(counter == pop_size):
+            if (counter == pop_size):
                 Game.end_game()
 
 
-def generate_ai_population_randomly():
-    population_1 = get_population_1()
-
-    ab = generate_two_different_numbers(0, population_1.size() - 1)
-    pop_1 = population_1.get_pop()
-    first_parent_genetics = pop_1[ab[0]]
-    second_parent_genetics = pop_1[ab[1]]
-    last_generation = population_1.cross_over(
-        first_parent_genetics, second_parent_genetics)
-
-    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
-
-    counter = 0
-    pop_size = len(population_1.get_pop())
-    for individual in last_generation:
-        if(counter != pop_size and individual.fitness() == 0):
-            counter += 1
-        if(counter == pop_size):
-            Game.end_game()
-
-
-def generate_ai_population_by_max():
-    population_1 = get_population_1()
-    pop_1 = population_1.get_pop()
-
-    fitnesses = []
-    for individual in pop_1:
-        fitnesses.append(individual.fitness())
-    n = len(pop_1)
-    first_max_id = -1
-    second_max_id = -1
-    for i in range(n):
-        if(pop_1[i].fitness() == max(fitnesses)):
-            first_max_id = i
-            break
-
-    fitnesses[first_max_id] = -1
-
-    for i in range(n):
-        if(i != first_max_id and pop_1[i].fitness() == max(fitnesses)):
-            second_max_id = i
-            break
-
-    first_parent_genetics = pop_1[first_max_id]
-    second_parent_genetics = pop_1[second_max_id]
-    last_generation = population_1.cross_over(
-        first_parent_genetics, second_parent_genetics)
-    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
-
-    counter = 0
-    pop_size = len(population_1.get_pop())
-    for individual in last_generation:
-        if(counter != pop_size and individual.fitness() == 0):
-            counter += 1
-        if(counter == pop_size):
-            Game.end_game()
-
-
-def generate_ai_population_by_min():
-    population_1 = get_population_1()
-    pop_1 = population_1.get_pop()
-
-    fitnesses = []
-    for individual in pop_1:
-        fitnesses.append(individual.fitness())
-
-    n = len(pop_1)
-
-    first_min_id = -1
-    second_min_id = -1
-    for i in range(n):
-        if(pop_1[i].fitness() == min(fitnesses)):
-            first_min_id = i
-            break
-
-    fitnesses[first_min_id] = 100000000
-
-    for i in range(n):
-        if(i != first_min_id and pop_1[i].fitness() == min(fitnesses)):
-            second_min_id = i
-            break
-
-    first_parent_genetics = pop_1[first_min_id]
-    second_parent_genetics = pop_1[second_min_id]
-    last_generation = population_1.cross_over(
-        first_parent_genetics, second_parent_genetics)
-    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
-
-    counter = 0
-    pop_size = len(population_1.get_pop())
-    for individual in last_generation:
-        if(counter != pop_size and individual.fitness() == 0):
-            counter += 1
-        if(counter == pop_size):
-            Game.end_game()
-
+def generate_ai_population():
+    i = 0
+    if(i == 0):
+        generate_ai_population_randomly()
+    elif(i == 1):
+        generate_ai_population_by_min()
+    else:
+        generate_ai_population_by_max()
 
 def generate_horse_populations():
     generate_player_population()
-    generate_ai_population_randomly()
-    # generationAIPopulationByMax()
-    # generationAIPopulationByMin()
+    generate_ai_population()
