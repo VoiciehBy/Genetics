@@ -1,7 +1,7 @@
 from constants import HORSES_JSON_FILE_NAME, AI_HORSES_JSON_FILE_NAME
 
 from init import init
-from logging import start_json_file, end_json_file
+from g_logging import start_json_file, end_json_file
 from pygame_utils import wait
 from generate_four_populations import generate_four_populations
 from Game import Game

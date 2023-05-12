@@ -4,17 +4,19 @@ from utils import generate_two_different_numbers
 
 from constants import AI_HORSES_JSON_FILE_NAME
 
-from logging import jsonify_last_generation
+from g_logging import jsonify_last_generation
 
 import numpy
 
-def f(last_generation,pop_size):
+
+def f(last_generation, pop_size):
     counter = 0
     for individual in last_generation:
         if(counter != pop_size and individual.fitness() == 0):
             counter += 1
         if(counter == pop_size):
             Game.end_game()
+
 
 def generate_ai_population_randomly():
     population_1 = get_population_1()
@@ -23,12 +25,13 @@ def generate_ai_population_randomly():
     pop_1 = population_1.get_pop()
     first_parent_genetics = pop_1[ab[0]]
     second_parent_genetics = pop_1[ab[1]]
-    last_generation = population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    last_generation = population_1.cross_over(
+        first_parent_genetics, second_parent_genetics)
 
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     pop_size = len(population_1.get_pop())
-    f(last_generation,pop_size)
+    f(last_generation, pop_size)
 
 
 def generate_ai_population_by_max():
@@ -62,7 +65,7 @@ def generate_ai_population_by_max():
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     pop_size = len(population_1.get_pop())
-    f(last_generation,pop_size)
+    f(last_generation, pop_size)
 
 
 def generate_ai_population_by_min():
@@ -95,4 +98,4 @@ def generate_ai_population_by_min():
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     pop_size = len(population_1.get_pop())
-    f(last_generation,pop_size)
+    f(last_generation, pop_size)

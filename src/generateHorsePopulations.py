@@ -5,11 +5,12 @@ from Game import Game
 
 from constants import HORSES_JSON_FILE_NAME
 
-from logging import jsonify_last_generation
+from g_logging import jsonify_last_generation
 
 from generateAIPopulation import generate_ai_population_randomly
 from generateAIPopulation import generate_ai_population_by_min
 from generateAIPopulation import generate_ai_population_by_max
+
 
 def reset_parents():
     population_0 = get_population_0()
@@ -51,6 +52,7 @@ def generate_ai_population():
         generate_ai_population_by_min()
     else:
         generate_ai_population_by_max()
+
 
 def generate_horse_populations():
     generate_player_population()

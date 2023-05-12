@@ -13,9 +13,9 @@ from Horse import Horse
 
 def get_horse_image() -> Surface:
     if(s_s_m_m):
-        horse_image = image.load("horse_s_s_m_m.png")
+        horse_image = image.load("../img/horse_s_s_m_m.png")
     else:
-        horse_image = image.load("horse.png")
+        horse_image = image.load("../img/horse.png")
     return horse_image
 
 

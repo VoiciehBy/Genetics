@@ -42,5 +42,5 @@ TUTORIAL_LINES_PL = ["Krzyżuj konie dowoli...", "Wybór pierwszego rodzica [LPM
                      "Wybór drugiego rodzica [RPM]", "Krzyżuj [Spacja]",
                      "Wyświetl ponownie to okno [P]", "Rozpocznij grę/Wznów grę [ENTER]"]
 
-HORSES_JSON_FILE_NAME = "horses.json"
-AI_HORSES_JSON_FILE_NAME = "ai_horses.json"
+HORSES_JSON_FILE_NAME = "../horses.json"
+AI_HORSES_JSON_FILE_NAME = "../ai_horses.json"

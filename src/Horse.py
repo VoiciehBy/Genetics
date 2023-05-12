@@ -4,7 +4,7 @@ from GSprite import GSprite
 from pygame import Rect, Color
 from constants import screen, default_horse_name
 
-from GColor import GColor, green, blue, black, red
+from GColor import GColor, green, blue
 
 from trait_utils import surname, strong_weak, invisible_bald
 
