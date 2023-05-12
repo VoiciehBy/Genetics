@@ -42,7 +42,7 @@ def generate_ai_population_by_max():
     fitnesse = numpy.zeros(n, dtype=numpy.uint8)
 
     for i in range(n):
-        fitnesse = pop_1[i].fitness()
+        fitnesse[i] = pop_1[i].fitness()
 
     first_max_id = -1
     second_max_id = -1
@@ -76,7 +76,7 @@ def generate_ai_population_by_min():
     fitnesse = numpy.zeros(n, dtype=numpy.uint8)
 
     for i in range(n):
-        fitnesse = pop_1[i].fitness()
+        fitnesse[i] = pop_1[i].fitness()
 
     first_min_id = -1
     second_min_id = -1

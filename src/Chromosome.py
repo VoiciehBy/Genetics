@@ -29,7 +29,7 @@ class Chromosome:
         c = 0
         for gene in self.genes:
             if gene == 1:
-                c = c + 1
+                c += 1
         return int(c)
 
     def __str__(self) -> str:
