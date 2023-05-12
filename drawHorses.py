@@ -1,5 +1,5 @@
 from update import update
-from pygame_utils import clearScreen
+from pygame_utils import clear_screen
 from constants import screen
 from constants import default_population_size as pop
 from constants import ferus_caballus_pop as wild_pop
@@ -7,7 +7,7 @@ from constants import ferus_caballus_pop as wild_pop
 
 def drawHorses(horses, current_horse):
     update(screen.get_rect())
-    clearScreen()
+    clear_screen()
 
     for horse in horses[:pop]:
         horse.set_sprite_indicator_active()

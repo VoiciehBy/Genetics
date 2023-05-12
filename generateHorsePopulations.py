@@ -26,7 +26,8 @@ def generate_player_population():
     second_parent = gAS.get_second_parent()
 
     if(first_parent != second_parent):
-        last_generation = population_0.cross_over(first_parent.genetics, second_parent.genetics)
+        last_generation = population_0.cross_over(
+            first_parent.genetics, second_parent.genetics)
         jsonify_last_generation(HORSES_JSON_FILE_NAME, last_generation)
 
         reset_parents()
@@ -85,7 +86,8 @@ def generate_ai_population_by_max():
 
     first_parent_genetics = pop_1[first_max_id]
     second_parent_genetics = pop_1[second_max_id]
-    last_generation = population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    last_generation = population_1.cross_over(
+        first_parent_genetics, second_parent_genetics)
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     counter = 0
@@ -123,7 +125,8 @@ def generate_ai_population_by_min():
 
     first_parent_genetics = pop_1[first_min_id]
     second_parent_genetics = pop_1[second_min_id]
-    last_generation = population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    last_generation = population_1.cross_over(
+        first_parent_genetics, second_parent_genetics)
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     counter = 0

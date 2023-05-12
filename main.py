@@ -5,7 +5,7 @@ from logging import start_json_file, end_json_file
 from pygame_utils import wait
 from generate_four_populations import generate_four_populations
 from Game import Game
-from draw_screens import drawTutorialScreen, drawEndScreen
+from drawScreen import drawTutorialScreen, drawEndScreen
 
 from constants import default_population_size as pop
 from constants import ferus_caballus_pop as wild_pop

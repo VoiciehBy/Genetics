@@ -1,7 +1,7 @@
 import pygame
 import gettersAndSetters as gAS
 
-from pygame_utils import checkIfMouseOverRect
+from pygame_utils import is_mouse_over_rect
 from generateHorsePopulations import generate_horse_populations
 from Game import Game
 
@@ -10,7 +10,7 @@ def on_space_pressed():
     generate_horse_populations()
 
 
-def handleUserInputViaKeyboard(event: pygame.event):
+def on_user_input_via_keyboard(event: pygame.event):
     if(event.key == pygame.K_RETURN):
         Game.start_game()
     elif(event.key == pygame.K_p):
@@ -44,7 +44,7 @@ def on_right_mouse_button_click(objects, i: int):
 def on_mouse_click(objects, event: pygame.event, n: int):
     g_object = None
     for i in range(n):
-        if checkIfMouseOverRect(objects[i]):
+        if is_mouse_over_rect(objects[i]):
             if event.button == 1:
                 g_object = on_left_mouse_button_click(objects, i)
             if event.button == 3:

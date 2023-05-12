@@ -1,5 +1,5 @@
 from constants import screen
-from pygame_utils import drawTutorial, drawEnd, clearScreen
+from pygame_utils import drawTutorial, drawEnd, clear_screen
 from update import update
 from handleEvents import handleEvents
 
@@ -9,7 +9,7 @@ def drawTutorialScreen():
     update(screen.get_rect())
 
     handleEvents()
-    clearScreen()
+    clear_screen()
 
 
 def drawEndScreen():
@@ -17,4 +17,4 @@ def drawEndScreen():
     update(screen.get_rect())
 
     handleEvents()
-    clearScreen()
+    clear_screen()

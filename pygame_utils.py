@@ -3,7 +3,7 @@ from constants import screen, clearColor, font_size, default_rect_border_radius,
 from pygame_colors import color_red, color_white
 
 
-def clearScreen():
+def clear_screen():
     screen.fill(clearColor)
 
 
@@ -65,25 +65,27 @@ def drawEnd(surface: Surface):
         drawText(surface, lines[i], r_rect, font_size * 3)
 
 
-def mvPygameRect(rect: Rect, x: int, y: int) -> Rect:
+def move_pygame_rect(rect: Rect, x: int, y: int) -> Rect:
     return rect.move(x, y)
 
 
-def checkIfMouseOverRect(g_object):
+def is_mouse_over_rect(g_object) -> bool:
     mouse_position = mouse.get_pos()
-    return g_object.sprite_rect().collidepoint(mouse_position)
+    rect_to_check = g_object.sprite_rect()
+    result = rect_to_check.collidepoint(mouse_position)
+    return result
 
 
-def flipSurface(surface: Surface, horizontally: bool, vertically: bool) -> Surface:
+def flip_surface(surface: Surface, horizontally: bool, vertically: bool) -> Surface:
     return transform.flip(surface, horizontally, vertically)
 
 
-def flipSurfaceHorizontally(surface: Surface) -> Surface:
-    return flipSurface(surface, True, False)
+def flip_surface_horizontally(surface: Surface) -> Surface:
+    return flip_surface(surface, True, False)
 
 
-def flipSurfaceVertically(surface: Surface) -> Surface:
-    return flipSurface(surface, False, True)
+def flip_surface_vertically(surface: Surface) -> Surface:
+    return flip_surface(surface, False, True)
 
 
 def wait(milliseconds: int):
