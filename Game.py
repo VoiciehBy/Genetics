@@ -33,7 +33,7 @@ class Game:
 
     @staticmethod
     def end_game():
-        if (Game.currentState in [State.PLAYING,State.BREEDING]):
+        if (Game.currentState in [State.PLAYING, State.BREEDING]):
             Game.currentState = State.END
 
     @staticmethod

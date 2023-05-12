@@ -1,6 +1,7 @@
 from pygame import draw, font, Rect, mouse, transform, Surface, time
 from constants import screen, clearColor, font_size, default_rect_border_radius, TUTORIAL_LINES_PL, ENDING_TXT_PL
-from pygame_colors import color_red,color_white
+from pygame_colors import color_red, color_white
+
 
 def clearScreen():
     screen.fill(clearColor)
@@ -41,6 +42,7 @@ def drawTutorial(surface: Surface):
                       font_size*3, rect.width, rect.height)
         drawText(surface, lines[i], r_rect, font_size*3)
 
+
 def drawEnd(surface: Surface):
     surface_rect = Rect(surface.get_rect())
 
@@ -61,6 +63,7 @@ def drawEnd(surface: Surface):
         r_rect = Rect(rect.left, rect.top + 2 * i *
                       font_size * 3, rect.width, rect.height)
         drawText(surface, lines[i], r_rect, font_size * 3)
+
 
 def mvPygameRect(rect: Rect, x: int, y: int) -> Rect:
     return rect.move(x, y)

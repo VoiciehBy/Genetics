@@ -4,6 +4,9 @@ from horse_utils import generate_horses_array
 from Game import Game
 from utils import generate_two_different_numbers
 
+from constants import HORSES_JSON_FILE_NAME, AI_HORSES_JSON_FILE_NAME
+
+from logging import jsonify_last_generation
 
 
 def reset_parents():
@@ -23,14 +26,8 @@ def generate_player_population():
     second_parent = gAS.get_second_parent()
 
     if(first_parent != second_parent):
-        last_generation = population_0.cross_over(
-            first_parent.genetics, second_parent.genetics)
-
-        
-
-        with open("horses.json","a",encoding="utf-8") as file:
-            for i in last_generation:
-                file.write(i.to_json() + str(",\n"))
+        last_generation = population_0.cross_over(first_parent.genetics, second_parent.genetics)
+        jsonify_last_generation(HORSES_JSON_FILE_NAME, last_generation)
 
         reset_parents()
 
@@ -40,16 +37,8 @@ def generate_player_population():
             if(counter != pop_size and individual.fitness() == 0):
                 counter += 1
             if(counter == pop_size):
-                with open("horses.json","a",encoding="utf-8") as file:
-                    file.write(']\n}')
-                txt = ''
-                with open("horses.json","r",encoding="utf-8") as file:
-                    txt = file.read()
-                    n = len(txt)
-                    txt = txt[:n-5] + txt[n-4:] 
-                with open("horses.json","w",encoding="utf-8") as file:
-                    file.write(txt)
                 Game.end_game()
+
 
 def generate_ai_population_randomly():
     population_1 = get_population_1()
@@ -58,11 +47,18 @@ def generate_ai_population_randomly():
     pop_1 = population_1.get_pop()
     first_parent_genetics = pop_1[ab[0]]
     second_parent_genetics = pop_1[ab[1]]
-    last_generation = population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    last_generation = population_1.cross_over(
+        first_parent_genetics, second_parent_genetics)
 
-    with open("ai_horses.json", "a", encoding="utf-8") as file:
-        for i in last_generation:
-            file.write(i.to_json() + str(",\n"))
+    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
+
+    counter = 0
+    pop_size = len(population_1.get_pop())
+    for individual in last_generation:
+        if(counter != pop_size and individual.fitness() == 0):
+            counter += 1
+        if(counter == pop_size):
+            Game.end_game()
 
 
 def generate_ai_population_by_max():
@@ -89,7 +85,16 @@ def generate_ai_population_by_max():
 
     first_parent_genetics = pop_1[first_max_id]
     second_parent_genetics = pop_1[second_max_id]
-    population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    last_generation = population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
+
+    counter = 0
+    pop_size = len(population_1.get_pop())
+    for individual in last_generation:
+        if(counter != pop_size and individual.fitness() == 0):
+            counter += 1
+        if(counter == pop_size):
+            Game.end_game()
 
 
 def generate_ai_population_by_min():
@@ -118,7 +123,16 @@ def generate_ai_population_by_min():
 
     first_parent_genetics = pop_1[first_min_id]
     second_parent_genetics = pop_1[second_min_id]
-    population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    last_generation = population_1.cross_over(first_parent_genetics, second_parent_genetics)
+    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
+
+    counter = 0
+    pop_size = len(population_1.get_pop())
+    for individual in last_generation:
+        if(counter != pop_size and individual.fitness() == 0):
+            counter += 1
+        if(counter == pop_size):
+            Game.end_game()
 
 
 def generate_horse_populations():
