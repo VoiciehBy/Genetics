@@ -1,6 +1,9 @@
 from GColor import GColor
 from constants import clearColor
-from constants import TITLE_THE_INVISIBLE_TXT_ENG, TITLE_THE_BALD_TXT_ENG, TITLE_THE_STRONG_TXT_ENG, TITLE_THE_WEAK_TXT_ENG
+from constants import TITLE_THE_INVISIBLE_TXT_ENG
+from constants import TITLE_THE_BALD_TXT_ENG
+from constants import TITLE_THE_STRONG_TXT_ENG
+from constants import TITLE_THE_WEAK_TXT_ENG
 
 
 def surname(color: GColor) -> str:

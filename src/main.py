@@ -46,7 +46,7 @@ def main():
             end_json_file(AI_HORSES_JSON_FILE_NAME)
 
             break
-        clock.tick()
+        clock.tick(60)
         print(clock.get_fps())
 
 

@@ -11,7 +11,7 @@ from numpy import min as numpy_min
 from numpy import max as numpy_max
 
 
-def lookForTerminalIndividuals(last_generation : array, pop_size: int):
+def look_for_terminal_individuals(last_generation: array, pop_size: int):
     counter = 0
     for individual in last_generation:
         if(counter != pop_size and individual.fitness() == 0):
@@ -33,7 +33,7 @@ def generate_ai_population_randomly():
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     pop_size = len(population_1.get_pop())
-    lookForTerminalIndividuals(last_generation, pop_size)
+    look_for_terminal_individuals(last_generation, pop_size)
 
 
 def generate_ai_population_by_max():
@@ -67,7 +67,7 @@ def generate_ai_population_by_max():
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     pop_size = len(population_1.get_pop())
-    lookForTerminalIndividuals(last_generation, pop_size)
+    look_for_terminal_individuals(last_generation, pop_size)
 
 
 def generate_ai_population_by_min():
@@ -100,4 +100,4 @@ def generate_ai_population_by_min():
     jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
 
     pop_size = len(population_1.get_pop())
-    lookForTerminalIndividuals(last_generation, pop_size)
+    look_for_terminal_individuals(last_generation, pop_size)

@@ -39,12 +39,12 @@ BLACK_HORSE_TXT_ENG = "Black Horse" + ' '
 FOUND_TXT_ENG = " found"
 
 ENDING_TXT_ENG = ["Black Horses of Apocalypse...",
-                 "ended the world that we used to know...",
-                 "THE END", "xDddddddd", "FIN"]
+                  "ended the world that we used to know...",
+                  "THE END", "xDddddddd", "FIN"]
 
 TUTORIAL_LINES_ENG = ["Breed horses at your own pace...", "Choose first breeding mate [LMB]",
-                     "Choose second breeding mate [RMB]", "Init Breeding [Space]",
-                     "Display this window again [P]", "Start/Resume Game [ENTER]"]
+                      "Choose second breeding mate [RMB]", "Init Breeding [Space]",
+                      "Display this window again [P]", "Start/Resume Game [ENTER]"]
 
 
 TITLE_THE_INVISIBLE_TXT_PL = " Niewidzialny"
