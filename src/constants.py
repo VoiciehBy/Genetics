@@ -21,11 +21,11 @@ screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
 
 clearColor = Color("cyan")
 
-with open("config.ini","r", encoding="utf-8") as file:
-    dict = json.loads(file.read())
-    s_s_m_m = dict["s_s_m_m"]
-    names = dict["names"]
-    LANGUAGE = dict["language"]
+with open("config.ini", "r", encoding="utf-8") as file:
+    config_dict = json.loads(file.read())
+    s_s_m_m = config_dict["s_s_m_m"]
+    names = config_dict["names"]
+    LANGUAGE = config_dict["language"]
 
 if(s_s_m_m):
     default_horse_name = names[4]
