@@ -26,7 +26,7 @@ class Population:
             g = Chromosome(chromosome_length, genes)
             self.pop[i] = (Individual(genotype=g))
 
-    def cross_over(self, a: Individual, b: Individual, variant=0):
+    def cross_over(self, a: Individual, b: Individual, variant=0) -> array:
         if(a.chromosome_length() != b.chromosome_length()):
             print("Not same length")
 

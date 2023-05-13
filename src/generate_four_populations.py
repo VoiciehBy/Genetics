@@ -1,5 +1,5 @@
 from numpy import array
-from constants import ferus_caballus_pop as wild_pop
+from constants import default_wild_pop as wild_pop
 from constants import default_population_size as pop
 
 from objects import get_population_0, get_population_1

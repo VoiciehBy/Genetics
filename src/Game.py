@@ -5,7 +5,7 @@ class State(Enum):
     PLAYING = "Playing",
     PAUSED = "Paused",
     BREEDING = "Breeding",
-    END = "END"
+    END = "End"
 
 
 class Game:
@@ -39,6 +39,10 @@ class Game:
     @staticmethod
     def is_game_paused() -> bool:
         return Game.currentState == State.PAUSED
+
+    @staticmethod
+    def is_game_not_paused() -> bool:
+        return Game.currentState != State.PAUSED
 
     @staticmethod
     def is_game_playing() -> bool:

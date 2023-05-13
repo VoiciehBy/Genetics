@@ -8,7 +8,7 @@ from Game import Game
 from drawScreen import drawTutorialScreen, drawEndScreen
 
 from constants import default_population_size as pop
-from constants import ferus_caballus_pop as wild_pop
+from constants import default_wild_pop as wild_pop
 
 from handleEvents import handleEvents
 
@@ -16,11 +16,15 @@ from pygame_colors import color_white
 
 from drawHorses import drawHorses
 
+import pygame
+
 
 def main():
     start_json_file(HORSES_JSON_FILE_NAME)
     start_json_file(AI_HORSES_JSON_FILE_NAME)
     init()
+    clock = pygame.time.Clock()
+
     horses = generate_four_populations()
     while(1):
         if(Game.is_game_paused()):
@@ -42,6 +46,8 @@ def main():
             end_json_file(AI_HORSES_JSON_FILE_NAME)
 
             break
+        clock.tick()
+        print(clock.get_fps())
 
 
 main()
