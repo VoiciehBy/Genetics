@@ -1,7 +1,7 @@
 
 def start_json_file(filename):
     with open(filename, "w", encoding="utf-8") as file:
-        file.write("{\n\"horses\" : [\n")
+        file.write("{\n\"horses\" : [ \n")
 
 
 def jsonify_last_generation(filename, last_generation):
