@@ -1,3 +1,4 @@
+from Horse import Horse
 from constants import screen
 from update import update
 from pygame_utils import clear_screen
@@ -5,7 +6,7 @@ from constants import default_population_size as pop
 from constants import default_wild_pop as wild_pop
 
 
-def drawHorses(horses, current_horse):
+def drawHorses(horses, current_horse : Horse):
     update(screen.get_rect())
     clear_screen()
 

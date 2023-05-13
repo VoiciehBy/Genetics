@@ -1,5 +1,5 @@
 from pygame import Surface, Color, Rect
-from constants import font_size, screen, TUTORIAL_LINES_ENG, ENDING_TXT_ENG
+from constants import font_size, screen, TUTORIAL_LINES, ENDING_TXT
 from pygame_colors import color_red, color_white
 from pygame_utils import drawPygameRect, drawText, clear_screen
 from update import update
@@ -26,7 +26,7 @@ def drawScreen(surface: Surface, lines, color: Color):
 
 
 def drawTutorialScreen():
-    drawScreen(screen, TUTORIAL_LINES_ENG, color_red)
+    drawScreen(screen, TUTORIAL_LINES, color_red)
     update(screen.get_rect())
 
     handleEvents()
@@ -34,7 +34,7 @@ def drawTutorialScreen():
 
 
 def drawEndScreen():
-    drawScreen(screen, ENDING_TXT_ENG, color_white)
+    drawScreen(screen, ENDING_TXT, color_white)
     update(screen.get_rect())
 
     handleEvents()
