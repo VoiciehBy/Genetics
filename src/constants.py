@@ -21,7 +21,7 @@ screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
 
 clearColor = Color("cyan")
 
-with open("config.ini", "r", encoding="utf-8") as file:
+with open("config.jini", "r", encoding="utf-8") as file:
     config_dict = json.loads(file.read())
     s_s_m_m = config_dict["s_s_m_m"]
     names = config_dict["names"]
