@@ -3,7 +3,7 @@ TITLE_THE_BALD_TXT_ENG = " The Bald"
 TITLE_THE_STRONG_TXT_ENG = " The Strong"
 TITLE_THE_WEAK_TXT_ENG = " The Weak"
 
-BLACK_HORSE_TXT_ENG = "Black Horse" + ' '
+BLACK_HORSE_TXT_ENG = "Black Horse "
 FOUND_TXT_ENG = " found"
 
 ENDING_TXT_ENG = ["Black Horses of Apocalypse...",
@@ -20,7 +20,7 @@ TITLE_THE_BALD_TXT_PL = " Łysy"
 TITLE_THE_STRONG_TXT_PL = " Silny"
 TITLE_THE_WEAK_TXT_PL = " Słaby"
 
-BLACK_HORSE_TXT_PL = "Czarny Koń" + ' '
+BLACK_HORSE_TXT_PL = "Czarny Koń "
 FOUND_TXT_PL = " znaleziony"
 
 ENDING_TXT_PL = ["Czarne Konie Apokalipsy...",

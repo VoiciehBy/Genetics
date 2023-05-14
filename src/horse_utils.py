@@ -1,4 +1,4 @@
-from pygame import Surface, Rect, image  # , SRCALPHA
+from pygame import Surface, Rect, image
 from Individual import Individual
 from numpy import array, zeros
 from GColor import white

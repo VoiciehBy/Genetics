@@ -21,7 +21,7 @@ screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
 
 clearColor = Color("cyan")
 
-with open("config.jini", "r", encoding="utf-8") as file:
+with open("../config.json", "r", encoding="utf-8") as file:
     config_dict = json.loads(file.read())
     s_s_m_m = config_dict["s_s_m_m"]
     names = config_dict["names"]
@@ -32,8 +32,8 @@ if(s_s_m_m):
 else:
     default_horse_name = names[0]
 
-HORSES_JSON_FILE_NAME = "../horses.json"
-AI_HORSES_JSON_FILE_NAME = "../ai_horses.json"
+HORSES_JSON_FILE_NAME = "../data/horses.json"
+AI_HORSES_JSON_FILE_NAME = "../data/ai_horses.json"
 
 if(LANGUAGE == "pl"):
     TITLE_THE_INVISIBLE_TXT = TITLE_THE_INVISIBLE_TXT_PL
