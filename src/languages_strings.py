@@ -13,7 +13,11 @@ ENDING_TXT_ENG = ["Black Horses of Apocalypse...",
 TUTORIAL_LINES_ENG = ["Breed horses at your own pace...", "Choose first breeding mate [LMB]",
                       "Choose second breeding mate [RMB]", "Init Breeding [Space]",
                       "Display this window again [P]", "Start/Resume Game [ENTER]"]
-
+PLAYER_WINS_TXT_ENG = "PLAYER WINS..."
+AI_WINS_TXT_ENG = "AI WINS..."
+GENERATIONS_TXT_ENG = " GENERATIONS"
+YOU_SURVIVED_TXT_ENG = "YOU SURVIVED:"
+YOU_BROUGHT_APOCALYPSE_IN_TXT_ENG = "YOU BROUGHT APOCALYPSE IN:"
 
 TITLE_THE_INVISIBLE_TXT_PL = " Niewidzialny"
 TITLE_THE_BALD_TXT_PL = " Łysy"
@@ -30,3 +34,8 @@ ENDING_TXT_PL = ["Czarne Konie Apokalipsy...",
 TUTORIAL_LINES_PL = ["Krzyżuj konie dowoli...", "Wybór pierwszego rodzica [LPM]",
                      "Wybór drugiego rodzica [RPM]", "Krzyżuj [Spacja]",
                      "Wyświetl ponownie to okno [P]", "Rozpocznij grę/Wznów grę [ENTER]"]
+PLAYER_WINS_TXT_PL = "GRACZ WYGRYWA..."
+AI_WINS_TXT_PL = "SI WYGRYWA..."
+GENERATIONS_TXT_PL = " POKOLEŃ"
+YOU_SURVIVED_TXT_PL = "UDAŁO CI SIĘ PRZETRWAĆ:"
+YOU_BROUGHT_APOCALYPSE_IN_TXT_PL = "APOKALIPSA ZBLIZAŁA SIĘ:"

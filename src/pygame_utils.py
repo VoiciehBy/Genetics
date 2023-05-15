@@ -45,3 +45,7 @@ def flip_surface_vertically(surface: Surface) -> Surface:
 
 def wait(milliseconds: int):
     time.wait(milliseconds)
+
+
+def start_pygame_clock():
+    return time.Clock()

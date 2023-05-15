@@ -1,7 +1,6 @@
 import pygame
 from pygame_utils import is_mouse_over_rect
-from constants import HORSES_JSON_FILE_NAME, AI_HORSES_JSON_FILE_NAME
-from g_logging import end_json_file
+from g_logging import end_json_files
 import handleUserInput as hUI
 
 
@@ -21,8 +20,7 @@ def handleEvents(horses=None, n=16):
     g_object = None
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            end_json_file(HORSES_JSON_FILE_NAME)
-            end_json_file(AI_HORSES_JSON_FILE_NAME)
+            end_json_files()
             exit()
         if event.type == pygame.KEYDOWN:
             hUI.on_user_input_via_keyboard(event)

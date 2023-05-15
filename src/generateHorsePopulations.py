@@ -41,7 +41,7 @@ def generate_player_population():
             if (counter != pop_size and individual.fitness() == 0):
                 counter += 1
             if (counter == pop_size):
-                Game.end_game()
+                Game.end_game(True)
 
 
 def generate_ai_population():

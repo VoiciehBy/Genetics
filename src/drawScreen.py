@@ -1,9 +1,14 @@
 from pygame import Surface, Color, Rect
-from constants import font_size, screen, TUTORIAL_LINES, ENDING_TXT
+from constants import font_size, screen
+from constants import TUTORIAL_LINES, ENDING_TXT
+from constants import PLAYER_WINS_TXT, AI_WINS_TXT
+from constants import YOU_SURVIVED_TXT, YOU_BROUGHT_APOCALYPSE_IN_TXT, GENERATIONS_TXT
 from pygame_colors import color_red, color_white
 from pygame_utils import drawPygameRect, drawText, clear_screen
 from update import update
 from handleEvents import handleEvents
+
+from Game import Game
 
 
 def drawScreen(surface: Surface, lines, color: Color):
@@ -35,6 +40,30 @@ def drawTutorialScreen():
 
 def drawEndScreen():
     drawScreen(screen, ENDING_TXT, color_white)
+    update(screen.get_rect())
+
+    handleEvents()
+    clear_screen()
+
+
+def drawResultScreen():
+    result = Game.result
+
+    generations = str(Game.breedingCounter) + GENERATIONS_TXT
+    txt = []
+
+    if (result):
+        txt.append(AI_WINS_TXT)
+        txt.append('')
+        txt.append(YOU_BROUGHT_APOCALYPSE_IN_TXT)
+        txt.append(generations)
+    else:
+        txt.append(PLAYER_WINS_TXT)
+        txt.append('')
+        txt.append(YOU_SURVIVED_TXT)
+        txt.append(generations)
+
+    drawScreen(screen, txt, color_white)
     update(screen.get_rect())
 
     handleEvents()

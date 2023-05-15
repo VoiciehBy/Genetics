@@ -18,10 +18,6 @@ def combine(a: array, b: array) -> array:
     return result
 
 
-def generate_id() -> int:
-    return randint(0, 100)
-
-
 def generate_binary_array(n: int) -> array:
     a = zeros(n, dtype=uint8)
     for i in range(n):

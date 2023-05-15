@@ -10,6 +10,8 @@ class State(Enum):
 
 class Game:
     currentState = State.PAUSED
+    result = False
+    breedingCounter = 0
 
     @staticmethod
     def start_game():
@@ -25,6 +27,7 @@ class Game:
     def start_breeding_state():
         if(Game.currentState == State.PLAYING):
             Game.currentState = State.BREEDING
+            Game.breedingCounter += 1
 
     @staticmethod
     def stop_breeding_state():
@@ -32,9 +35,10 @@ class Game:
             Game.currentState = State.PLAYING
 
     @staticmethod
-    def end_game():
+    def end_game(wasAIVictorious=False):
         if (Game.currentState in [State.PLAYING, State.BREEDING]):
             Game.currentState = State.END
+            Game.result = wasAIVictorious
 
     @staticmethod
     def is_game_paused() -> bool:
