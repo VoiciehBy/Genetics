@@ -3,7 +3,7 @@ from GSprite import GSprite
 from pygame import Rect, Color
 from constants import screen, default_horse_name
 
-from GColor import GColor, green, blue
+from GColor import GColor, green, blue, red, magenta
 from pygame_colors import color_white
 
 from trait_utils import surname, strong_weak, invisible_bald
@@ -39,6 +39,12 @@ class Horse:
 
     def set_sprite_color_blue(self):
         self.set_sprite_color(blue)
+
+    def set_sprite_color_red(self):
+        self.set_sprite_color(red)
+
+    def set_sprite_color_magenta(self):
+        self.set_sprite_color(magenta)
 
     def set_sprite_color_white_using_pygame_color(self):
         self.set_sprite_color_using_pygame_color(color_white)
