@@ -1,0 +1,28 @@
+{
+  "TITLE_THE_INVISIBLE_TXT": " Niewidzialny",
+  "TITLE_THE_BALD_TXT": " Łysy",
+  "TITLE_THE_STRONG_TXT": " Silny",
+  "TITLE_THE_WEAK_TXT": " Słaby",
+  "BLACK_HORSE_TXT": "Czarny Koń ",
+  "FOUND_TXT": " znaleziony",
+  "ENDING_TXT": [
+    "Czarne Konie Apokalipsy...",
+    "doprowadziły do końca świata jakiego znamy...",
+    "KONIEC",
+    "xDddddddd",
+    "FIN"
+  ],
+  "TUTORIAL_LINES": [
+    "Krzyżuj konie dowoli...",
+    "Wybór pierwszego rodzica [LPM]",
+    "Wybór drugiego rodzica [RPM]",
+    "Krzyżuj [Spacja]",
+    "Wyświetl ponownie to okno [P]",
+    "Rozpocznij grę/Wznów grę [ENTER]"
+  ],
+  "PLAYER_WINS_TXT": "GRACZ WYGRYWA...",
+  "AI_WINS_TXT": "SI WYGRYWA...",
+  "GENERATIONS_TXT": " POKOLEŃ",
+  "YOU_SURVIVED_TXT": "UDAŁO CI SIĘ PRZETRWAĆ:",
+  "YOU_BROUGHT_APOCALYPSE_IN_TXT": "APOKALIPSA ZBLIŻAŁA SIĘ:"
+}

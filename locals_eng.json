@@ -1,0 +1,28 @@
+{
+  "TITLE_THE_INVISIBLE_TXT": " The Invisible",
+  "TITLE_THE_BALD_TXT": " The Bald",
+  "TITLE_THE_STRONG_TXT": " The Strong",
+  "TITLE_THE_WEAK_TXT": " The Weak",
+  "BLACK_HORSE_TXT": "Black Horse ",
+  "FOUND_TXT": " found",
+  "ENDING_TXT": [
+    "Black Horses of Apocalypse...",
+    "ended the world that we used to know...",
+    "THE END",
+    "xDddddddd",
+    "FIN"
+  ],
+  "TUTORIAL_LINES": [
+    "Breed horses at your own pace...",
+    "Choose first breeding mate [LMB]",
+    "Choose second breeding mate [RMB]",
+    "Init Breeding [Space]",
+    "Display this window again [P]",
+    "Start/Resume Game [ENTER]"
+  ],
+  "PLAYER_WINS_TXT": "PLAYER WINS...",
+  "AI_WINS_TXT": "AI WINS...",
+  "GENERATIONS_TXT": " GENERATIONS",
+  "YOU_SURVIVED_TXT": "YOU SURVIVED:",
+  "YOU_BROUGHT_APOCALYPSE_IN_TXT": "YOU BROUGHT APOCALYPSE IN:"
+}

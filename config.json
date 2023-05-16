@@ -1,5 +1,11 @@
 {
-    "s_s_m_m" : false,
-    "names" : ["Equus", "Pony", "Ferus", "Caballus", "Miku"],
-    "language" : "eng"
+    "s_s_m_m": false,
+    "names": [
+        "Equus",
+        "Pony",
+        "Ferus",
+        "Caballus",
+        "Miku"
+    ],
+    "language": "eng"
 }
