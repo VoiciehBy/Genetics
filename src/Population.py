@@ -1,10 +1,9 @@
-import random
-
 from numpy import array, zeros
 from Chromosome import Chromosome
 from Individual import Individual
 from utils import generate_binary_array
 from utils import combine as c
+from random import choices
 
 
 def generate_random_genes(length: int):
@@ -16,7 +15,7 @@ class Population:
         self.pop = pop
         self.fitness = 0
 
-    def get_pop(self):
+    def get_pop(self) -> array:
         return self.pop
 
     def size(self) -> int:
@@ -34,10 +33,10 @@ class Population:
         for i in range(population_size):
             genes = generate_random_genes(chromosome_length)
             g = Chromosome(chromosome_length, genes)
-            self.pop[i] = (Individual(genotype=g))
+            self.pop[i] = Individual(genotype=g)
 
     @staticmethod
-    def cross_over(a: Individual, b: Individual, variant=0) -> array:
+    def cross_over(a: Individual, b: Individual, variant=0) -> Individual:
         if(a.chromosome_length() != b.chromosome_length()):
             print("Not same length")
 
@@ -55,34 +54,30 @@ class Population:
         offsprings = zeros(4, dtype=Individual)
 
         if(variant == 0):
-            offsprings[0] = (Individual(
-                parents, Chromosome(a_length, c(first_half_a, last_half_b))))
+            offsprings[0] = (Individual(parents, Chromosome(
+                a_length, c(first_half_a, last_half_b))))
 
-            offsprings[1] = (Individual(
-                parents, Chromosome(a_length, c(first_half_b, last_half_a))))
+            offsprings[1] = (Individual(parents, Chromosome(
+                a_length, c(first_half_b, last_half_a))))
 
             offsprings[2] = (Individual(parents, Chromosome(
                 a_length, c(first_half_a, first_half_b))))
 
-            offsprings[3] = (Individual(
-                parents, Chromosome(a_length, c(last_half_a, last_half_b))))
+            offsprings[3] = (Individual(parents, Chromosome(
+                a_length, c(last_half_a, last_half_b))))
         else:
-            offsprings[0] = (Individual(
-                parents, Chromosome(a_length, c(last_half_b, first_half_a))))
+            offsprings[0] = (Individual(parents, Chromosome(
+                a_length, c(last_half_b, first_half_a))))
 
-            offsprings[1] = (Individual(
-                parents, Chromosome(a_length, c(last_half_a, first_half_b))))
+            offsprings[1] = (Individual(parents, Chromosome(
+                a_length, c(last_half_a, first_half_b))))
 
             offsprings[2] = (Individual(parents, Chromosome(
                 a_length, c(first_half_b, first_half_a))))
 
-            offsprings[3] = (Individual(
-                parents, Chromosome(a_length, c(last_half_b, last_half_a))))
+            offsprings[3] = (Individual(parents, Chromosome(
+                a_length, c(last_half_b, last_half_a))))
 
-        probabilities = []
-        n = len(offsprings)
-        single_probability = 1/n
-        for i in range(n):
-            probabilities.append(single_probability)
-        result = random.choices(offsprings, weights=probabilities)[0]
-        return result
+        probabilities = [0.25, 0.25, 0.25, 0.25]
+        final_offspring = choices(offsprings, weights=probabilities)[0]
+        return final_offspring

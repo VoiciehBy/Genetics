@@ -1,4 +1,5 @@
 import json
+import webcolors
 from pygame.display import set_mode
 from pygame import DOUBLEBUF, SRCALPHA, Color
 
@@ -54,3 +55,6 @@ with open(filename, "r", encoding="utf-8") as file:
     YOU_BROUGHT_APOCALYPSE_IN_TXT = locals_dict["YOU_BROUGHT_APOCALYPSE_IN_TXT"]
     YOU_SURVIVED_TXT = locals_dict["YOU_SURVIVED_TXT"]
     GENERATIONS_TXT = locals_dict["GENERATIONS_TXT"]
+
+COLORS = dict(webcolors.HTML4_HEX_TO_NAMES)
+COLORS.update(webcolors.CSS3_HEX_TO_NAMES)

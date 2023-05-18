@@ -12,6 +12,14 @@ def jsonify_last_generation(filename, last_generation):
             file.write(i.to_json() + str(",\n"))
 
 
+def jsonify_player_last_generation(last_generation):
+    jsonify_last_generation(HORSES_JSON_FILE_NAME, last_generation)
+
+
+def jsonify_ai_last_generation(last_generation):
+    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
+
+
 def end_json_file(filename):
     with open(filename, "a", encoding="utf-8") as file:
         file.write(']\n}')

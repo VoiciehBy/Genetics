@@ -4,9 +4,7 @@ from Population import Population
 from horse_utils import generate_horses_array
 from Game import Game
 
-from constants import HORSES_JSON_FILE_NAME
-
-from g_logging import jsonify_last_generation
+from g_logging import jsonify_player_last_generation
 
 from generateAIPopulation import generate_ai_population_randomly
 from generateAIPopulation import generate_ai_population_by_min
@@ -43,7 +41,7 @@ def generate_player_population():
 
         last_generation = [i_0, i_1, i_2, i_3]
 
-        jsonify_last_generation(HORSES_JSON_FILE_NAME, last_generation)
+        jsonify_player_last_generation(last_generation)
 
         reset_parents()
 

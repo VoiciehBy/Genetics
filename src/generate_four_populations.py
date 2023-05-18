@@ -1,7 +1,6 @@
 from numpy import array
 from constants import default_wild_pop as wild_pop
 from constants import default_population_size as pop
-from constants import HORSES_JSON_FILE_NAME, AI_HORSES_JSON_FILE_NAME
 
 from objects import get_population_0, get_population_1
 from Population import Population
@@ -10,15 +9,15 @@ from horse_utils import generate_horses_array, generate_horses_array_with_offset
 from constants import horse_image_side as side
 from constants import names, margin_x, margin_y
 
-from g_logging import jsonify_last_generation
+from g_logging import jsonify_player_last_generation, jsonify_ai_last_generation
 
 
 def generate_four_populations() -> array:
     pop_0 = get_population_0().get_pop()
     pop_1 = get_population_1().get_pop()
 
-    jsonify_last_generation(HORSES_JSON_FILE_NAME, pop_0)
-    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, pop_1)
+    jsonify_player_last_generation(pop_0)
+    jsonify_ai_last_generation(pop_1)
 
     population_2 = Population(wild_pop)
     population_2.generate_initial_population(8, wild_pop)

@@ -1,6 +1,7 @@
 from numpy import array, zeros, uint8
 from random import randint
-
+import webcolors
+import os
 
 def clamp(x, a, b) -> int:
     return int(max(a, min(x, b)))
@@ -31,3 +32,15 @@ def generate_two_different_numbers(a=0, b=1) -> list:
     while(n_1 == n_0):
         n_1 = randint(a, b)
     return list([n_0, n_1])
+
+
+def rgb_to_hex(rgb) -> str:
+    return str(webcolors.rgb_to_hex(rgb))
+
+def make_data_directory():
+    os.chdir("..")
+    cwd = os.getcwd()
+    the_path = os.path.join(cwd, "data")
+    if (os.path.exists(the_path) is False):
+        os.mkdir(the_path)
+    os.chdir("./src")

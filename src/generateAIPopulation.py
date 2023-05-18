@@ -3,9 +3,7 @@ from Population import Population
 from Game import Game
 from utils import generate_two_different_numbers
 
-from constants import AI_HORSES_JSON_FILE_NAME
-
-from g_logging import jsonify_last_generation
+from g_logging import jsonify_ai_last_generation
 
 from numpy import array
 
@@ -40,7 +38,7 @@ def generate_ai_population_randomly():
     last_generation = [i_0, i_1, i_2, i_3]
     population_1.set_pop(last_generation)
 
-    jsonify_last_generation(AI_HORSES_JSON_FILE_NAME, last_generation)
+    jsonify_ai_last_generation(last_generation)
 
     pop_size = len(population_1.get_pop())
     look_for_terminal_individuals(last_generation, pop_size)

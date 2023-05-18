@@ -1,3 +1,4 @@
+from utils import make_data_directory
 from g_logging import start_json_files, end_json_files
 from init import init
 from pygame_utils import start_pygame_clock, wait
@@ -10,6 +11,7 @@ from drawHorses import drawHorses
 
 
 def main():
+    make_data_directory()
     start_json_files()
     init()
     clock = start_pygame_clock()
@@ -35,7 +37,7 @@ def main():
             end_json_files()
             break
         clock.tick(60)
-        # print(clock.get_fps())
+        print(clock.get_fps())
 
 
 main()

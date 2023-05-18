@@ -1,6 +1,6 @@
-from utils import clamp
+from utils import clamp, rgb_to_hex
 from pygame import Color
-import webcolors
+from constants import COLORS
 
 
 class GColor:
@@ -38,16 +38,18 @@ class GColor:
     def name(self) -> str:
         rgb = (self.rgb()[0], self.rgb()[1], self.rgb()[2])
         try:
-            return webcolors.rgb_to_name(rgb)
-        except ValueError:
+            color = rgb_to_hex(rgb)
+            return COLORS[str(color)]
+        except KeyError:
             return ''
 
     def __str__(self) -> str:
         rgb = (self.rgb()[0], self.rgb()[1], self.rgb()[2])
         try:
-            txt = webcolors.rgb_to_name(rgb)
-        except ValueError:
-            txt = "Unknown"
+            color = rgb_to_hex(rgb)
+            txt = COLORS[str(color)]
+        except KeyError:
+            txt = ''
         return str(self.rgb) + ' ' + txt
 
 

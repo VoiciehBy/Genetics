@@ -47,7 +47,7 @@ def on_user_input_via_keyboard(event: pygame.event):
         on_one_key_pressed()
     elif (event.key == pygame.K_2):
         on_two_key_pressed()
-    elif(event.key == pygame.K_SPACE):
+    elif(event.key == pygame.K_SPACE and Game.is_game_not_paused()):
         on_space_pressed()
     elif(event.key == pygame.K_ESCAPE):
         on_escape_pressed()
@@ -68,10 +68,6 @@ def on_left_mouse_button_click(objects, i: int):
                 o.set_third_parent(objects[i])
                 objects[i].set_sprite_color_red()
                 return objects[i]
-
-
-def on_middle_mouse_button_click():
-    pass
 
 
 def on_right_mouse_button_click(objects, i: int):
@@ -97,8 +93,6 @@ def on_mouse_click(objects, event: pygame.event, n: int):
         if is_mouse_over_rect(objects[i]):
             if event.button == 1:
                 g_object = on_left_mouse_button_click(objects, i)
-            elif event.button == 2:
-                on_middle_mouse_button_click()
             elif event.button == 3:
                 g_object = on_right_mouse_button_click(objects, i)
     return g_object

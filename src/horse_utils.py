@@ -1,7 +1,7 @@
 from pygame import Surface, Rect, image
 from Individual import Individual
 from numpy import array, zeros
-from GColor import white
+
 from constants import s_s_m_m
 from constants import horse_image_side as side
 from pygame_colors import *
@@ -73,7 +73,7 @@ def generate_horse(individual: Individual, rect: Rect) -> Horse:
         horse_image = generate_ssmm_horse_image_for_pygame(individual)
     else:
         horse_image = generate_horse_image_for_pygame(individual)
-    s = GSprite(white, rect, horse_image)
+    s = GSprite(color_white, rect, horse_image)
     h = Horse(genetics=individual, g_sprite=s)
     return h
 
