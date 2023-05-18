@@ -35,10 +35,10 @@ class Game:
             Game.currentState = State.PLAYING
 
     @staticmethod
-    def end_game(wasAIVictorious=False):
+    def end_game(was_ai_victorious=False):
         if (Game.currentState in [State.PLAYING, State.BREEDING]):
             Game.currentState = State.END
-            Game.result = wasAIVictorious
+            Game.result = was_ai_victorious
 
     @staticmethod
     def is_game_paused() -> bool:

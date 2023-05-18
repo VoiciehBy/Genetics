@@ -1,3 +1,5 @@
+import random
+
 from numpy import array, zeros
 from Chromosome import Chromosome
 from Individual import Individual
@@ -12,12 +14,20 @@ def generate_random_genes(length: int):
 class Population:
     def __init__(self, pop: array):
         self.pop = pop
+        self.fitness = 0
 
     def get_pop(self):
         return self.pop
 
     def size(self) -> int:
         return int(len(self.pop))
+
+    def set_pop(self, new_population):
+        n = int(len(self.pop))
+        del self.pop
+        self.pop = zeros(4, dtype=Individual)
+        for i in range(n):
+            self.pop[i] = new_population[i]
 
     def generate_initial_population(self, chromosome_length: int, population_size: int):
         self.pop = zeros(population_size, dtype=Individual)
@@ -26,7 +36,8 @@ class Population:
             g = Chromosome(chromosome_length, genes)
             self.pop[i] = (Individual(genotype=g))
 
-    def cross_over(self, a: Individual, b: Individual, variant=0) -> array:
+    @staticmethod
+    def cross_over(a: Individual, b: Individual, variant=0) -> array:
         if(a.chromosome_length() != b.chromosome_length()):
             print("Not same length")
 
@@ -68,9 +79,10 @@ class Population:
             offsprings[3] = (Individual(
                 parents, Chromosome(a_length, c(last_half_b, last_half_a))))
 
-        last_generation = self.pop
-        del self.pop
-        self.pop = zeros(4, dtype=Individual)
-        for i in range(4):
-            self.pop[i] = offsprings[i]
-        return last_generation
+        probabilities = []
+        n = len(offsprings)
+        single_probability = 1/n
+        for i in range(n):
+            probabilities.append(single_probability)
+        result = random.choices(offsprings, weights=probabilities)[0]
+        return result

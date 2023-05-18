@@ -26,8 +26,8 @@ def drawScreen(surface: Surface, lines, color: Color):
     n = len(lines)
     for i in range(n):
         r_rect = Rect(rect.left, rect.top + 2 * i *
-                      font_size * 3, rect.width, rect.height)
-        drawText(surface, lines[i], r_rect, font_size * 3)
+                      font_size * 2, rect.width, rect.height)
+        drawText(surface, lines[i], r_rect, font_size * 2)
 
 
 def drawTutorialScreen():
