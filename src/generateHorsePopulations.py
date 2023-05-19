@@ -2,13 +2,12 @@ import objects as o
 from objects import get_population_0
 from Population import Population
 from horse_utils import generate_horses_array
-from Game import Game
 
 from g_logging import jsonify_player_last_generation
 
-from generateAIPopulation import generate_ai_population_randomly
-from generateAIPopulation import generate_ai_population_by_min
-from generateAIPopulation import generate_ai_population_by_max
+from generateAIPopulation import generate_ai_genetic_population
+
+from Game import Game
 
 
 def reset_parents():
@@ -33,11 +32,15 @@ def generate_player_population():
 
     if(first_parent != second_parent):
 
-        i_0 = Population.cross_over(first_parent.genetics, second_parent.genetics)
-        i_1 = Population.cross_over(first_parent.genetics, second_parent.genetics)
+        i_0 = Population.cross_over(
+            first_parent.genetics, second_parent.genetics)
+        i_1 = Population.cross_over(
+            first_parent.genetics, second_parent.genetics)
 
-        i_2 = Population.cross_over(third_parent.genetics, fourth_parent.genetics)
-        i_3 = Population.cross_over(third_parent.genetics, fourth_parent.genetics)
+        i_2 = Population.cross_over(
+            third_parent.genetics, fourth_parent.genetics)
+        i_3 = Population.cross_over(
+            third_parent.genetics, fourth_parent.genetics)
 
         last_generation = [i_0, i_1, i_2, i_3]
 
@@ -48,6 +51,7 @@ def generate_player_population():
         population_0.set_pop(last_generation)
 
         pop_size = len(population_0.get_pop())
+
         counter = 0
         for individual in last_generation:
             if (counter != pop_size and individual.fitness() == 0):
@@ -56,16 +60,6 @@ def generate_player_population():
                 Game.end_game(True)
 
 
-def generate_ai_population():
-    i = 0
-    if(i == 0):
-        generate_ai_population_randomly()
-    elif(i == 1):
-        generate_ai_population_by_min()
-    else:
-        generate_ai_population_by_max()
-
-
 def generate_horse_populations():
     generate_player_population()
-    generate_ai_population()
+    generate_ai_genetic_population()

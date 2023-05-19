@@ -13,7 +13,6 @@ def generate_random_genes(length: int):
 class Population:
     def __init__(self, pop: array):
         self.pop = pop
-        self.fitness = 0
 
     def get_pop(self) -> array:
         return self.pop
@@ -24,7 +23,7 @@ class Population:
     def set_pop(self, new_population):
         n = int(len(self.pop))
         del self.pop
-        self.pop = zeros(4, dtype=Individual)
+        self.pop = zeros(n, dtype=Individual)
         for i in range(n):
             self.pop[i] = new_population[i]
 
@@ -81,3 +80,9 @@ class Population:
         probabilities = [0.25, 0.25, 0.25, 0.25]
         final_offspring = choices(offsprings, weights=probabilities)[0]
         return final_offspring
+
+    def fitness(self) -> int:
+        fitness = 0
+        for individual in self.pop:
+            fitness += individual.fitness()
+        return int(fitness)

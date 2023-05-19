@@ -3,6 +3,7 @@ from random import randint
 import webcolors
 import os
 
+
 def clamp(x, a, b) -> int:
     return int(max(a, min(x, b)))
 
@@ -36,6 +37,7 @@ def generate_two_different_numbers(a=0, b=1) -> list:
 
 def rgb_to_hex(rgb) -> str:
     return str(webcolors.rgb_to_hex(rgb))
+
 
 def make_data_directory():
     os.chdir("..")
