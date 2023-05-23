@@ -32,7 +32,7 @@ def generate_four_populations() -> array:
     ponies = generate_horses_array_with_offset(pop_1)
 
     horses_1 = generate_horses_array_with_offset(
-        pop_2, wild_pop, margin_x=int(side/2), margin_y=0, offset=side*pop + margin_x, offset_1=margin_y/2)
+        pop_2, wild_pop, margin_x=int(side), margin_y=0, offset=side*pop + margin_x, offset_1=margin_y/2)
 
     ponies_1 = generate_horses_array_with_offset(
         pop_3, wild_pop, margin_x=int(side/2), offset=side*pop + pop*margin_x, offset_1=side)

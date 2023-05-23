@@ -94,5 +94,5 @@ def generate_horses_array_with_offset(individuals: array, n=4, margin_x=m_x, mar
 
 
 def generate_horses_array(individuals: array, n=4) -> array:
-    horses = generate_horses_array_with_offset(individuals, n, m_x, m_y, 0, 0)
+    horses = generate_horses_array_with_offset(individuals, n, m_x, m_y, int(side/2), 0)
     return horses

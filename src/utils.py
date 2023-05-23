@@ -47,6 +47,7 @@ def make_data_directory():
         os.mkdir(the_path)
     os.chdir("./src")
 
+
 def yes_or_no(yes_probability) -> bool:
     no_probability = 1 - yes_probability
     return bool(choices([True, False], weights=[yes_probability, no_probability])[0])

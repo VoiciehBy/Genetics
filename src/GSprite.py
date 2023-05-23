@@ -1,3 +1,4 @@
+from constants import font_size
 from pygame import Color, Rect, Surface
 from pygame_utils import drawImageOverRect, move_pygame_rect, flip_surface_horizontally
 from Indicator import Indicator
@@ -9,7 +10,9 @@ class GSprite:
         self.color = Color(color)
         self.rect = rect
         self.texture = texture
-        self.overTxt = OverText(self.rect)
+        overTextRect = Rect(self.rect.left, self.rect.top -
+                            font_size, self.rect.width, self.rect.height)
+        self.overTxt = OverText(overTextRect)
         self.spriteIndicator = Indicator(self.rect, self.color)
 
     def flip(self):
