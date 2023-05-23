@@ -1,4 +1,5 @@
 from numpy import array, zeros, uint8
+from random import choices
 
 
 class Chromosome:
@@ -31,6 +32,19 @@ class Chromosome:
             if gene == 1:
                 c += 1
         return int(c)
+
+    def mutate(self):
+        n = self.length
+        mutation_probability = 1/n
+        m_prime = 1 - mutation_probability
+        for i in range(n):
+            m = choices([True, False], weights=[
+                        mutation_probability, m_prime])[0]
+            if(m is True):
+                if(self.genes[i] == 0):
+                    self.genes[i] = 1
+                elif(self.genes[i] == 1):
+                    self.genes[i] = 0
 
     def __str__(self) -> str:
         return str(self.genes)

@@ -3,7 +3,6 @@ from Chromosome import Chromosome
 from Individual import Individual
 from utils import generate_binary_array
 from utils import combine as c
-from random import choices
 
 
 def generate_random_genes(length: int):
@@ -28,6 +27,9 @@ class Population:
             self.pop[i] = new_population[i]
 
     def generate_initial_population(self, chromosome_length: int, population_size: int):
+        if(population_size < 2):
+            print("Population size too small")
+            return
         self.pop = zeros(population_size, dtype=Individual)
         for i in range(population_size):
             genes = generate_random_genes(chromosome_length)
@@ -35,7 +37,7 @@ class Population:
             self.pop[i] = Individual(genotype=g)
 
     @staticmethod
-    def cross_over(a: Individual, b: Individual, variant=0) -> Individual:
+    def cross_over(a: Individual, b: Individual, variant=0) -> array:
         if(a.chromosome_length() != b.chromosome_length()):
             print("Not same length")
 
@@ -50,36 +52,31 @@ class Population:
         last_half_b = b.genes()[h_l:]
 
         parents = [a, b]
-        offsprings = zeros(4, dtype=Individual)
+        offsprings = zeros(2, dtype=Individual)
 
         if(variant == 0):
-            offsprings[0] = (Individual(parents, Chromosome(
-                a_length, c(first_half_a, last_half_b))))
+            first_chromosome = Chromosome(
+                a_length, c(first_half_a, last_half_b))
+            first_chromosome.mutate()
+            second_chromosome = Chromosome(
+                a_length, c(first_half_b, last_half_a))
+            second_chromosome.mutate()
 
-            offsprings[1] = (Individual(parents, Chromosome(
-                a_length, c(first_half_b, last_half_a))))
+            offsprings[0] = (Individual(parents, first_chromosome))
+            offsprings[1] = (Individual(parents, second_chromosome))
 
-            offsprings[2] = (Individual(parents, Chromosome(
-                a_length, c(first_half_a, first_half_b))))
-
-            offsprings[3] = (Individual(parents, Chromosome(
-                a_length, c(last_half_a, last_half_b))))
         else:
-            offsprings[0] = (Individual(parents, Chromosome(
-                a_length, c(last_half_b, first_half_a))))
+            first_chromosome = Chromosome(
+                a_length, c(last_half_b, first_half_a))
+            first_chromosome.mutate()
+            second_chromosome = Chromosome(
+                a_length, c(last_half_a, first_half_b))
+            second_chromosome.mutate()
 
-            offsprings[1] = (Individual(parents, Chromosome(
-                a_length, c(last_half_a, first_half_b))))
+            offsprings[0] = (Individual(parents, first_chromosome))
+            offsprings[1] = (Individual(parents, second_chromosome))
 
-            offsprings[2] = (Individual(parents, Chromosome(
-                a_length, c(first_half_b, first_half_a))))
-
-            offsprings[3] = (Individual(parents, Chromosome(
-                a_length, c(last_half_b, last_half_a))))
-
-        probabilities = [0.25, 0.25, 0.25, 0.25]
-        final_offspring = choices(offsprings, weights=probabilities)[0]
-        return final_offspring
+        return offsprings
 
     def fitness(self) -> int:
         fitness = 0

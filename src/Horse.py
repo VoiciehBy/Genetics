@@ -5,6 +5,7 @@ from constants import screen, default_horse_name
 
 from GColor import GColor, green, blue, red, magenta
 from pygame_colors import color_white
+from pygame_utils import wait
 
 from trait_utils import surname, strong_weak, invisible_bald
 
@@ -33,6 +34,7 @@ class Horse:
 
     def set_sprite_color_using_pygame_color(self, sprite_color: GColor):
         self.horseSprite.set_color(sprite_color)
+        wait(32)
 
     def set_sprite_color_green(self):
         self.set_sprite_color(green)
@@ -50,7 +52,7 @@ class Horse:
         self.set_sprite_color_using_pygame_color(color_white)
 
     def update_sprite_over_text(self):
-        self.horseSprite.set_over_text_txt(self.name)
+        self.horseSprite.set_over_text_txt(self.name + ": " + str(self.fitness()))
 
     def set_sprite_over_text_active(self):
         self.horseSprite.set_over_text_active()

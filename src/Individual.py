@@ -52,7 +52,7 @@ class Individual:
             parents = result
         else:
             parents = ''
-        return json.dumps({"id": self.id, "genes": genotype, "parents": parents})
+        return json.dumps({"id": self.id, "genes": genotype, "fitness": self.fitness(), "parents": parents})
 
     def __str__(self) -> str:
         return str(self.id) + ' ' + str(self.genotype)

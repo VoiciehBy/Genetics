@@ -55,36 +55,24 @@ def on_user_input_via_keyboard(event: pygame.event):
 
 def on_left_mouse_button_click(objects, i: int):
     if(switch_A):
-        second_parent = o.first_parents[1]
-        if (second_parent):
-            if (objects[i] != second_parent):
-                o.set_first_parent(objects[i])
-                objects[i].set_sprite_color_green()
-                return objects[i]
+        o.set_first_parent(objects[i])
+        objects[i].set_sprite_color_green()
+        return objects[i]
     else:
-        fourth_parent = o.second_parents[1]
-        if (fourth_parent):
-            if (objects[i] != fourth_parent):
-                o.set_third_parent(objects[i])
-                objects[i].set_sprite_color_red()
-                return objects[i]
+        o.set_third_parent(objects[i])
+        objects[i].set_sprite_color_red()
+        return objects[i]
 
 
 def on_right_mouse_button_click(objects, i: int):
     if(switch_A):
-        first_parent = o.first_parents[0]
-        if (first_parent):
-            if (objects[i] != first_parent):
-                o.set_second_parent(objects[i])
-                objects[i].set_sprite_color_blue()
-                return objects[i]
+        o.set_second_parent(objects[i])
+        objects[i].set_sprite_color_blue()
+        return objects[i]
     else:
-        third_parent = o.second_parents[0]
-        if (third_parent):
-            if (objects[i] != third_parent):
-                o.set_fourth_parent(objects[i])
-                objects[i].set_sprite_color_magenta()
-                return objects[i]
+        o.set_fourth_parent(objects[i])
+        objects[i].set_sprite_color_magenta()
+        return objects[i]
 
 
 def on_mouse_click(objects, event: pygame.event, n: int):

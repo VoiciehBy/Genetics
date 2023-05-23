@@ -55,12 +55,12 @@ def drawResultScreen():
     if (result):
         txt.append(AI_WINS_TXT)
         txt.append('')
-        txt.append(YOU_BROUGHT_APOCALYPSE_IN_TXT)
+        txt.append(YOU_SURVIVED_TXT)
         txt.append(generations)
     else:
         txt.append(PLAYER_WINS_TXT)
         txt.append('')
-        txt.append(YOU_SURVIVED_TXT)
+        txt.append(YOU_BROUGHT_APOCALYPSE_IN_TXT)
         txt.append(generations)
 
     drawScreen(screen, txt, color_blue)

@@ -32,6 +32,10 @@ def main():
             if(current_horse):
                 current_horse.set_sprite_color_white_using_pygame_color()
         elif(Game.is_it_the_end()):
+            horses = generate_four_populations()
+            current_horse = handleEvents(horses, n=2 * default_population_size + 2 * default_wild_pop)
+            drawHorses(horses, current_horse)
+            wait(800)
             drawEndScreen()
             wait(2000)
             drawResultScreen()
