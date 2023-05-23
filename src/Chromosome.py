@@ -1,5 +1,5 @@
 from numpy import array, zeros, uint8
-from random import choices
+from utils import yes_or_no
 
 
 class Chromosome:
@@ -36,10 +36,8 @@ class Chromosome:
     def mutate(self):
         n = self.length
         mutation_probability = 1/n
-        m_prime = 1 - mutation_probability
         for i in range(n):
-            m = choices([True, False], weights=[
-                        mutation_probability, m_prime])[0]
+            m = yes_or_no(mutation_probability)
             if(m is True):
                 if(self.genes[i] == 0):
                     self.genes[i] = 1

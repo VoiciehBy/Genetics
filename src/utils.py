@@ -1,5 +1,5 @@
 from numpy import array, zeros, uint8
-from random import randint
+from random import randint, choices
 import webcolors
 import os
 
@@ -46,3 +46,7 @@ def make_data_directory():
     if (os.path.exists(the_path) is False):
         os.mkdir(the_path)
     os.chdir("./src")
+
+def yes_or_no(yes_probability) -> bool:
+    no_probability = 1 - yes_probability
+    return bool(choices([True, False], weights=[yes_probability, no_probability])[0])
