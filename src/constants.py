@@ -8,14 +8,14 @@ default_wild_pop = int(default_population_size / 2)
 
 horse_image_side = 128
 margin_x = int(horse_image_side/4)
-margin_y = horse_image_side - 48
+margin_y = horse_image_side - int(horse_image_side/2)
 font_size = int(horse_image_side/8)
 default_rect_border_radius = font_size
 
 
 windowName = "Genetics by VociehBy"
-window_width = 1200
-window_height = 600
+window_width = 1366
+window_height = 768
 windowShape = (window_width, window_height)
 screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
 
