@@ -4,7 +4,8 @@ from constants import TUTORIAL_LINES, ENDING_TXT
 from constants import PLAYER_WINS_TXT, AI_WINS_TXT
 from constants import YOU_SURVIVED_TXT, YOU_BROUGHT_APOCALYPSE_IN_TXT, GENERATIONS_TXT
 from pygame_colors import color_red, color_white, color_blue
-from pygame_utils import drawPygameRect, drawText, clear_screen
+from draw import drawPygameRect, drawText
+from pygame_utils import clear_screen, wait
 from update import update
 from handleEvents import handleEvents
 
@@ -68,3 +69,11 @@ def drawResultScreen():
 
     handleEvents()
     clear_screen()
+
+
+def drawEndingScreens():
+    wait(2000)
+    drawEndScreen()
+    wait(2000)
+    drawResultScreen()
+    wait(2000)

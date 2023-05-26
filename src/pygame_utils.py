@@ -1,23 +1,9 @@
-from pygame import draw, font, Surface, Color, Rect, mouse, transform, time
-from constants import screen, clearColor, font_size, default_rect_border_radius
+from pygame import Surface, Rect, mouse, transform, time
+from constants import screen, clearColor
 
 
 def clear_screen():
     screen.fill(clearColor)
-
-
-def drawPygameRect(surface: Surface, color: Color, rect: Rect, border_radius=default_rect_border_radius):
-    draw.rect(surface, color, rect, border_radius=border_radius)
-
-
-def drawImageOverRect(surface: Surface, image: Surface, rect: Rect):
-    surface.blit(image, rect)
-
-
-def drawText(surface: Surface, text: str, rect: Rect, text_font_size=font_size):
-    txt = font.Font(None, text_font_size)
-    txt_surface = txt.render(text, False, (0, 0, 0))
-    surface.blit(txt_surface, rect)
 
 
 def move_pygame_rect(rect: Rect, x: int, y: int) -> Rect:

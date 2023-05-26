@@ -1,7 +1,7 @@
 import json
 import webcolors
 from pygame.display import set_mode
-from pygame import DOUBLEBUF, SRCALPHA, Color
+from pygame import DOUBLEBUF, SRCALPHA, Color, Rect
 
 default_population_size = 4
 default_wild_pop = int(default_population_size / 2)
@@ -10,12 +10,14 @@ horse_image_side = 128
 margin_x = int(horse_image_side/4)
 margin_y = horse_image_side - int(horse_image_side/2)
 font_size = int(horse_image_side/8)
+d_font_size = font_size * 2
 default_rect_border_radius = font_size
 
 
 windowName = "Genetics by VociehBy"
 window_width = 1366
 window_height = 768
+turn_counter_rect = Rect(window_width - 2 * d_font_size, window_height - 2 * d_font_size, d_font_size, d_font_size)
 windowShape = (window_width, window_height)
 screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
 

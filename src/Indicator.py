@@ -1,5 +1,5 @@
-from pygame_utils import drawPygameRect
 from pygame import Rect, Color, Surface
+from draw import drawPygameRect
 
 
 class Indicator:
@@ -14,6 +14,9 @@ class Indicator:
 
     def get_rect(self) -> Rect:
         return Rect(self.rect)
+
+    def get_color(self) -> Color:
+        return self.color
 
     def draw(self, surface: Surface, color=None):
         if(self.active):

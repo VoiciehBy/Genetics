@@ -2,13 +2,15 @@ from pygame import Surface, Rect, image
 from Individual import Individual
 from numpy import array, zeros
 
-from constants import s_s_m_m
+from constants import s_s_m_m, window_height
 from constants import horse_image_side as side
 from pygame_colors import *
 from constants import margin_x as m_x
 from constants import margin_y as m_y
 from GSprite import GSprite
 from Horse import Horse
+
+import objects as o
 
 
 def get_horse_image() -> Surface:
@@ -94,5 +96,27 @@ def generate_horses_array_with_offset(individuals: array, n=4, margin_x=m_x, mar
 
 
 def generate_horses_array(individuals: array, n=4) -> array:
-    horses = generate_horses_array_with_offset(individuals, n, m_x, m_y, int(side/2), 0)
+    horses = generate_horses_array_with_offset(
+        individuals, n, m_x, m_y, int(side/2), 0)
     return horses
+
+
+def get_horse_parents():
+    n = 4
+    horses_parents = zeros(n, dtype=Horse)
+    horse_parents_genetics = zeros(n, dtype=Individual)
+    horse_parents_genetics[0] = o.first_parents[0].genetics
+    horse_parents_genetics[1] = o.first_parents[1].genetics
+    horse_parents_genetics[2] = o.second_parents[0].genetics
+    horse_parents_genetics[3] = o.second_parents[1].genetics
+
+    offset_x = 2 * m_x
+    offset_y = int(window_height/2)
+    for i in range(n):
+        x = offset_x + (i % 2) * side
+        y = offset_y + side
+        rect = Rect([x, y, side, side])
+        horses_parents[i] = generate_horse(horse_parents_genetics[i], rect)
+        offset_y = offset_y + (i % 2) * side
+    del horse_parents_genetics
+    return horses_parents

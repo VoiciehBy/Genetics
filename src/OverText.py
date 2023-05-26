@@ -1,5 +1,5 @@
-from pygame_utils import drawText
 from pygame import Rect, Surface
+from draw import drawText
 
 
 class OverText:

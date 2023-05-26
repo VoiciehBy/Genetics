@@ -53,7 +53,7 @@ def generate_player_population():
             b = b and individual.fitness() >= 4
             if (b):
                 counter += 1
-            if (counter == pop_size):
+            if (counter >= pop_size):
                 Game.end_game()
 
 
