@@ -3,7 +3,7 @@ from Chromosome import Chromosome
 from Individual import Individual
 from utils import generate_binary_array
 from utils import combine as c
-
+import sys
 
 def generate_random_genes(length: int):
     return generate_binary_array(length)
@@ -28,7 +28,7 @@ class Population:
 
     def generate_initial_population(self, chromosome_length: int, population_size: int):
         if(population_size < 2):
-            print("Population size too small")
+            print("Population size too small",file=sys.stderr)
             return
         self.pop = zeros(population_size, dtype=Individual)
         for i in range(population_size):
@@ -39,7 +39,7 @@ class Population:
     @staticmethod
     def cross_over(a: Individual, b: Individual, variant=0) -> array:
         if(a.chromosome_length() != b.chromosome_length()):
-            print("Not same length")
+            print("Not same length",file=sys.stderr)
 
         a_length = a.chromosome_length()
         h_l = int(a_length/2)
