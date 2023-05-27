@@ -24,27 +24,30 @@ def main():
     horses = generate_four_populations()
     horses_parents = get_horse_parents()
 
-    while(1):
-        if(Game.is_game_paused()):
+    while 1:
+        if Game.is_game_paused():
             drawTutorialScreen()
 
-        elif (Game.is_game_playing()):
+        elif Game.is_game_playing():
             current_horse = handleEvents(horses, n=n_n)
             drawHorses(horses, current_horse)
-            if (current_horse):
+            if current_horse:
                 horses_parents = get_horse_parents()
-
                 current_horse.set_sprite_color_white_using_pygame_color()
             drawParents(horses_parents)
 
-        elif(Game.is_in_breeding_state()):
+        elif Game.is_in_breeding_state():
             horses = generate_four_populations()
             horses_parents = get_horse_parents()
             drawParents(horses_parents)
             Game.stop_breeding_state()
 
-        elif (Game.is_it_the_end()):
+            horses_parents = get_horse_parents()
+            drawParents(horses_parents)
+
+        elif Game.is_it_the_end():
             drawHorses(horses, None)
+            horses_parents = get_horse_parents()
             drawParents(horses_parents)
 
             drawEndingScreens()

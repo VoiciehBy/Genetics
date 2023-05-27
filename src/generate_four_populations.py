@@ -1,7 +1,7 @@
 from numpy import array
 from constants import default_wild_pop as wild_pop
 from constants import default_population_size as pop
-from constants import s_s_m_m
+from constants import default_horse_name
 
 from objects import get_population_0, get_population_1
 from Population import Population
@@ -38,13 +38,8 @@ def generate_four_populations() -> array:
     ponies_1 = generate_horses_array_with_offset(
         pop_3, wild_pop, margin_x=int(side/2), offset=side*pop + pop*margin_x)
 
-    if(s_s_m_m):
-        player_name = names[4]
-    else:
-        player_name = names[0]
-
     for i in range(pop):
-        horses[i].set_name(player_name)
+        horses[i].set_name(default_horse_name)
         ponies[i].set_name(names[1])
     for i in range(wild_pop):
         horses_1[i].set_name(names[2])

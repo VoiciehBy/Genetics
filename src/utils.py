@@ -43,7 +43,8 @@ def make_data_directory():
     os.chdir("..")
     cwd = os.getcwd()
     the_path = os.path.join(cwd, "data")
-    if (os.path.exists(the_path) is False):
+    is_data_directory_not_exists = not(os.path.exists(the_path))
+    if is_data_directory_not_exists:
         os.mkdir(the_path)
     os.chdir("./src")
 

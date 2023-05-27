@@ -18,7 +18,7 @@ def generate_ai_genetic_population():
     probabilities: array = zeros(n)
     for i in range(n):
         if(total_fitness != 0):
-            individual_fitness: int = pop_1[i].fitness()
+            individual_fitness: int = pop_1[i].individual_fitness()
             probabilities[i] = individual_fitness / total_fitness
         else:
             probabilities[i] = 0
@@ -57,8 +57,8 @@ def generate_ai_genetic_population():
     counter = 0
     for individual in last_generation:
         b = counter != pop_size
-        b = b and individual.fitness() >= 4
-        if (b):
+        b = b and individual.individual_fitness() >= 4
+        if b:
             counter += 1
         if (counter >= pop_size):
             Game.end_game(True)

@@ -53,7 +53,7 @@ def drawResultScreen():
     generations = str(Game.breedingCounter) + GENERATIONS_TXT
     txt = []
 
-    if (result):
+    if result:
         txt.append(AI_WINS_TXT)
         txt.append('')
         txt.append(YOU_SURVIVED_TXT)

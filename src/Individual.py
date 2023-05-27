@@ -7,7 +7,7 @@ import json
 
 
 class Individual:
-    count = 0
+    count: int = 0
 
     def __init__(self, parents=None, genotype=Chromosome):
         self.id = Individual.count
@@ -18,10 +18,10 @@ class Individual:
     def __eq__(self, o) -> bool:
         return self.genotype == o.genotype
 
-    def id(self):
-        return self.id
+    def get_id(self) -> int:
+        return int(self.id)
 
-    def fitness(self) -> int:
+    def individual_fitness(self) -> int:
         return self.genotype.fitness()
 
     def chromosome_length(self) -> int:
@@ -35,7 +35,7 @@ class Individual:
 
     def color_trait(self) -> GColor:
         multiplier = 64
-        g = self.genes()
+        g = self.genotype.get_genes()
         red = g[0] * 4 + g[1] * 2 + g[2]
         green = g[3] * 4 + g[4] * 2 + g[5]
         blue = g[6] * 4 + g[7] * 2
@@ -47,12 +47,13 @@ class Individual:
     def to_json(self) -> str:
         genotype = str(self.genotype)
         parents = self.get_parents()
-        if(parents):
-            result = str(parents[0].id) + ' ' + str(parents[1].id)
+        if parents:
+            result = str(int(parents[0].get_id())) + \
+                ' ' + str(int(parents[1].get_id()))
             parents = result
         else:
             parents = ''
-        return json.dumps({"id": self.id, "genes": genotype, "fitness": self.fitness(), "parents": parents})
+        return json.dumps({"id": self.id, "genes": genotype, "fitness": self.individual_fitness(), "parents": parents})
 
     def __str__(self) -> str:
         return str(self.id) + ' ' + str(self.genotype)

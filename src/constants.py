@@ -29,7 +29,7 @@ with open("../config.json", "r", encoding="utf-8") as file:
     names = config_dict["names"]
     LANGUAGE = config_dict["language"]
 
-if(s_s_m_m):
+if s_s_m_m:
     default_horse_name = names[4]
 else:
     default_horse_name = names[0]
@@ -37,7 +37,7 @@ else:
 HORSES_JSON_FILE_NAME = "../data/horses.json"
 AI_HORSES_JSON_FILE_NAME = "../data/ai_horses.json"
 
-if(LANGUAGE == "pl"):
+if LANGUAGE == "pl":
     filename = "../locals_pl.json"
 else:
     filename = "../locals_eng.json"

@@ -8,7 +8,7 @@ from constants import TITLE_THE_WEAK_TXT
 
 def surname(color: GColor) -> str:
     result = color.name()
-    if(result):
+    if result:
         return str(color.name()).capitalize()
     else:
         return ''

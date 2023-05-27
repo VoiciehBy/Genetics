@@ -14,12 +14,12 @@ class Horse:
     def __init__(self, name=default_horse_name, genetics=Individual, g_sprite=GSprite, looking_right=False):
         self.name = name
         self.genetics = genetics
-        self.id = self.genetics.id
+        self.id = int(self.genetics.get_id())
         self.horseSprite = g_sprite
         self.looking_right = looking_right
 
     def __eq__(self, o) -> bool:
-        return self.id == o.id and self.name == o.name and self.genetics == o.genetics
+        return self.id == int(o.get_id()) and self.name == o.name and self.genetics == o.genetics
 
     def set_name(self, name: str):
         self.name = name
@@ -52,7 +52,8 @@ class Horse:
         self.set_sprite_color_using_pygame_color(color_white)
 
     def update_sprite_over_text(self):
-        self.horseSprite.set_over_text_txt(self.name + ": " + str(self.fitness()))
+        self.horseSprite.set_over_text_txt(
+            self.name + ": " + str(self.fitness()))
 
     def set_sprite_over_text_active(self):
         self.horseSprite.set_over_text_active()
@@ -73,9 +74,6 @@ class Horse:
     def draw(self, surface=screen):
         self.horseSprite.draw(surface)
 
-    def move(self, x, y):
-        self.horseSprite.move(x, y)
-
     def sprite_rect(self) -> Rect:
         return self.horseSprite.get_rect()
 
@@ -89,12 +87,15 @@ class Horse:
         return self.genetics.color_trait()
 
     def fitness(self) -> int:
-        return int(self.genetics.fitness())
+        return int(self.genetics.individual_fitness())
 
     def parents(self) -> list:
         result = self.genetics.get_parents()
-        if(result):
+        if result:
             return list(result)
+
+    def get_id(self) -> int:
+        return int(self.id)
 
     def __str__(self):
         return str(self.id) + ' ' + str(self.name)

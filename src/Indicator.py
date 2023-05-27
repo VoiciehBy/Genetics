@@ -19,8 +19,8 @@ class Indicator:
         return self.color
 
     def draw(self, surface: Surface, color=None):
-        if(self.active):
-            if(color):
+        if self.active:
+            if color:
                 drawPygameRect(surface, color, self.rect)
             else:
                 drawPygameRect(surface, self.color, self.rect)

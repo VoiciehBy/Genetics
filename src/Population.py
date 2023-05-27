@@ -5,6 +5,7 @@ from utils import generate_binary_array
 from utils import combine as c
 import sys
 
+
 def generate_random_genes(length: int):
     return generate_binary_array(length)
 
@@ -28,7 +29,7 @@ class Population:
 
     def generate_initial_population(self, chromosome_length: int, population_size: int):
         if(population_size < 2):
-            print("Population size too small",file=sys.stderr)
+            print("Population size too small", file=sys.stderr)
             return
         self.pop = zeros(population_size, dtype=Individual)
         for i in range(population_size):
@@ -38,18 +39,22 @@ class Population:
 
     @staticmethod
     def cross_over(a: Individual, b: Individual, variant=0) -> array:
-        if(a.chromosome_length() != b.chromosome_length()):
-            print("Not same length",file=sys.stderr)
-
         a_length = a.chromosome_length()
+        b_length = b.chromosome_length()
+        if(a_length != b_length):
+            print("Not same length", file=sys.stderr)
+
         h_l = int(a_length/2)
 
-        # Python slicing
-        first_half_a = a.genes()[:h_l]
-        last_half_a = a.genes()[h_l:]
+        a_genes = a.genes()
+        b_genes = b.genes()
 
-        first_half_b = b.genes()[:h_l]
-        last_half_b = b.genes()[h_l:]
+        # Python slicing
+        first_half_a = a_genes[:h_l]
+        last_half_a = a_genes[h_l:]
+
+        first_half_b = b_genes[:h_l]
+        last_half_b = b_genes[h_l:]
 
         parents = [a, b]
         offsprings = zeros(2, dtype=Individual)
@@ -81,5 +86,5 @@ class Population:
     def fitness(self) -> int:
         fitness = 0
         for individual in self.pop:
-            fitness += individual.fitness()
+            fitness += individual.individual_fitness()
         return int(fitness)

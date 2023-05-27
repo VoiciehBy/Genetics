@@ -12,7 +12,7 @@ def drawHorses(horses, current_horse):
 
     for horse in horses[:pop]:
         horse.set_sprite_indicator_active()
-        if(current_horse):
+        if current_horse:
             if(current_horse == horse):
                 horse.set_sprite_color_using_pygame_color(
                     current_horse.sprite_color())

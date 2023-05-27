@@ -14,7 +14,7 @@ import objects as o
 
 
 def get_horse_image() -> Surface:
-    if(s_s_m_m):
+    if s_s_m_m:
         horse_image = image.load("../img/horse_s_s_m_m.png")
     else:
         horse_image = image.load("../img/horse.png")
@@ -71,7 +71,7 @@ def generate_horse_image_for_pygame(individual: Individual) -> array:
 
 
 def generate_horse(individual: Individual, rect: Rect) -> Horse:
-    if(s_s_m_m):
+    if s_s_m_m:
         horse_image = generate_ssmm_horse_image_for_pygame(individual)
     else:
         horse_image = generate_horse_image_for_pygame(individual)

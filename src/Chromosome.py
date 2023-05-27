@@ -6,9 +6,9 @@ class Chromosome:
     def __init__(self, length=0, genes=None):
         self.length = length
         if(genes is None):
-            self.genes = zeros(self.length, dtype=uint8)
+            self.genes_vector = zeros(self.length, dtype=uint8)
         else:
-            self.genes = genes
+            self.genes_vector = genes
 
     def __eq__(self, o) -> bool:
         if(self.length != o.length):
@@ -16,7 +16,7 @@ class Chromosome:
         else:
             n = self.length
             for i in range(n):
-                if(self.genes[i] != o.genes[i]):
+                if(self.genes_vector[i] != o.genes_vector[i]):
                     return False
             return True
 
@@ -24,11 +24,11 @@ class Chromosome:
         return int(self.length)
 
     def get_genes(self) -> array:
-        return self.genes
+        return self.genes_vector
 
     def fitness(self) -> int:
         c = 0
-        for gene in self.genes:
+        for gene in self.genes_vector:
             if gene == 1:
                 c += 1
         return int(c)
@@ -38,11 +38,11 @@ class Chromosome:
         mutation_probability = 1/n
         for i in range(n):
             m = yes_or_no(mutation_probability)
-            if(m is True):
-                if(self.genes[i] == 0):
-                    self.genes[i] = 1
-                elif(self.genes[i] == 1):
-                    self.genes[i] = 0
+            if m:
+                if(self.genes_vector[i] == 0):
+                    self.genes_vector[i] = 1
+                elif(self.genes_vector[i] == 1):
+                    self.genes_vector[i] = 0
 
     def __str__(self) -> str:
-        return str(self.genes)
+        return str(self.genes_vector)

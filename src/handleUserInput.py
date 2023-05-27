@@ -54,7 +54,7 @@ def on_user_input_via_keyboard(event: pygame.event):
 
 
 def on_left_mouse_button_click(objects, i: int):
-    if(switch_A):
+    if switch_A:
         o.set_first_parent(objects[i])
         objects[i].set_sprite_color_green()
         return objects[i]
@@ -65,7 +65,7 @@ def on_left_mouse_button_click(objects, i: int):
 
 
 def on_right_mouse_button_click(objects, i: int):
-    if(switch_A):
+    if switch_A:
         o.set_second_parent(objects[i])
         objects[i].set_sprite_color_blue()
         return objects[i]

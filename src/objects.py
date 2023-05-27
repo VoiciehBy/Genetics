@@ -1,6 +1,6 @@
 from constants import default_population_size
 from Population import Population
-from horse_utils import generate_horses_array, get_horse_parents
+from horse_utils import generate_horses_array
 
 population_0 = Population(default_population_size)
 population_0.generate_initial_population(8, default_population_size)
@@ -13,8 +13,6 @@ horses = generate_horses_array(pop_0)
 
 first_parents = [horses[0], horses[1]]
 second_parents = [horses[2], horses[3]]
-
-horse_parents = get_horse_parents()
 
 
 def get_population_0() -> Population:
@@ -39,12 +37,3 @@ def set_third_parent(g_object):
 
 def set_fourth_parent(g_object):
     second_parents[1] = g_object
-
-
-def update_horse_parents():
-    global horse_parents
-    horse_parents = get_horse_parents()
-
-
-def get_horse_parents():
-    return horse_parents

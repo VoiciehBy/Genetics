@@ -19,5 +19,5 @@ class OverText:
         self.active = False
 
     def draw(self, surface: Surface):
-        if(self.active):
+        if self.active:
             drawText(surface, self.txt, self.rect)
