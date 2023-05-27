@@ -5,6 +5,7 @@ from pygame import DOUBLEBUF, SRCALPHA, Color, Rect
 
 default_population_size = 4
 default_wild_pop = int(default_population_size / 2)
+default_chromosome_length = 8
 
 horse_image_side = 128
 margin_x = int(horse_image_side/4)

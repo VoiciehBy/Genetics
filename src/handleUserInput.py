@@ -1,6 +1,7 @@
 import pygame
 import objects as o
 
+from GColor import red, green, blue, magenta
 from pygame_utils import is_mouse_over_rect
 from generateHorsePopulations import generate_horse_populations
 from Game import Game
@@ -56,22 +57,22 @@ def on_user_input_via_keyboard(event: pygame.event):
 def on_left_mouse_button_click(objects, i: int):
     if switch_A:
         o.set_first_parent(objects[i])
-        objects[i].set_sprite_color_green()
+        objects[i].set_sprite_color(green)
         return objects[i]
     else:
         o.set_third_parent(objects[i])
-        objects[i].set_sprite_color_red()
+        objects[i].set_sprite_color(red)
         return objects[i]
 
 
 def on_right_mouse_button_click(objects, i: int):
     if switch_A:
         o.set_second_parent(objects[i])
-        objects[i].set_sprite_color_blue()
+        objects[i].set_sprite_color(blue)
         return objects[i]
     else:
         o.set_fourth_parent(objects[i])
-        objects[i].set_sprite_color_magenta()
+        objects[i].set_sprite_color(magenta)
         return objects[i]
 
 

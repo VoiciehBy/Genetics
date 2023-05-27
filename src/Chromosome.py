@@ -10,16 +10,6 @@ class Chromosome:
         else:
             self.genes_vector = genes
 
-    def __eq__(self, o) -> bool:
-        if(self.length != o.length):
-            return False
-        else:
-            n = self.length
-            for i in range(n):
-                if(self.genes_vector[i] != o.genes_vector[i]):
-                    return False
-            return True
-
     def get_length(self) -> int:
         return int(self.length)
 

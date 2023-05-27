@@ -2,6 +2,7 @@ from numpy import array
 from constants import default_wild_pop as wild_pop
 from constants import default_population_size as pop
 from constants import default_horse_name
+from constants import default_chromosome_length
 
 from objects import get_population_0, get_population_1
 from Population import Population
@@ -21,10 +22,10 @@ def generate_four_populations() -> array:
     jsonify_ai_last_generation(pop_1)
 
     population_2 = Population(wild_pop)
-    population_2.generate_initial_population(8, wild_pop)
+    population_2.generate_initial_population(default_chromosome_length, wild_pop)
 
     population_3 = Population(wild_pop)
-    population_3.generate_initial_population(8, wild_pop)
+    population_3.generate_initial_population(default_chromosome_length, wild_pop)
 
     pop_2 = population_2.get_pop()
     pop_3 = population_3.get_pop()

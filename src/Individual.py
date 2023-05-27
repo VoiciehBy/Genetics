@@ -15,9 +15,6 @@ class Individual:
         self.genotype = genotype
         Individual.count += 1
 
-    def __eq__(self, o) -> bool:
-        return self.genotype == o.genotype
-
     def get_id(self) -> int:
         return int(self.id)
 
@@ -35,7 +32,7 @@ class Individual:
 
     def color_trait(self) -> GColor:
         multiplier = 64
-        g = self.genotype.get_genes()
+        g = self.genes()
         red = g[0] * 4 + g[1] * 2 + g[2]
         green = g[3] * 4 + g[4] * 2 + g[5]
         blue = g[6] * 4 + g[7] * 2
@@ -48,8 +45,7 @@ class Individual:
         genotype = str(self.genotype)
         parents = self.get_parents()
         if parents:
-            result = str(int(parents[0].get_id())) + \
-                ' ' + str(int(parents[1].get_id()))
+            result = str(int(parents[0].id)) + ' ' + str(int(parents[1].id))
             parents = result
         else:
             parents = ''
