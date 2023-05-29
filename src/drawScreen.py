@@ -43,32 +43,18 @@ def drawEndScreen():
     drawScreen(screen, ENDING_TXT, color_white)
     update(screen.get_rect())
 
-    handleEvents()
-    clear_screen()
-
 
 def drawResultScreen():
     result = Game.result
-
     generations = str(Game.breedingCounter) + GENERATIONS_TXT
-    txt = []
 
     if result:
-        txt.append(AI_WINS_TXT)
-        txt.append('')
-        txt.append(YOU_SURVIVED_TXT)
-        txt.append(generations)
+        txt = [AI_WINS_TXT, '', YOU_SURVIVED_TXT, generations]
     else:
-        txt.append(PLAYER_WINS_TXT)
-        txt.append('')
-        txt.append(YOU_BROUGHT_APOCALYPSE_IN_TXT)
-        txt.append(generations)
+        txt = [PLAYER_WINS_TXT, '', YOU_BROUGHT_APOCALYPSE_IN_TXT, generations]
 
     drawScreen(screen, txt, color_blue)
     update(screen.get_rect())
-
-    handleEvents()
-    clear_screen()
 
 
 def drawEndingScreens():

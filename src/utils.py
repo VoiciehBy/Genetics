@@ -27,14 +27,6 @@ def generate_binary_array(n: int) -> array:
     return array(a)
 
 
-def generate_two_different_numbers(a=0, b=1) -> list:
-    n_0 = randint(a, b)
-    n_1 = randint(a, b)
-    while(n_1 == n_0):
-        n_1 = randint(a, b)
-    return list([n_0, n_1])
-
-
 def rgb_to_hex(rgb) -> str:
     return str(webcolors.rgb_to_hex(rgb))
 

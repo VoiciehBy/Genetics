@@ -4,7 +4,7 @@ from numpy import array, zeros
 
 from constants import s_s_m_m, window_height
 from constants import horse_image_side as side
-from pygame_colors import *
+from pygame_colors import color_white, color_brown, color_cyan, color_red, color_black, color_green, color_blue
 from constants import margin_x as m_x
 from constants import margin_y as m_y
 from GSprite import GSprite
@@ -15,33 +15,9 @@ import objects as o
 
 def get_horse_image() -> Surface:
     if s_s_m_m:
-        horse_image = image.load("../img/horse_s_s_m_m.png")
+        return image.load("../img/horse_s_s_m_m.png")
     else:
-        horse_image = image.load("../img/horse.png")
-    return horse_image
-
-
-def generate_ssmm_horse_image_for_pygame(individual: Individual) -> array:
-    horse_image = get_horse_image()
-    individual_color = individual.color_trait().to_pygame_color()
-    inverted_individual_color = individual.color_trait().inverse().to_pygame_color()
-    the_color = inverted_individual_color - individual_color
-
-    for i in range(side):
-        for j in range(side):
-            horse_color = horse_image.get_at((i, j))
-
-            if horse_color == color_white:
-                horse_image.set_at((i, j), individual_color)
-            elif horse_color == color_cyan:
-                horse_image.set_at((i, j), inverted_individual_color)
-            elif horse_color in [color_black, color_magenta]:
-                pass
-            elif horse_color == color_red:
-                horse_image.set_at((i, j), color_black)
-            elif horse_color == color_blue:
-                horse_image.set_at((i, j), the_color)
-    return horse_image
+        return image.load("../img/horse.png")
 
 
 def generate_horse_image_for_pygame(individual: Individual) -> array:
@@ -53,17 +29,18 @@ def generate_horse_image_for_pygame(individual: Individual) -> array:
     for i in range(side):
         for j in range(side):
             horse_color = horse_image.get_at((i, j))
-
-            if horse_color == color_brown:
+            if horse_color == color_white:
+                if s_s_m_m:
+                    horse_image.set_at((i, j), individual_color)
+                else:
+                    horse_image.set_at((i, j), inverted_individual_color)
+            elif(s_s_m_m is False and horse_color == color_brown):
                 horse_image.set_at((i, j), individual_color)
-            elif horse_color == color_white:
+            elif(s_s_m_m and horse_color == color_cyan):
                 horse_image.set_at((i, j), inverted_individual_color)
-
-            elif horse_color == color_black:
-                pass
             elif horse_color == color_red:
                 horse_image.set_at((i, j), color_black)
-            elif horse_color == color_green:
+            elif(s_s_m_m and horse_color == color_green):
                 horse_image.set_at((i, j), color_red)
             elif horse_color == color_blue:
                 horse_image.set_at((i, j), the_color)
@@ -71,19 +48,14 @@ def generate_horse_image_for_pygame(individual: Individual) -> array:
 
 
 def generate_horse(individual: Individual, rect: Rect) -> Horse:
-    if s_s_m_m:
-        horse_image = generate_ssmm_horse_image_for_pygame(individual)
-    else:
-        horse_image = generate_horse_image_for_pygame(individual)
+    horse_image = generate_horse_image_for_pygame(individual)
     s = GSprite(color_white, rect, horse_image)
-    h = Horse(genetics=individual, g_sprite=s)
-    return h
+    return Horse(genetics=individual, g_sprite=s)
 
 
 def generate_horses_array_with_offset(individuals: array, n=4, margin_x=m_x, margin_y=m_y,
                                       offset=side, offset_1=side) -> array:
     horses = zeros(n, dtype=Horse)
-
     offset_x = 0
     offset_y = 0
     for i in range(n):
@@ -101,7 +73,7 @@ def generate_horses_array(individuals: array, n=4) -> array:
     return horses
 
 
-def get_horse_parents():
+def get_horse_parents() -> array:
     n = 4
     horses_parents = zeros(n, dtype=Horse)
     horse_parents_genetics = zeros(n, dtype=Individual)

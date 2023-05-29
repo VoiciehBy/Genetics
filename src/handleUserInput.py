@@ -46,7 +46,7 @@ def on_user_input_via_keyboard(event: pygame.event):
         on_p_key_pressed()
     elif(event.key == pygame.K_1):
         on_one_key_pressed()
-    elif (event.key == pygame.K_2):
+    elif(event.key == pygame.K_2):
         on_two_key_pressed()
     elif(event.key == pygame.K_SPACE and Game.is_game_not_paused()):
         on_space_pressed()

@@ -31,12 +31,12 @@ class Game:
 
     @staticmethod
     def stop_breeding_state():
-        if (Game.currentState == State.BREEDING):
+        if(Game.currentState == State.BREEDING):
             Game.currentState = State.PLAYING
 
     @staticmethod
     def end_game(was_ai_victorious=False):
-        if (Game.currentState in [State.PLAYING, State.BREEDING]):
+        if(Game.currentState in [State.PLAYING, State.BREEDING]):
             Game.currentState = State.END
             Game.result = was_ai_victorious
 
@@ -68,7 +68,7 @@ class Game:
             return "Paused"
         elif(Game.currentState == State.BREEDING):
             return "Breeding"
-        elif (Game.currentState == State.END):
+        elif(Game.currentState == State.END):
             return "End"
         else:
             return "NoState"

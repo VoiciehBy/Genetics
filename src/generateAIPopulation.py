@@ -27,7 +27,7 @@ def generate_ai_genetic_population():
     for i in range(population_1.size()):
         ids.append(i)
 
-    if (numpy_sum(probabilities) == 0):
+    if(numpy_sum(probabilities) == 0):
         probabilities = []
         for i in range(n):
             probabilities.append(float(1 / n))
@@ -60,5 +60,5 @@ def generate_ai_genetic_population():
         b = b and individual.individual_fitness() >= 4
         if b:
             counter += 1
-        if (counter >= pop_size):
+        if(counter >= pop_size):
             Game.end_game(True)
