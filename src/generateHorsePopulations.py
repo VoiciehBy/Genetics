@@ -2,18 +2,12 @@ import objects as o
 from objects import get_population_0
 from Population import Population
 from horse_utils import generate_horses_array
-
 from g_logging import jsonify_player_last_generation
-
 from objects import get_population_1
-
 from g_logging import jsonify_ai_last_generation
 from random import choices
 from numpy import zeros, array
-
-
 from Game import Game
-
 from constants import default_goal_evaluation_value as goal_value
 
 
@@ -56,10 +50,8 @@ def generate_ai_genetic_population():
         third_parent_genetics, fourth_parent_genetics)
 
     last_generation = [i_0, i_1, i_2, i_3]
-    population_1.set_pop(last_generation)
-
     jsonify_ai_last_generation(last_generation)
-
+    population_1.set_pop(last_generation)
     end_game_if_goal_population_is_present(last_generation, pop_size, True)
 
 
@@ -90,14 +82,11 @@ def generate_player_population():
     i_2, i_3 = Population.cross_over(
         third_parent.genetics, fourth_parent.genetics)
 
-    last_generation = [i_0, i_1, i_2, i_3]
-
-    jsonify_player_last_generation(last_generation)
-
     reset_parents()
 
+    last_generation = [i_0, i_1, i_2, i_3]
+    jsonify_player_last_generation(last_generation)
     population_0.set_pop(last_generation)
-
     end_game_if_goal_population_is_present(last_generation, pop_size)
 
 
