@@ -41,8 +41,10 @@ class Population:
     def cross_over(a: Individual, b: Individual, variant=0) -> array:
         a_length = a.chromosome_length()
         b_length = b.chromosome_length()
+
         if(a_length != b_length):
             print("Not same length", file=sys.stderr)
+            return
 
         h_l = int(a_length/2)
 
@@ -66,10 +68,6 @@ class Population:
             second_chromosome = Chromosome(
                 a_length, c(first_half_b, last_half_a))
             second_chromosome.mutate()
-
-            offsprings[0] = (Individual(parents, first_chromosome))
-            offsprings[1] = (Individual(parents, second_chromosome))
-
         else:
             first_chromosome = Chromosome(
                 a_length, c(last_half_b, first_half_a))
@@ -78,8 +76,8 @@ class Population:
                 a_length, c(last_half_a, first_half_b))
             second_chromosome.mutate()
 
-            offsprings[0] = (Individual(parents, first_chromosome))
-            offsprings[1] = (Individual(parents, second_chromosome))
+        offsprings[0] = (Individual(parents, first_chromosome))
+        offsprings[1] = (Individual(parents, second_chromosome))
 
         return offsprings
 

@@ -1,3 +1,4 @@
+from constants import default_mutation_rate as mutation_rate
 from numpy import array, zeros, uint8
 from utils import yes_or_no
 
@@ -26,6 +27,7 @@ class Chromosome:
     def mutate(self):
         n = self.length
         mutation_probability = 1/n
+        mutation_probability *= mutation_rate
         for i in range(n):
             m = yes_or_no(mutation_probability)
             if m:

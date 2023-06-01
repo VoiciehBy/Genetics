@@ -6,6 +6,7 @@ from pygame import DOUBLEBUF, SRCALPHA, Color, Rect
 default_population_size = 4
 default_wild_pop = int(default_population_size / 2)
 default_chromosome_length = 8
+default_goal_evaluation_value = 3
 
 horse_image_side = 128
 margin_x = int(horse_image_side/4)
@@ -13,6 +14,7 @@ margin_y = horse_image_side - int(horse_image_side/2)
 font_size = int(horse_image_side/8)
 d_font_size = font_size * 2
 default_rect_border_radius = font_size
+default_mutation_rate = 1
 
 
 windowName = "Genetics by VociehBy"
