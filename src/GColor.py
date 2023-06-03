@@ -5,52 +5,52 @@ from constants import COLORS
 
 class GColor:
     def __init__(self, g_red, g_green, g_blue):
-        self.bgr = [g_blue, g_green, g_red]
-        self.bgr[0] = clamp(self.bgr[0], 0, 255)
-        self.bgr[1] = clamp(self.bgr[1], 0, 255)
-        self.bgr[2] = clamp(self.bgr[2], 0, 255)
+        self.red: int = clamp(g_red, 0, 255)
+        self.green: int = clamp(g_green, 0, 255)
+        self.blue: int = clamp(g_blue, 0, 255)
 
     def __eq__(self, o) -> bool:
-        return self.bgr[0:2] == o.bgr[0:2]
+        b = self.red == o.red
+        b = b and self.green == o.green
+        b = b and self.blue == o.blue
+        return b
 
     def __add__(self, o):
-        self.bgr[0] = clamp(self.bgr[0] + o.bgr[0], 0, 255)
-        self.bgr[1] = clamp(self.bgr[1] + o.bgr[1], 0, 255)
-        self.bgr[2] = clamp(self.bgr[2] + o.bgr[2], 0, 255)
-        return GColor(self.bgr[2], self.bgr[1], self.bgr[0])
+        g_red: int = clamp(self.red + o.red, 0, 255)
+        g_green: int = clamp(self.green + o.green, 0, 255)
+        g_blue: int = clamp(self.blue + o.blue, 0, 255)
+        return GColor(g_red, g_green, g_blue)
 
     def __sub__(self, o):
-        self.bgr[0] = clamp(self.bgr[0] - o.bgr[0], 0, 255)
-        self.bgr[1] = clamp(self.bgr[1] - o.bgr[1], 0, 255)
-        self.bgr[2] = clamp(self.bgr[2] - o.bgr[2], 0, 255)
-        return GColor(self.bgr[2], self.bgr[1], self.bgr[0])
+        g_red: int = clamp(self.red - o.red, 0, 255)
+        g_green: int = clamp(self.green - o.green, 0, 255)
+        g_blue: int = clamp(self.blue - o.blue, 0, 255)
+        return GColor(g_red, g_green, g_blue)
 
-    def rgb(self) -> list:
-        rgb = [self.bgr[2], self.bgr[1], self.bgr[0]]
-        return list(rgb)
+    def to_rgb(self) -> list:
+        return list([self.red, self.green, self.blue])
 
     def inverse(self):
-        return GColor(self.bgr[0], self.bgr[1], self.bgr[2])
+        return GColor(self.blue, self.green, self.red)
 
     def to_pygame_color(self) -> Color:
-        return Color(self.bgr[2], self.bgr[1], self.bgr[0])
+        return Color(self.red, self.green, self.blue)
 
     def name(self) -> str:
-        rgb = (self.rgb()[0], self.rgb()[1], self.rgb()[2])
         try:
-            color = rgb_to_hex(rgb)
+            color = rgb_to_hex(self.to_rgb())
             return COLORS[str(color)]
         except KeyError:
             return ''
 
     def __str__(self) -> str:
-        rgb = (self.rgb()[0], self.rgb()[1], self.rgb()[2])
+        rgb = self.to_rgb()
         try:
             color = rgb_to_hex(rgb)
             txt = COLORS[str(color)]
         except KeyError:
             txt = ''
-        return str(self.rgb) + ' ' + txt
+        return str(rgb) + ' ' + txt
 
 
 black = GColor(0, 0, 0)

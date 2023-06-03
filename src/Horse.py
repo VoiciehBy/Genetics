@@ -1,6 +1,6 @@
 from Individual import Individual
 from GSprite import GSprite
-from pygame import Rect
+from pygame import Rect, Color
 from constants import default_horse_name
 
 from GColor import GColor
@@ -24,7 +24,8 @@ class Horse:
         self.name = self.name + ' ' + titles
 
     def set_sprite_color(self, sprite_color: GColor):
-        self.horseSprite.set_color(sprite_color.to_pygame_color())
+        new_color: Color = Color(sprite_color.to_pygame_color())
+        self.horseSprite.set_color(new_color)
 
     def set_sprite_color_using_pygame_color(self, sprite_color: GColor):
         self.horseSprite.set_color(sprite_color)
@@ -50,7 +51,7 @@ class Horse:
         self.horseSprite.draw()
 
     def sprite_rect(self) -> Rect:
-        return self.horseSprite.get_rect()
+        return Rect(self.horseSprite.get_g_sprite_rect())
 
     def sprite_indicator_rect(self) -> Rect:
         return self.horseSprite.get_indicator_rect()

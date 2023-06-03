@@ -14,7 +14,7 @@ margin_y = horse_image_side - int(horse_image_side/2)
 font_size = int(horse_image_side/8)
 d_font_size = font_size * 2
 default_rect_border_radius = font_size
-default_mutation_rate = 1
+default_mutation_rate = 0.25
 
 
 windowName = "Genetics by VociehBy"

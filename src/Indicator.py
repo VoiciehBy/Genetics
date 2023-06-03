@@ -12,7 +12,7 @@ class Indicator:
     def set_active(self):
         self.active = True
 
-    def get_rect(self) -> Rect:
+    def get_indicator_rect(self) -> Rect:
         return Rect(self.rect)
 
     def get_color(self) -> Color:

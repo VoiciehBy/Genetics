@@ -42,11 +42,11 @@ class GSprite:
     def set_indicator_active(self):
         self.spriteIndicator.set_active()
 
-    def get_rect(self) -> Rect:
-        return self.rect
+    def get_g_sprite_rect(self) -> Rect:
+        return Rect(self.rect)
 
     def get_indicator_rect(self) -> Rect:
-        return Rect(self.spriteIndicator.get_rect())
+        return Rect(self.spriteIndicator.get_indicator_rect())
 
     def get_color(self):
         return Color(self.color)

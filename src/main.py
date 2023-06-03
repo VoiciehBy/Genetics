@@ -14,6 +14,7 @@ from horse_utils import get_horse_parents
 from pygame_colors import color_white
 from drawHorses import drawHorses
 
+from Horse import Horse
 
 def main():
     make_data_directory()
@@ -30,7 +31,7 @@ def main():
             drawTutorialScreen()
 
         elif Game.is_game_playing():
-            current_horse = handleEvents(horses, n=n_n)
+            current_horse: Horse = handleEvents(horses, n=n_n)
             drawHorses(horses)
             if current_horse:
                 horses_parents = get_horse_parents()

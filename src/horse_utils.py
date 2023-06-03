@@ -1,4 +1,4 @@
-from pygame import Surface, Rect, image
+from pygame import Surface, Rect, image, Color
 from Individual import Individual
 from numpy import array, zeros
 
@@ -9,6 +9,8 @@ from constants import margin_x as m_x
 from constants import margin_y as m_y
 from GSprite import GSprite
 from Horse import Horse
+
+from GColor import GColor
 
 import objects as o
 
@@ -22,9 +24,10 @@ def get_horse_image() -> Surface:
 
 def generate_horse_image_for_pygame(individual: Individual) -> array:
     horse_image = get_horse_image()
-    individual_color = individual.color_trait().to_pygame_color()
-    inverted_individual_color = individual.color_trait().inverse().to_pygame_color()
-    the_color = inverted_individual_color - individual_color
+    individual_color: Color = Color(individual.color_trait().to_pygame_color())
+    inverted_individual_g_color: GColor = individual.color_trait().inverse()
+    inverted_individual_color: Color = Color(inverted_individual_g_color.to_pygame_color())
+    the_color: Color = Color(inverted_individual_color - individual_color)
 
     for i in range(side):
         for j in range(side):
