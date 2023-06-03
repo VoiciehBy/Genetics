@@ -28,7 +28,7 @@ class Population:
             self.pop[i] = new_population[i]
 
     def generate_initial_population(self, chromosome_length: int, population_size: int):
-        if(population_size < 2):
+        if population_size < 2:
             print("Population size too small", file=sys.stderr)
             return
         self.pop = zeros(population_size, dtype=Individual)
@@ -42,7 +42,7 @@ class Population:
         a_length = a.chromosome_length()
         b_length = b.chromosome_length()
 
-        if(a_length != b_length):
+        if a_length != b_length:
             print("Not same length", file=sys.stderr)
             return
 
@@ -61,7 +61,7 @@ class Population:
         parents = [a, b]
         offsprings = zeros(2, dtype=Individual)
 
-        if(variant == 0):
+        if variant == 0:
             first_chromosome = Chromosome(
                 a_length, c(first_half_a, last_half_b))
             first_chromosome.mutate()
