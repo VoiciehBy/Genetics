@@ -49,7 +49,7 @@ class GColor:
         rgb = self.to_rgb()
         try:
             color = rgb_to_hex(rgb)
-            txt = self.R[str(color)]
+            txt = self.color_names[str(color)]
         except KeyError:
             txt = ''
         return str(rgb) + ' ' + txt
