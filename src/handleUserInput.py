@@ -7,7 +7,7 @@ from generateHorsePopulations import generate_horse_populations
 from Game import Game
 from g_logging import end_json_files
 
-switch_A = True
+switch_A: bool = True
 
 
 def on_return_pressed():
@@ -19,7 +19,6 @@ def on_p_key_pressed():
 
 
 def on_space_pressed():
-    print("Ok")
     Game.start_breeding_state()
     generate_horse_populations()
 
@@ -40,17 +39,18 @@ def on_escape_pressed():
 
 
 def on_user_input_via_keyboard(event: pygame.event):
-    if(event.key == pygame.K_RETURN):
+    event_key_id: int = event.key
+    if event_key_id == pygame.K_RETURN:
         on_return_pressed()
-    elif(event.key == pygame.K_p):
+    elif event_key_id == pygame.K_p:
         on_p_key_pressed()
-    elif(event.key == pygame.K_1):
+    elif event_key_id == pygame.K_1:
         on_one_key_pressed()
-    elif(event.key == pygame.K_2):
+    elif event_key_id == pygame.K_2:
         on_two_key_pressed()
-    elif(event.key == pygame.K_SPACE and Game.is_game_not_paused()):
+    elif event_key_id == pygame.K_SPACE and Game.is_game_not_paused():
         on_space_pressed()
-    elif(event.key == pygame.K_ESCAPE):
+    elif event_key_id == pygame.K_ESCAPE:
         on_escape_pressed()
 
 
@@ -80,8 +80,9 @@ def on_mouse_click(objects, event: pygame.event, n: int):
     g_object = None
     for i in range(n):
         if is_mouse_over_rect(objects[i]):
-            if event.button == 1:
+            event_button_id: int = event.button
+            if event_button_id == 1:
                 g_object = on_left_mouse_button_click(objects, i)
-            elif event.button == 3:
+            elif event_button_id == 3:
                 g_object = on_right_mouse_button_click(objects, i)
     return g_object

@@ -4,6 +4,8 @@ from constants import COLORS
 
 
 class GColor:
+    color_names: dict = COLORS
+
     def __init__(self, g_red, g_green, g_blue):
         self.red: int = clamp(g_red, 0, 255)
         self.green: int = clamp(g_green, 0, 255)
@@ -47,7 +49,7 @@ class GColor:
         rgb = self.to_rgb()
         try:
             color = rgb_to_hex(rgb)
-            txt = COLORS[str(color)]
+            txt = self.R[str(color)]
         except KeyError:
             txt = ''
         return str(rgb) + ' ' + txt

@@ -18,7 +18,7 @@ def end_game_if_goal_population_is_present(last_generation, pop_size, is_ai_vict
         b = b and individual.individual_fitness() == goal_value
         if b:
             counter += 1
-        if (counter >= pop_size):
+        if counter >= pop_size:
             Game.end_game(is_ai_victorious)
 
 
@@ -30,7 +30,7 @@ def generate_ai_genetic_population():
 
     probabilities: array = zeros(pop_size)
     for i in range(pop_size):
-        if(total_fitness != 0):
+        if total_fitness != 0:
             individual_fitness: int = pop_1[i].individual_fitness()
             probabilities[i] = individual_fitness / total_fitness
         else:

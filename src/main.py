@@ -16,6 +16,7 @@ from drawHorses import drawHorses
 
 from Horse import Horse
 
+
 def main():
     make_data_directory()
     start_json_files()
