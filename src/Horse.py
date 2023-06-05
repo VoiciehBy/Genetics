@@ -7,6 +7,7 @@ from GColor import GColor
 
 from trait_utils import surname, strong_weak, invisible_bald
 
+
 class Horse:
     def __init__(self, name=default_horse_name, genetics=Individual, g_sprite=GSprite, looking_right=False, ai=False):
         self.name = name
@@ -49,7 +50,7 @@ class Horse:
 
     def set_ai(self, b: bool):
         self.ai = b
-        
+
     def flip(self):
         self.looking_right = not(self.looking_right)
         self.horseSprite.flip()

@@ -14,6 +14,7 @@ from drawHorses import drawHorses
 
 from pygame_utils import wait
 
+
 def main():
     make_data_directory()
     start_json_files()
@@ -50,7 +51,6 @@ def main():
 
             horses = generate_four_populations()
             drawHorses(horses)
-
 
             horses_parents = get_horse_parents()
             drawParents(horses_parents)
