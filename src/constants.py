@@ -14,7 +14,7 @@ margin_y = horse_image_side - int(horse_image_side/2)
 font_size = int(horse_image_side/8)
 d_font_size = font_size * 2
 default_rect_border_radius = font_size
-default_mutation_rate = 0.25
+default_mutation_rate = 0.1
 
 
 windowName = "Genetics by VociehBy"
@@ -31,6 +31,8 @@ with open("../config.json", "r", encoding="utf-8") as file:
     s_s_m_m = config_dict["s_s_m_m"]
     names = config_dict["names"]
     LANGUAGE = config_dict["language"]
+
+debug_mode = False
 
 if s_s_m_m:
     default_horse_name = names[4]
@@ -50,6 +52,7 @@ with open(filename, "r", encoding="utf-8") as file:
     TITLE_THE_BALD_TXT = locals_dict["TITLE_THE_BALD_TXT"]
     TITLE_THE_STRONG_TXT = locals_dict["TITLE_THE_STRONG_TXT"]
     TITLE_THE_WEAK_TXT = locals_dict["TITLE_THE_WEAK_TXT"]
+    FITNESS_TXT = locals_dict["FITNESS_TXT"]
 
     BLACK_HORSE_TXT = locals_dict["BLACK_HORSE_TXT"]
     FOUND_TXT = locals_dict["FOUND_TXT"]

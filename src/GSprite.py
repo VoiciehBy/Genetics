@@ -5,6 +5,7 @@ from draw import drawImageOverRect
 from Indicator import Indicator
 from OverText import OverText
 
+from constants import debug_mode
 
 class GSprite:
     def __init__(self, color: Color, rect: Rect, texture: Surface):
@@ -20,7 +21,8 @@ class GSprite:
         self.texture = flip_surface_horizontally(self.texture)
 
     def draw(self, surface=screen):
-        self.spriteIndicator.draw(surface, self.color)
+        if debug_mode:
+            self.spriteIndicator.draw(surface, self.color)
         self.overTxt.draw(surface)
         drawImageOverRect(surface, self.texture, self.rect)
 

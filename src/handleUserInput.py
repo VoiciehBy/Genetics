@@ -9,6 +9,7 @@ from g_logging import end_json_files
 
 from horse_utils import get_horse_parents
 from draw import drawParents
+from constants import debug_mode
 
 switch_A: bool = True
 
@@ -64,11 +65,13 @@ def on_left_mouse_button_click(objects, i: int):
 
     if switch_A:
         o.set_first_parent(objects[i])
-        objects[i].set_sprite_color(green)
+        if debug_mode:
+            objects[i].set_sprite_color(green)
         return objects[i]
     else:
         o.set_third_parent(objects[i])
-        objects[i].set_sprite_color(red)
+        if debug_mode:
+            objects[i].set_sprite_color(red)
         return objects[i]
 
 
@@ -78,11 +81,13 @@ def on_right_mouse_button_click(objects, i: int):
 
     if switch_A:
         o.set_second_parent(objects[i])
-        objects[i].set_sprite_color(blue)
+        if debug_mode:
+            objects[i].set_sprite_color(blue)
         return objects[i]
     else:
         o.set_fourth_parent(objects[i])
-        objects[i].set_sprite_color(magenta)
+        if debug_mode:
+            objects[i].set_sprite_color(magenta)
         return objects[i]
 
 

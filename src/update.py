@@ -1,5 +1,5 @@
-import pygame
+from pygame.display import update as pygame_update
 
 
 def update(rect=None):
-    pygame.display.update(rect)
+    pygame_update(rect)

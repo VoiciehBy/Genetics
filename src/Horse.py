@@ -1,12 +1,11 @@
 from Individual import Individual
 from GSprite import GSprite
 from pygame import Rect, Color
-from constants import default_horse_name
+from constants import default_horse_name, FITNESS_TXT
 
 from GColor import GColor
 
 from trait_utils import surname, strong_weak, invisible_bald
-
 
 class Horse:
     def __init__(self, name=default_horse_name, genetics=Individual, g_sprite=GSprite, looking_right=False, ai=False):
@@ -37,7 +36,7 @@ class Horse:
 
     def update_sprite_over_text(self):
         self.horseSprite.set_over_text_txt(
-            self.name + ": " + str(self.fitness()))
+            self.name + ' ' + FITNESS_TXT + ": " + str(self.fitness()))
 
     def set_sprite_over_text_active(self):
         self.horseSprite.set_over_text_active()

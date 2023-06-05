@@ -12,6 +12,7 @@ from constants import default_population_size, default_wild_pop
 from handleEvents import handleEvents
 from drawHorses import drawHorses
 
+from pygame_utils import wait
 
 def main():
     make_data_directory()
@@ -45,7 +46,11 @@ def main():
             Game.stop_breeding_state()
 
         elif Game.is_it_the_end():
+            wait(500)
+
+            horses = generate_four_populations()
             drawHorses(horses)
+
 
             horses_parents = get_horse_parents()
             drawParents(horses_parents)
