@@ -23,7 +23,7 @@ def get_horse_image() -> Surface:
 
 
 def generate_horse_image_for_pygame(individual: Individual) -> array:
-    horse_image = get_horse_image()
+    horse_image: Surface = get_horse_image()
     individual_color: Color = Color(individual.color_trait().to_pygame_color())
     inverted_individual_g_color: GColor = individual.color_trait().inverse()
     inverted_individual_color: Color = Color(inverted_individual_g_color.to_pygame_color())
@@ -31,7 +31,7 @@ def generate_horse_image_for_pygame(individual: Individual) -> array:
 
     for i in range(side):
         for j in range(side):
-            horse_color = horse_image.get_at((i, j))
+            horse_color: Color = Color(horse_image.get_at((i, j)))
             if horse_color == color_white:
                 if s_s_m_m:
                     horse_image.set_at((i, j), individual_color)

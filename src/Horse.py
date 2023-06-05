@@ -9,11 +9,12 @@ from trait_utils import surname, strong_weak, invisible_bald
 
 
 class Horse:
-    def __init__(self, name=default_horse_name, genetics=Individual, g_sprite=GSprite, looking_right=False):
+    def __init__(self, name=default_horse_name, genetics=Individual, g_sprite=GSprite, looking_right=False, ai=False):
         self.name = name
         self.genetics = genetics
         self.horseSprite = g_sprite
         self.looking_right = looking_right
+        self.ai = ai
 
     def set_name(self, name: str):
         self.name = name
@@ -30,6 +31,10 @@ class Horse:
     def set_sprite_color_using_pygame_color(self, sprite_color: GColor):
         self.horseSprite.set_color(sprite_color)
 
+    def set_sprite_color_white_using_pygame_color(self):
+        color_white: Color = Color("white")
+        self.horseSprite.set_color(color_white)
+
     def update_sprite_over_text(self):
         self.horseSprite.set_over_text_txt(
             self.name + ": " + str(self.fitness()))
@@ -43,6 +48,9 @@ class Horse:
     def set_sprite_indicator_active(self):
         self.horseSprite.set_indicator_active()
 
+    def set_ai(self, b: bool):
+        self.ai = b
+        
     def flip(self):
         self.looking_right = not(self.looking_right)
         self.horseSprite.flip()
@@ -69,3 +77,6 @@ class Horse:
         result = self.genetics.get_parents()
         if result:
             return list(result)
+
+    def is_ai(self) -> bool:
+        return bool(self.ai)

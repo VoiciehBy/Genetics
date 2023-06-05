@@ -42,9 +42,16 @@ def generate_four_populations() -> array:
     for i in range(pop):
         horses[i].set_name(default_horse_name)
         ponies[i].set_name(names[1])
+
+        horses[i].set_ai(False)
+        ponies[i].set_ai(True)
+
     for i in range(wild_pop):
         horses_1[i].set_name(names[2])
         ponies_1[i].set_name(names[3])
+
+        horses_1[i].set_ai(False)
+        ponies_1[i].set_ai(True)
 
     result = list(horses) + list(ponies) + list(horses_1) + list(ponies_1)
     return array(result)

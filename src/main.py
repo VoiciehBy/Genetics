@@ -11,7 +11,6 @@ from handleEvents import handleEvents
 
 
 from horse_utils import get_horse_parents
-from pygame_colors import color_white
 from drawHorses import drawHorses
 
 from Horse import Horse
@@ -36,7 +35,7 @@ def main():
             drawHorses(horses)
             if current_horse:
                 horses_parents = get_horse_parents()
-                current_horse.set_sprite_color_using_pygame_color(color_white)
+                current_horse.set_sprite_color_white_using_pygame_color()
             drawParents(horses_parents)
 
         elif Game.is_in_breeding_state():
