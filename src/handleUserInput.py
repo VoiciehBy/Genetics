@@ -7,6 +7,9 @@ from generateHorsePopulations import generate_horse_populations
 from Game import Game
 from g_logging import end_json_files
 
+from horse_utils import get_horse_parents
+from draw import drawParents
+
 switch_A: bool = True
 
 
@@ -19,6 +22,7 @@ def on_p_key_pressed():
 
 
 def on_space_pressed():
+    drawParents(get_horse_parents())
     Game.start_breeding_state()
     generate_horse_populations()
 

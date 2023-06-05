@@ -1,6 +1,7 @@
 from Game import Game
 from constants import screen, turn_counter_rect, d_font_size, default_rect_border_radius, font_size
 from pygame import Surface, Color, Rect, draw, font
+from numpy import array
 
 
 def drawTurnCounter():
@@ -32,6 +33,12 @@ def drawText(surface: Surface, text: str, rect: Rect, text_font_size=font_size):
     surface.blit(txt_surface, rect)
 
 
-def drawParents(horse_parents):
+def drawParents(horse_parents: array):
     for horse in horse_parents:
         horse.draw()
+
+
+def drawParentsNumbers(horses_parents: array):
+    _n = len(horses_parents)
+    for i in range(_n):
+        drawUIParentsTxt(horses_parents[i].sprite_rect(), i)
