@@ -2,6 +2,7 @@ from pygame import Rect, Color, Surface
 from draw import drawPygameRect
 from constants import debug_mode
 
+
 class Indicator:
     def __init__(self, rect: Rect, color: Color, active=False):
         self.rect = rect
