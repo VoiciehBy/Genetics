@@ -25,15 +25,16 @@ turn_counter_rect = Rect(window_width - 3 * d_font_size,
 windowShape = (window_width, window_height)
 screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
 
-clearColor = Color(153, 229, 80)
+clearColor = Color("lime")
 
 with open("../config.json", "r", encoding="utf-8") as file:
     config_dict = json.loads(file.read())
     s_s_m_m = config_dict["s_s_m_m"]
+    debug_mode = config_dict["debug_mode"]
     names = config_dict["names"]
     LANGUAGE = config_dict["language"]
 
-debug_mode = False
+
 
 if s_s_m_m:
     default_horse_name = names[4]
