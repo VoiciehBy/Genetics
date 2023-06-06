@@ -30,6 +30,7 @@ def main():
             drawTutorialScreen()
 
         elif Game.is_game_playing():
+
             current_horse: Horse = handleEvents(horses, n=n_n)
             drawHorses(horses)
 

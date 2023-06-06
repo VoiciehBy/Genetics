@@ -20,7 +20,8 @@ default_mutation_rate = 0.1
 windowName = "Genetics by VociehBy"
 window_width = 1366
 window_height = 768
-turn_counter_rect = Rect(window_width - 2 * d_font_size, window_height - 2 * d_font_size, d_font_size, d_font_size)
+turn_counter_rect = Rect(window_width - 3 * d_font_size,
+                         window_height - 2 * d_font_size, d_font_size, d_font_size)
 windowShape = (window_width, window_height)
 screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
 
@@ -57,6 +58,8 @@ with open(filename, "r", encoding="utf-8") as file:
     TITLE_THE_STRONG_TXT = locals_dict["TITLE_THE_STRONG_TXT"]
     TITLE_THE_WEAK_TXT = locals_dict["TITLE_THE_WEAK_TXT"]
     FITNESS_TXT = locals_dict["FITNESS_TXT"]
+
+    TURN_TXT = locals_dict["TURN_TXT"]
 
     BLACK_HORSE_TXT = locals_dict["BLACK_HORSE_TXT"]
     FOUND_TXT = locals_dict["FOUND_TXT"]

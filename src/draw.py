@@ -1,11 +1,11 @@
 from Game import Game
-from constants import screen, turn_counter_rect, d_font_size, default_rect_border_radius, font_size
+from constants import screen, turn_counter_rect, d_font_size, default_rect_border_radius, font_size, TURN_TXT
 from pygame import Surface, Color, Rect, draw, font
 from numpy import array
 
 
 def drawTurnCounter():
-    turn_str = "T: " + str(Game.breedingCounter)
+    turn_str = TURN_TXT + ": " + str(Game.breedingCounter)
     drawText(screen, turn_str, turn_counter_rect, d_font_size)
 
 
