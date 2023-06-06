@@ -1,6 +1,6 @@
 from pygame import Rect, Color, Surface
 from draw import drawPygameRect
-
+from constants import debug_mode
 
 class Indicator:
     def __init__(self, rect: Rect, color: Color, active=False):
@@ -19,7 +19,7 @@ class Indicator:
         return self.color
 
     def draw(self, surface: Surface, color=None):
-        if self.active:
+        if (self.active and debug_mode):
             if color:
                 drawPygameRect(surface, color, self.rect)
             else:
