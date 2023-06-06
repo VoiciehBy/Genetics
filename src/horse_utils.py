@@ -4,6 +4,7 @@ from numpy import array, zeros
 
 from constants import s_s_m_m, window_height
 from constants import horse_image_side as side
+from constants import HORSE_IMAGE_FILE_NAME, HORSE_S_S_M_M_FILE_NAME
 from pygame_colors import color_white, color_brown, color_cyan, color_red, color_black, color_green, color_blue
 from constants import margin_x as m_x
 from constants import margin_y as m_y
@@ -17,9 +18,9 @@ import objects as o
 
 def get_horse_image() -> Surface:
     if s_s_m_m:
-        return image.load("../img/horse_s_s_m_m.png")
+        return image.load(HORSE_S_S_M_M_FILE_NAME)
     else:
-        return image.load("../img/horse.png")
+        return image.load(HORSE_IMAGE_FILE_NAME)
 
 
 def generate_horse_image_for_pygame(individual: Individual) -> array:
