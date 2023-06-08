@@ -12,6 +12,7 @@ class Game:
     currentState = State.PAUSED
     result = False
     breedingCounter = 0
+    points = 0
 
     @staticmethod
     def start_game():
@@ -33,6 +34,10 @@ class Game:
     def stop_breeding_state():
         if Game.currentState == State.BREEDING:
             Game.currentState = State.PLAYING
+
+    @staticmethod
+    def addPoint():
+        Game.points += 1
 
     @staticmethod
     def end_game(was_ai_victorious=False):

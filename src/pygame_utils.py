@@ -16,6 +16,8 @@ def is_mouse_over_rect(g_object) -> bool:
     result = rect_to_check.collidepoint(mouse_position)
     return result
 
+def is_two_pygame_rect_intersects(a: Rect, b: Rect):
+    return a.colliderect(b)
 
 def flip_surface(surface: Surface, horizontally: bool, vertically: bool) -> Surface:
     return transform.flip(surface, horizontally, vertically)

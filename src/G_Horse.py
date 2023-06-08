@@ -1,5 +1,5 @@
 from G_Individual import G_Individual
-from VSprite import V_Sprite
+from VSprite import VSprite
 from pygame import Rect, Color
 from constants import default_horse_name, FITNESS_TXT
 
@@ -9,7 +9,7 @@ from trait_utils import surname, strong_weak, invisible_bald
 
 
 class G_Horse:
-    def __init__(self, name=default_horse_name, genetics=G_Individual, g_sprite=V_Sprite, looking_right=False, ai=False):
+    def __init__(self, name=default_horse_name, genetics=G_Individual, g_sprite=VSprite, looking_right=False, ai=False):
         self.name = name
         self.genetics = genetics
         self.horseSprite = g_sprite
@@ -57,6 +57,9 @@ class G_Horse:
 
     def draw(self):
         self.horseSprite.draw()
+
+    def move(self, x: int, y: int):
+        self.horseSprite.move(x, y)
 
     def sprite_rect(self) -> Rect:
         return Rect(self.horseSprite.get_g_sprite_rect())

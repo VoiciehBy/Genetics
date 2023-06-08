@@ -29,5 +29,17 @@
   "AI_WINS_TXT": "SI WYGRYWA...",
   "GENERATIONS_TXT": " POKOLEŃ",
   "YOU_SURVIVED_TXT": "UDAŁO CI SIĘ PRZETRWAĆ:",
-  "YOU_BROUGHT_APOCALYPSE_IN_TXT": "APOKALIPSA ZBLIŻAŁA SIĘ:"
+  "YOU_BROUGHT_APOCALYPSE_IN_TXT": "APOKALIPSA ZBLIŻAŁA SIĘ:",
+
+  "YOU_GAINED_TXT": "UZYSKAŁEŚ",
+  "POINTS_TXT": "PUNKT/Y",
+  "QUEST_TUTORIAL_LINES": [
+    "Broń się przed atakiem koni apokalipsy",
+    "Utzymaj się jak najdłużej",
+    "Ruch w lewo [LEWO]",
+    "Ruch w prawo [PRAWO]",
+    "Strzał lasera z oczu [Spacja]",
+    "Wyświetl ponownie to okno [P]",
+    "Rozpocznij grę/Wznów grę [ENTER]"
+  ]
 }

@@ -29,5 +29,17 @@
   "AI_WINS_TXT": "AI WINS...",
   "GENERATIONS_TXT": " GENERATIONS",
   "YOU_SURVIVED_TXT": "YOU SURVIVED:",
-  "YOU_BROUGHT_APOCALYPSE_IN_TXT": "YOU BROUGHT APOCALYPSE IN:"
+  "YOU_BROUGHT_APOCALYPSE_IN_TXT": "YOU BROUGHT APOCALYPSE IN:",
+
+  "YOU_GAINED_TXT": "YOU GAINED",
+  "POINTS_TXT": "POINTS",
+  "QUEST_TUTORIAL_LINES": [
+    "Defend yourself against horses of Apocalypse",
+    "Survive as long as you can",
+    "Move left [LEFT]",
+    "Move right [RIGHT]",
+    "Shoot laser from the eyes [Space]",
+    "Display this window again [P]",
+    "Start/Resume Game [ENTER]"
+  ]
 }

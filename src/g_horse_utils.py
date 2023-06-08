@@ -6,7 +6,7 @@ from constants import horse_image_side as side
 from constants import HORSE_IMAGE_FILE_NAME, HORSE_S_S_M_M_FILE_NAME
 from constants import margin_x as m_x
 from constants import margin_y as m_y
-from VSprite import V_Sprite
+from VSprite import VSprite
 from G_Horse import G_Horse
 from GColor import GColor
 
@@ -58,7 +58,7 @@ def generate_horse_image_for_pygame(individual: G_Individual) -> array:
 
 def generate_horse(individual: G_Individual, rect: Rect) -> G_Horse:
     horse_image = generate_horse_image_for_pygame(individual)
-    s = V_Sprite(color_white, rect, horse_image)
+    s = VSprite(color_white, rect, horse_image)
     return G_Horse(genetics=individual, g_sprite=s)
 
 

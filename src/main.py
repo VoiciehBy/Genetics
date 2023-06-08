@@ -14,6 +14,9 @@ from drawHorses import drawHorses
 
 from pygame_utils import wait
 
+from constants import quest_mode
+
+from quest_main import quest_main
 
 def main():
     make_data_directory()
@@ -66,5 +69,7 @@ def main():
         drawTurnCounter()
         drawParentsNumbers(horses_parents)
 
-
-main()
+if quest_mode:
+    quest_main()
+else:
+    main()

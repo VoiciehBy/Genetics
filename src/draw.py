@@ -3,6 +3,7 @@ from constants import screen, turn_counter_rect, d_font_size, default_rect_borde
 from pygame import Surface, Color, Rect, draw, font
 from numpy import array
 
+from constants import points_counter_rect
 
 def drawTurnCounter():
     turn_str = TURN_TXT + ": " + str(Game.breedingCounter)
@@ -42,3 +43,7 @@ def drawParentsNumbers(horses_parents: array):
     _n = len(horses_parents)
     for i in range(_n):
         drawUIParentsTxt(horses_parents[i].sprite_rect(), i)
+
+def drawPointsCounter():
+    turn_str = "Points" + ": " + str(Game.points)
+    drawText(screen, turn_str, points_counter_rect, d_font_size)

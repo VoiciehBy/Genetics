@@ -8,7 +8,7 @@ from OverText import OverText
 from constants import debug_mode
 
 
-class V_Sprite:
+class VSprite:
     def __init__(self, color: Color, rect: Rect, texture: Surface):
         self.color = Color(color)
         self.rect = Rect(rect)
@@ -32,6 +32,9 @@ class V_Sprite:
 
     def set_color(self, color: Color):
         self.color = Color(color)
+
+    def set_rect(self, rect: Rect):
+        self.rect = rect
 
     def set_over_text_txt(self, txt=''):
         self.overTxt.set_txt(txt)

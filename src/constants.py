@@ -17,23 +17,27 @@ font_size = int(horse_image_side/8)
 d_font_size = font_size * 2
 default_rect_border_radius = font_size
 
-
-windowName = "Genetics by VociehBy"
-window_width = 1366
-window_height = 768
-turn_counter_rect = Rect(window_width - 3 * d_font_size,
-                         window_height - 2 * d_font_size, d_font_size, d_font_size)
-windowShape = (window_width, window_height)
-screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
-
-clearColor = Color("lime")
+offset = 24
 
 with open("../config.json", "r", encoding="utf-8") as file:
     config_dict = json.loads(file.read())
     s_s_m_m = config_dict["s_s_m_m"]
+    quest_mode = config_dict["quest_mode"]
     debug_mode = config_dict["debug_mode"]
     names = config_dict["names"]
     LANGUAGE = config_dict["language"]
+
+windowName = "Horse Quest by VoiciehBy" if quest_mode else "Genetics by VociehBy"
+window_width = 1366
+window_height = 768
+turn_counter_rect = Rect(window_width - 3 * d_font_size,
+                         window_height - 2 * d_font_size, d_font_size, d_font_size)
+points_counter_rect = Rect(window_width - 4 * d_font_size,
+                           window_height - 2 * d_font_size, d_font_size, d_font_size)
+windowShape = (window_width, window_height)
+screen = set_mode(windowShape, flags=DOUBLEBUF | SRCALPHA)
+
+clearColor = Color("lime")
 
 default_horse_name = names[4] if s_s_m_m else names[0]
 
@@ -67,6 +71,10 @@ with open(filename, "r", encoding="utf-8") as file:
     YOU_BROUGHT_APOCALYPSE_IN_TXT = locals_dict["YOU_BROUGHT_APOCALYPSE_IN_TXT"]
     YOU_SURVIVED_TXT = locals_dict["YOU_SURVIVED_TXT"]
     GENERATIONS_TXT = locals_dict["GENERATIONS_TXT"]
+
+    YOU_GAINED_TXT = locals_dict["YOU_GAINED_TXT"]
+    POINTS_TXT = locals_dict["POINTS_TXT"]
+    QUEST_TUTORIAL_LINES = locals_dict["QUEST_TUTORIAL_LINES"]
 
 COLORS = dict(webcolors.HTML4_HEX_TO_NAMES)
 COLORS.update(webcolors.CSS3_HEX_TO_NAMES)
