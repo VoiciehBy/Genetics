@@ -8,7 +8,7 @@ from OverText import OverText
 from constants import debug_mode
 
 
-class GSprite:
+class V_Sprite:
     def __init__(self, color: Color, rect: Rect, texture: Surface):
         self.color = Color(color)
         self.rect = Rect(rect)

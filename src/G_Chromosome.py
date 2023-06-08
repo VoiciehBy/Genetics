@@ -3,7 +3,7 @@ from numpy import array, zeros, uint8
 from utils import yes_or_no
 
 
-class Chromosome:
+class G_Chromosome:
     def __init__(self, length=0, genes=None):
         self.length = length
         if genes is None:

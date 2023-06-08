@@ -7,14 +7,15 @@ default_population_size = 4
 default_wild_pop = int(default_population_size / 2)
 default_chromosome_length = 8
 default_goal_evaluation_value = 3
+default_mutation_rate = 0.1
 
 horse_image_side = 128
 margin_x = int(horse_image_side/4)
 margin_y = horse_image_side
+
 font_size = int(horse_image_side/8)
 d_font_size = font_size * 2
 default_rect_border_radius = font_size
-default_mutation_rate = 0.1
 
 
 windowName = "Genetics by VociehBy"
@@ -34,12 +35,7 @@ with open("../config.json", "r", encoding="utf-8") as file:
     names = config_dict["names"]
     LANGUAGE = config_dict["language"]
 
-
-
-if s_s_m_m:
-    default_horse_name = names[4]
-else:
-    default_horse_name = names[0]
+default_horse_name = names[4] if s_s_m_m else names[0]
 
 BACKGROUND_IMAGE_FILE_NAME = "../img/background.png"
 HORSE_IMAGE_FILE_NAME = "../img/horse.png"

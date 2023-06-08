@@ -1,7 +1,7 @@
 import objects as o
 from objects import get_population_0
-from Population import Population
-from horse_utils import generate_horses_array
+from G_Population import G_Population
+from g_horse_utils import generate_horses_array
 from g_logging import jsonify_player_last_generation
 from objects import get_population_1
 from g_logging import jsonify_ai_last_generation
@@ -23,7 +23,7 @@ def end_game_if_goal_population_is_present(last_generation, pop_size, is_ai_vict
 
 
 def generate_ai_genetic_population():
-    population_1: Population = get_population_1()
+    population_1: G_Population = get_population_1()
     pop_1: array = population_1.get_pop()
     pop_size: int = population_1.size()
     total_fitness: int = population_1.fitness()
@@ -44,9 +44,9 @@ def generate_ai_genetic_population():
     fourth_parent_genetics = pop_1[choices(ids, weights=probabilities)[0]]
 
     # Python unpacking
-    i_0, i_1 = Population.cross_over(
+    i_0, i_1 = G_Population.cross_over(
         first_parent_genetics, second_parent_genetics)
-    i_2, i_3 = Population.cross_over(
+    i_2, i_3 = G_Population.cross_over(
         third_parent_genetics, fourth_parent_genetics)
 
     last_generation = [i_0, i_1, i_2, i_3]
@@ -77,9 +77,9 @@ def generate_player_population():
     fourth_parent = o.second_parents[1]
 
     # Python unpacking
-    i_0, i_1 = Population.cross_over(
+    i_0, i_1 = G_Population.cross_over(
         first_parent.genetics, second_parent.genetics)
-    i_2, i_3 = Population.cross_over(
+    i_2, i_3 = G_Population.cross_over(
         third_parent.genetics, fourth_parent.genetics)
 
     reset_parents()

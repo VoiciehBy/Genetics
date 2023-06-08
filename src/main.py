@@ -4,10 +4,10 @@ from init import init
 from pygame_utils import start_pygame_clock
 from draw import drawTurnCounter, drawFPSCounter, drawParents, drawParentsNumbers
 from generate_four_populations import generate_four_populations
-from horse_utils import get_horse_parents
+from g_horse_utils import get_horse_parents
 from Game import Game
 from drawScreen import drawTutorialScreen, drawEndingScreens
-from Horse import Horse
+from G_Horse import G_Horse
 from constants import default_population_size, default_wild_pop
 from handleEvents import handleEvents
 from drawHorses import drawHorses
@@ -31,7 +31,7 @@ def main():
 
         elif Game.is_game_playing():
 
-            current_horse: Horse = handleEvents(horses, n=n_n)
+            current_horse: G_Horse = handleEvents(horses, n=n_n)
             drawHorses(horses)
 
             if current_horse:

@@ -7,7 +7,7 @@ from generateHorsePopulations import generate_horse_populations
 from Game import Game
 from g_logging import end_json_files
 
-from horse_utils import get_horse_parents
+from g_horse_utils import get_horse_parents
 from draw import drawParents
 from constants import debug_mode
 
