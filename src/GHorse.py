@@ -62,7 +62,7 @@ class GHorse:
         self.horseSprite.move(x, y)
 
     def sprite_rect(self) -> Rect:
-        return Rect(self.horseSprite.get_g_sprite_rect())
+        return Rect(self.horseSprite.get_vsprite_rect())
 
     def sprite_indicator_rect(self) -> Rect:
         return self.horseSprite.get_indicator_rect()

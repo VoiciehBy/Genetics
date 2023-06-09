@@ -48,7 +48,7 @@ class VSprite:
     def set_indicator_active(self):
         self.spriteIndicator.set_active()
 
-    def get_g_sprite_rect(self) -> Rect:
+    def get_vsprite_rect(self) -> Rect:
         return Rect(self.rect)
 
     def get_indicator_rect(self) -> Rect:

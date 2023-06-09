@@ -50,13 +50,13 @@ def on_escape_pressed():
 
 
 def on_left_key_pressed():
-    horse.move(-1 * get_delta_time(), 0)
+    horse.move(-get_delta_time(), 0)
     if horse.is_looking_right() is False:
         horse.flip()
 
 
 def on_right_key_pressed():
-    horse.move(1 * get_delta_time(), 0)
+    horse.move(get_delta_time(), 0)
     if horse.is_looking_right():
         horse.flip()
 
@@ -75,15 +75,11 @@ def on_user_input_via_keyboard(event: pygame.event):
         on_space_pressed()
     elif event_key_id == pygame.K_ESCAPE:
         on_escape_pressed()
-
-    elif event_key_id == pygame.K_LEFT:
-        horse.move(-get_delta_time(), 0)
-        if horse.is_looking_right() is False:
-            horse.flip()
-    elif event_key_id == pygame.K_RIGHT:
-        horse.move(get_delta_time(), 0)
-        if horse.is_looking_right():
-            horse.flip()
+    elif quest_mode:
+        if event_key_id == pygame.K_LEFT:
+            on_left_key_pressed()
+        elif event_key_id == pygame.K_RIGHT:
+            on_right_key_pressed()
 
 
 def on_left_mouse_button_click(objects, i: int):

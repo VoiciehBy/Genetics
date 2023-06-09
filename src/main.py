@@ -16,6 +16,7 @@ from update import update
 from GHorse import GHorse
 from draw import drawParents, drawFPSCounter, drawPointsCounter, drawTurnCounter, drawParentsNumbers
 
+
 def main():
     make_data_directory()
     start_json_files()
@@ -48,7 +49,7 @@ def main():
                     if (is_two_pygame_rect_intersects(horse.sprite_rect(), enemy.sprite_rect())):
                         Game.end_game()
 
-                    elif (is_two_pygame_rect_intersects(bullet.bullet_sprite.rect, enemy.sprite_rect())):
+                    elif (is_two_pygame_rect_intersects(bullet.bullet_sprite.get_vsprite_rect(), enemy.sprite_rect())):
                         n = len(enemies)
                         if n == 1:
                             enemies.pop(0)
@@ -113,4 +114,6 @@ def main():
         else:
             drawTurnCounter()
             drawParentsNumbers(horses_parents)
+
+
 main()

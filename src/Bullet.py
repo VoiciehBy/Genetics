@@ -5,7 +5,7 @@ from constants import screen
 class Bullet:
     def __init__(self, bullet_sprite=VSprite, is_moving=False):
         self.bullet_sprite = bullet_sprite
-        self.rect = bullet_sprite.get_g_sprite_rect()
+        self.rect = bullet_sprite.get_vsprite_rect()
         self.is_moving = is_moving
 
     def draw(self):
@@ -28,8 +28,8 @@ class Bullet:
         return bool(self.is_moving)
 
     def is_out_off_screen(self) -> bool:
-        b: bool = self.bullet_sprite.get_g_sprite_rect().left < 0
-        b = b or self.bullet_sprite.get_g_sprite_rect().left > screen.get_rect().width
+        b: bool = self.bullet_sprite.get_vsprite_rect().left < 0
+        b = b or self.bullet_sprite.get_vsprite_rect().left > screen.get_rect().width
         return bool(b)
 
     def reset_and_stop(self):

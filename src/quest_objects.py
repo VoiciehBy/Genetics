@@ -24,7 +24,7 @@ ai_population_0 = GPopulation(default_population_size)
 ai_population_0.generate_initial_population(default_chromosome_length, default_population_size)
 
 global delta_time
-delta_time = 0
+
 
 def get_ai_population() -> GPopulation:
     return ai_population_0

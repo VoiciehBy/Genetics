@@ -24,7 +24,7 @@ def handleEvents(horses=None, n=16):
             exit()
         if event.type == pygame.KEYDOWN:
             hUI.on_user_input_via_keyboard(event)
-        if(horses is not None):
+        if horses is not None:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 g_object = hUI.on_mouse_click(horses, event, n)
             else:
