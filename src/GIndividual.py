@@ -1,4 +1,4 @@
-from G_Chromosome import G_Chromosome
+from GChromosome import GChromosome
 from numpy import array
 from GColor import GColor
 from utils import clamp
@@ -6,14 +6,14 @@ from utils import clamp
 import json
 
 
-class G_Individual:
+class GIndividual:
     count: int = 0
 
-    def __init__(self, parents=None, genotype=G_Chromosome):
-        self.id = G_Individual.count
+    def __init__(self, parents=None, genotype=GChromosome):
+        self.id = GIndividual.count
         self.parents = parents
         self.genotype = genotype
-        G_Individual.count += 1
+        GIndividual.count += 1
 
     def get_id(self) -> int:
         return int(self.id)

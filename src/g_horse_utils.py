@@ -1,5 +1,5 @@
 from pygame import Surface, Rect, image, Color
-from G_Individual import G_Individual
+from GIndividual import GIndividual
 from numpy import array, zeros
 from constants import s_s_m_m, window_height
 from constants import horse_image_side as side
@@ -7,7 +7,7 @@ from constants import HORSE_IMAGE_FILE_NAME, HORSE_S_S_M_M_FILE_NAME
 from constants import margin_x as m_x
 from constants import margin_y as m_y
 from VSprite import VSprite
-from G_Horse import G_Horse
+from GHorse import GHorse
 from GColor import GColor
 
 import objects as o
@@ -28,7 +28,7 @@ def get_horse_image() -> Surface:
         return image.load(HORSE_IMAGE_FILE_NAME)
 
 
-def generate_horse_image_for_pygame(individual: G_Individual) -> array:
+def generate_horse_image_for_pygame(individual: GIndividual) -> array:
     horse_image: Surface = get_horse_image()
     individual_color: Color = Color(individual.color_trait().to_pygame_color())
     inverted_individual_g_color: GColor = individual.color_trait().inverse()
@@ -56,15 +56,15 @@ def generate_horse_image_for_pygame(individual: G_Individual) -> array:
     return horse_image
 
 
-def generate_horse(individual: G_Individual, rect: Rect) -> G_Horse:
+def generate_horse(individual: GIndividual, rect: Rect) -> GHorse:
     horse_image = generate_horse_image_for_pygame(individual)
     s = VSprite(color_white, rect, horse_image)
-    return G_Horse(genetics=individual, g_sprite=s)
+    return GHorse(genetics=individual, g_sprite=s)
 
 
 def generate_horses_array_with_offset(individuals: array, n=4, margin_x=m_x, margin_y=m_y,
                                       offset=side, offset_1=side) -> array:
-    horses = zeros(n, dtype=G_Horse)
+    horses = zeros(n, dtype=GHorse)
     offset_x = 0
     offset_y = 0
     for i in range(n):
@@ -84,8 +84,8 @@ def generate_horses_array(individuals: array, n=4) -> array:
 
 def get_horse_parents() -> array:
     n = 4
-    horses_parents = zeros(n, dtype=G_Horse)
-    horse_parents_genetics = zeros(n, dtype=G_Individual)
+    horses_parents = zeros(n, dtype=GHorse)
+    horse_parents_genetics = zeros(n, dtype=GIndividual)
     horse_parents_genetics[0] = o.first_parents[0].genetics
     horse_parents_genetics[1] = o.first_parents[1].genetics
     horse_parents_genetics[2] = o.second_parents[0].genetics

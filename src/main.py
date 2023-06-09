@@ -7,7 +7,7 @@ from generate_four_populations import generate_four_populations
 from g_horse_utils import get_horse_parents
 from Game import Game
 from drawScreen import drawTutorialScreen, drawEndingScreens
-from G_Horse import G_Horse
+from GHorse import GHorse
 from constants import default_population_size, default_wild_pop
 from handleEvents import handleEvents
 from drawHorses import drawHorses
@@ -34,7 +34,7 @@ def main():
 
         elif Game.is_game_playing():
 
-            current_horse: G_Horse = handleEvents(horses, n=n_n)
+            current_horse: GHorse = handleEvents(horses, n=n_n)
             drawHorses(horses)
 
             if current_horse:

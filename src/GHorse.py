@@ -1,4 +1,4 @@
-from G_Individual import G_Individual
+from GIndividual import GIndividual
 from VSprite import VSprite
 from pygame import Rect, Color
 from constants import default_horse_name, FITNESS_TXT
@@ -8,8 +8,8 @@ from GColor import GColor
 from trait_utils import surname, strong_weak, invisible_bald
 
 
-class G_Horse:
-    def __init__(self, name=default_horse_name, genetics=G_Individual, g_sprite=VSprite, looking_right=False, ai=False):
+class GHorse:
+    def __init__(self, name=default_horse_name, genetics=GIndividual, g_sprite=VSprite, looking_right=False, ai=False):
         self.name = name
         self.genetics = genetics
         self.horseSprite = g_sprite

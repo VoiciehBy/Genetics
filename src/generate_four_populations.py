@@ -5,7 +5,7 @@ from constants import default_horse_name
 from constants import default_chromosome_length
 
 from objects import get_population_0, get_population_1
-from G_Population import G_Population
+from GPopulation import GPopulation
 from g_horse_utils import generate_horses_array, generate_horses_array_with_offset
 
 from constants import horse_image_side as side
@@ -21,10 +21,10 @@ def generate_four_populations() -> array:
     jsonify_player_last_generation(pop_0)
     jsonify_ai_last_generation(pop_1)
 
-    population_2 = G_Population(wild_pop)
+    population_2 = GPopulation(wild_pop)
     population_2.generate_initial_population(default_chromosome_length, wild_pop)
 
-    population_3 = G_Population(wild_pop)
+    population_3 = GPopulation(wild_pop)
     population_3.generate_initial_population(default_chromosome_length, wild_pop)
 
     pop_2 = population_2.get_pop()

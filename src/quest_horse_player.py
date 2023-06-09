@@ -1,16 +1,12 @@
-from pygame.image import load as image_load
+from generate_horse_population_for_quest_mode import generate_horse_population
+from g_horse_utils import get_horse_image
 from pygame import Rect, Color
-
 from VSprite import VSprite
+from GHorse import GHorse
 
-from G_Horse import G_Horse
-
-from generateHorsePopulation import generate_horse_population
 
 genes = generate_horse_population()[0].genes()
-
-horse_image = image_load("../img/horse.png")
+horse_image = get_horse_image()
 rect = Rect(0, 0, 128, 128)
-
 sprite = VSprite(Color("blue"), rect, horse_image)
-horse: G_Horse = G_Horse("Koń", genes, sprite, False, False)
+horse: GHorse = GHorse("Koń", genes, sprite, False, False)

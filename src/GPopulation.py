@@ -1,6 +1,6 @@
 from numpy import array, zeros
-from G_Chromosome import G_Chromosome
-from G_Individual import G_Individual
+from GChromosome import GChromosome
+from GIndividual import GIndividual
 from utils import generate_binary_array
 from utils import combine as c
 import sys
@@ -10,7 +10,7 @@ def generate_random_genes(length: int):
     return generate_binary_array(length)
 
 
-class G_Population:
+class GPopulation:
     def __init__(self, pop: array):
         self.pop = pop
 
@@ -23,7 +23,7 @@ class G_Population:
     def set_pop(self, new_population):
         n = int(len(self.pop))
         del self.pop
-        self.pop = zeros(n, dtype=G_Individual)
+        self.pop = zeros(n, dtype=GIndividual)
         for i in range(n):
             self.pop[i] = new_population[i]
 
@@ -31,14 +31,14 @@ class G_Population:
         if population_size < 2:
             print("Population size too small", file=sys.stderr)
             return
-        self.pop = zeros(population_size, dtype=G_Individual)
+        self.pop = zeros(population_size, dtype=GIndividual)
         for i in range(population_size):
             genes = generate_random_genes(chromosome_length)
-            g = G_Chromosome(chromosome_length, genes)
-            self.pop[i] = G_Individual(genotype=g)
+            g = GChromosome(chromosome_length, genes)
+            self.pop[i] = GIndividual(genotype=g)
 
     @staticmethod
-    def cross_over(a: G_Individual, b: G_Individual, variant=0) -> array:
+    def cross_over(a: GIndividual, b: GIndividual, variant=0) -> array:
         a_length = a.chromosome_length()
         b_length = b.chromosome_length()
 
@@ -59,25 +59,25 @@ class G_Population:
         last_half_b = b_genes[h_l:]
 
         parents = [a, b]
-        offsprings = zeros(2, dtype=G_Individual)
+        offsprings = zeros(2, dtype=GIndividual)
 
         if variant == 0:
-            first_chromosome = G_Chromosome(
+            first_chromosome = GChromosome(
                 a_length, c(first_half_a, last_half_b))
             first_chromosome.mutate()
-            second_chromosome = G_Chromosome(
+            second_chromosome = GChromosome(
                 a_length, c(first_half_b, last_half_a))
             second_chromosome.mutate()
         else:
-            first_chromosome = G_Chromosome(
+            first_chromosome = GChromosome(
                 a_length, c(last_half_b, first_half_a))
             first_chromosome.mutate()
-            second_chromosome = G_Chromosome(
+            second_chromosome = GChromosome(
                 a_length, c(last_half_a, first_half_b))
             second_chromosome.mutate()
 
-        offsprings[0] = (G_Individual(parents, first_chromosome))
-        offsprings[1] = (G_Individual(parents, second_chromosome))
+        offsprings[0] = (GIndividual(parents, first_chromosome))
+        offsprings[1] = (GIndividual(parents, second_chromosome))
 
         return offsprings
 

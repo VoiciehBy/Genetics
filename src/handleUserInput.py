@@ -4,7 +4,7 @@ import quest_objects as q_o
 
 from GColor import red, green, blue, magenta
 from pygame_utils import is_mouse_over_rect
-from generateHorsePopulations import generate_horse_populations
+from generate_horse_populations_for_standard_mode import generate_horse_populations
 from Game import Game
 from g_logging import end_json_files
 
