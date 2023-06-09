@@ -4,7 +4,7 @@ import quest_objects as q_o
 
 from GColor import red, green, blue, magenta
 from pygame_utils import is_mouse_over_rect
-from generate_horse_populations_for_standard_mode import generate_horse_populations
+from generate_horse_populations import generate_horse_populations
 from Game import Game
 from g_logging import end_json_files
 
@@ -12,8 +12,7 @@ from g_horse_utils import get_horse_parents
 from draw import drawParents
 from constants import quest_mode, debug_mode
 
-from quest_horse_player import horse
-from quest_objects import get_delta_time
+from quest_objects import horse, get_delta_time
 
 switch_A: bool = True
 
@@ -78,12 +77,11 @@ def on_user_input_via_keyboard(event: pygame.event):
         on_escape_pressed()
 
     elif event_key_id == pygame.K_LEFT:
-        horse.move(-1 * get_delta_time(), 0)
+        horse.move(-get_delta_time(), 0)
         if horse.is_looking_right() is False:
             horse.flip()
-
     elif event_key_id == pygame.K_RIGHT:
-        horse.move(1 * get_delta_time(), 0)
+        horse.move(get_delta_time(), 0)
         if horse.is_looking_right():
             horse.flip()
 

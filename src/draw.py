@@ -6,21 +6,6 @@ from numpy import array
 from constants import points_counter_rect
 
 
-def drawTurnCounter():
-    turn_str = TURN_TXT + ": " + str(Game.breedingCounter)
-    drawText(screen, turn_str, turn_counter_rect, d_font_size)
-
-
-def drawFPSCounter(clock):
-    drawText(screen, str(int(clock.get_fps())), screen.get_rect())
-
-
-def drawUIParentsTxt(rect, n=1):
-    _str = "P#" + str(n)
-    rect = Rect(rect.left, rect.top, rect.width, rect.height)
-    drawText(screen, _str, rect, d_font_size * 2)
-
-
 def drawPygameRect(surface: Surface, color: Color, rect: Rect, border_radius=default_rect_border_radius):
     draw.rect(surface, color, rect, border_radius=border_radius)
 
@@ -35,9 +20,24 @@ def drawText(surface: Surface, text: str, rect: Rect, text_font_size=font_size):
     surface.blit(txt_surface, rect)
 
 
+def drawTurnCounter():
+    turn_str = TURN_TXT + ": " + str(Game.breedingCounter)
+    drawText(screen, turn_str, turn_counter_rect, d_font_size)
+
+
+def drawFPSCounter(clock):
+    drawText(screen, str(int(clock.get_fps())), screen.get_rect())
+
+
 def drawParents(horse_parents: array):
     for horse in horse_parents:
         horse.draw()
+
+
+def drawUIParentsTxt(rect, n=1):
+    _str = "P#" + str(n)
+    rect = Rect(rect.left, rect.top, rect.width, rect.height)
+    drawText(screen, _str, rect, d_font_size * 2)
 
 
 def drawParentsNumbers(horses_parents: array):

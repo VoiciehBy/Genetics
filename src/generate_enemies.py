@@ -2,7 +2,7 @@ from constants import screen, horse_image_side
 from pygame import Rect
 from g_horse_utils import generate_horse
 from generate_ai_genetic_population import generate_ai_genetic_population
-from quest_horse_player import horse
+from quest_objects import horse
 
 
 def generate_enemies():

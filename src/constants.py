@@ -30,6 +30,7 @@ with open("../config.json", "r", encoding="utf-8") as file:
 windowName = "Horse Quest by VoiciehBy" if quest_mode else "Genetics by VociehBy"
 window_width = 1366
 window_height = 768
+horse_player_rect = Rect(0, 0, horse_image_side, horse_image_side)
 turn_counter_rect = Rect(window_width - 3 * d_font_size,
                          window_height - 2 * d_font_size, d_font_size, d_font_size)
 points_counter_rect = Rect(window_width - 4 * d_font_size,
