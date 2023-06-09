@@ -49,15 +49,18 @@ def on_escape_pressed():
     end_json_files()
     exit()
 
+
 def on_left_key_pressed():
     horse.move(-1 * get_delta_time(), 0)
     if horse.is_looking_right() is False:
         horse.flip()
 
+
 def on_right_key_pressed():
     horse.move(1 * get_delta_time(), 0)
     if horse.is_looking_right():
         horse.flip()
+
 
 def on_user_input_via_keyboard(event: pygame.event):
     event_key_id: int = event.key

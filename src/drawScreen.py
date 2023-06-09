@@ -10,7 +10,8 @@ from handleEvents import handleEvents
 
 from Game import Game
 from constants import quest_mode
-from constants import QUEST_TUTORIAL_LINES,YOU_GAINED_TXT,POINTS_TXT
+from constants import QUEST_TUTORIAL_LINES, YOU_GAINED_TXT, POINTS_TXT
+
 
 def drawScreen(surface: Surface, lines, color: Color):
     surface_rect = Rect(surface.get_rect())
@@ -62,6 +63,7 @@ def drawResultScreen():
     drawScreen(screen, txt, color_blue)
     update(screen.get_rect())
 
+
 def drawResultScreenForQuestMode():
     points = str(Game.points) + ' ' + POINTS_TXT
     color_blue: Color = Color("blue")
@@ -70,6 +72,7 @@ def drawResultScreenForQuestMode():
 
     drawScreen(screen, txt, color_blue)
     update(screen.get_rect())
+
 
 def drawEndingScreens():
     if quest_mode is False:

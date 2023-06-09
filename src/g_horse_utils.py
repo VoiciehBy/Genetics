@@ -12,7 +12,6 @@ from GColor import GColor
 
 import objects as o
 
-
 color_black = Color("black")
 color_white = Color("white")
 color_brown = Color(102, 57, 49)
@@ -20,6 +19,7 @@ color_red = Color("red")
 color_green = Color("green")
 color_blue = Color("blue")
 color_cyan = Color("cyan")
+
 
 def get_horse_image() -> Surface:
     if s_s_m_m:
@@ -43,13 +43,13 @@ def generate_horse_image_for_pygame(individual: GIndividual) -> array:
                     horse_image.set_at((i, j), individual_color)
                 else:
                     horse_image.set_at((i, j), inverted_individual_color)
-            elif(s_s_m_m is False and horse_color == color_brown):
+            elif (s_s_m_m is False and horse_color == color_brown):
                 horse_image.set_at((i, j), individual_color)
-            elif(s_s_m_m and horse_color == color_cyan):
+            elif (s_s_m_m and horse_color == color_cyan):
                 horse_image.set_at((i, j), inverted_individual_color)
             elif horse_color == color_red:
                 horse_image.set_at((i, j), color_black)
-            elif(s_s_m_m and horse_color == color_green):
+            elif (s_s_m_m and horse_color == color_green):
                 horse_image.set_at((i, j), color_red)
             elif horse_color == color_blue:
                 horse_image.set_at((i, j), the_color)
@@ -69,7 +69,7 @@ def generate_horses_array_with_offset(individuals: array, n=4, margin_x=m_x, mar
     offset_y = 0
     for i in range(n):
         x = margin_x + offset_x + offset
-        y = margin_y + offset_y + 2*offset_1
+        y = margin_y + offset_y + 2 * offset_1
         rect = Rect([x, y, side, side])
         horses[i] = generate_horse(individuals[i], rect)
         offset_x = offset_x + side
@@ -78,7 +78,7 @@ def generate_horses_array_with_offset(individuals: array, n=4, margin_x=m_x, mar
 
 def generate_horses_array(individuals: array, n=4) -> array:
     horses = generate_horses_array_with_offset(
-        individuals, n, m_x, m_y, int(side/2), 0)
+        individuals, n, m_x, m_y, int(side / 2), 0)
     return horses
 
 
@@ -92,7 +92,7 @@ def get_horse_parents() -> array:
     horse_parents_genetics[3] = o.second_parents[1].genetics
 
     offset_x = 2 * m_x
-    offset_y = int(window_height/2)
+    offset_y = int(window_height / 2)
     for i in range(n):
         x = offset_x + (i % 2) * side
         y = offset_y + side

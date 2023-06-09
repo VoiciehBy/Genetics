@@ -18,6 +18,7 @@ from constants import quest_mode
 
 from quest_main import quest_main
 
+
 def main():
     make_data_directory()
     start_json_files()
@@ -68,6 +69,7 @@ def main():
         drawFPSCounter(clock)
         drawTurnCounter()
         drawParentsNumbers(horses_parents)
+
 
 if quest_mode:
     quest_main()

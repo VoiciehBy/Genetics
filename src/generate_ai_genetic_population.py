@@ -1,8 +1,8 @@
 from GPopulation import GPopulation
 from random import choices
 from numpy import zeros, array
-
 from quest_objects import get_ai_population
+
 
 def generate_ai_genetic_population():
     population_1: GPopulation = get_ai_population()
@@ -36,7 +36,3 @@ def generate_ai_genetic_population():
     population_1.set_pop(last_generation)
 
     return last_generation
-
-
-def generate_horse_population():
-    return generate_ai_genetic_population()
