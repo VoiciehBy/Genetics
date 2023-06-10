@@ -9,6 +9,8 @@ default_chromosome_length = 8
 default_goal_evaluation_value = 3
 default_mutation_rate = 0.1
 
+n_n = 2 * default_population_size + 2 * default_wild_pop
+
 horse_image_side = 128
 margin_x = int(horse_image_side/4)
 margin_y = horse_image_side
@@ -17,7 +19,9 @@ font_size = int(horse_image_side/8)
 d_font_size = font_size * 2
 default_rect_border_radius = font_size
 
-offset = 24
+default_target_frame_rate = 60
+
+offset = int(horse_image_side/2)
 
 with open("../config.json", "r", encoding="utf-8") as file:
     config_dict = json.loads(file.read())
@@ -27,10 +31,13 @@ with open("../config.json", "r", encoding="utf-8") as file:
     names = config_dict["names"]
     LANGUAGE = config_dict["language"]
 
+if quest_mode:
+    default_mutation_rate = 0.25
+
 windowName = "Horse Quest by VoiciehBy" if quest_mode else "Genetics by VociehBy"
 window_width = 1366
 window_height = 768
-horse_player_rect = Rect(0, 0, horse_image_side, horse_image_side)
+horse_player_rect = Rect(0, margin_y, horse_image_side, horse_image_side)
 turn_counter_rect = Rect(window_width - 3 * d_font_size,
                          window_height - 2 * d_font_size, d_font_size, d_font_size)
 points_counter_rect = Rect(window_width - 4 * d_font_size,

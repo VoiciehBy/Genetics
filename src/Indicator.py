@@ -1,12 +1,12 @@
 from pygame import Rect, Color, Surface
 from draw import drawPygameRect
-from constants import debug_mode
+from constants import horse_image_side, debug_mode
 
 
 class Indicator:
     def __init__(self, rect: Rect, color: Color, active=False):
         self.rect = rect
-        self.rect = Rect(rect.x + 32, rect.y + 128, int(64), int(64))
+        self.rect = Rect(rect.x + int(horse_image_side/4), rect.y + horse_image_side, int(horse_image_side/2), int(horse_image_side/2))
         self.color = color
         self.active = active
 
@@ -20,7 +20,7 @@ class Indicator:
         return self.color
 
     def draw(self, surface: Surface, color=None):
-        if (self.active and debug_mode):
+        if self.active and debug_mode:
             if color:
                 drawPygameRect(surface, color, self.rect)
             else:

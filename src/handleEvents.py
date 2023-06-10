@@ -5,14 +5,18 @@ import handleUserInput as hUI
 
 
 def on_hover(g_object):
+    if g_object is None:
+        return
+
+    is_g_object_looking_right: bool = g_object.is_looking_right()
     if is_mouse_over_rect(g_object):
         g_object.set_sprite_over_text_active()
         g_object.update_sprite_over_text()
-        if(g_object.is_looking_right() is False):
+        if is_g_object_looking_right is False:
             g_object.flip()
     else:
         g_object.set_sprite_over_text_inactive()
-        if g_object.is_looking_right():
+        if is_g_object_looking_right is True:
             g_object.flip()
 
 

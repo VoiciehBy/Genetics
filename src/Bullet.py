@@ -1,6 +1,6 @@
 from VSprite import VSprite
 from constants import screen
-
+from pygame import Rect
 
 class Bullet:
     def __init__(self, bullet_sprite=VSprite, is_moving=False):
@@ -35,3 +35,6 @@ class Bullet:
     def reset_and_stop(self):
         self.reset()
         self.stop()
+
+    def get_bullet_sprite_vsprite_rect(self) -> Rect:
+        return Rect(self.bullet_sprite.get_vsprite_rect())

@@ -1,18 +1,14 @@
 import pygame
 import objects as o
-import quest_objects as q_o
 
-from GColor import red, green, blue, magenta
-from pygame_utils import is_mouse_over_rect
-from generate_horse_populations import generate_horse_populations
 from Game import Game
-from g_logging import end_json_files
-
 from g_horse_utils import get_horse_parents
 from draw import drawParents
+from generate_horse_populations import generate_horse_populations
+from g_logging import end_json_files
 from constants import quest_mode, debug_mode
-
-from quest_objects import horse, get_delta_time
+from GColor import red, green, blue, magenta
+from pygame_utils import is_mouse_over_rect
 
 switch_A: bool = True
 
@@ -27,7 +23,7 @@ def on_p_key_pressed():
 
 def on_space_pressed():
     if quest_mode:
-        q_o.bullet.set_active()
+        o.bullet.set_active()
     else:
         drawParents(get_horse_parents())
         Game.start_breeding_state()
@@ -50,15 +46,15 @@ def on_escape_pressed():
 
 
 def on_left_key_pressed():
-    horse.move(-get_delta_time(), 0)
-    if horse.is_looking_right() is False:
-        horse.flip()
+    o.horse.move(-o.get_delta_time(), 0)
+    if o.horse.is_looking_right() is False:
+        o.horse.flip()
 
 
 def on_right_key_pressed():
-    horse.move(get_delta_time(), 0)
-    if horse.is_looking_right():
-        horse.flip()
+    o.horse.move(o.get_delta_time(), 0)
+    if o.horse.is_looking_right():
+        o.horse.flip()
 
 
 def on_user_input_via_keyboard(event: pygame.event):
@@ -119,8 +115,8 @@ def on_mouse_click(objects, event: pygame.event, n: int):
     for i in range(n):
         if is_mouse_over_rect(objects[i]):
             event_button_id: int = event.button
-            if event_button_id == 1:
+            if event.button == 1:
                 g_object = on_left_mouse_button_click(objects, i)
-            elif event_button_id == 3:
+            elif event.button == 3:
                 g_object = on_right_mouse_button_click(objects, i)
     return g_object

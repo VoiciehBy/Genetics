@@ -1,21 +1,20 @@
 import objects as o
-from objects import get_population_0
-from GPopulation import GPopulation
-from g_horse_utils import generate_horses_array
-from g_logging import jsonify_player_last_generation
-from objects import get_population_1
-from g_logging import jsonify_ai_last_generation
-from random import choices
-from numpy import zeros, array
+
 from Game import Game
-from constants import default_goal_evaluation_value as goal_value
+from constants import default_goal_evaluation_value, quest_mode
+from GPopulation import GPopulation
+from numpy import zeros, array
+from random import choices
+from g_logging import jsonify_player_last_generation
+from g_logging import jsonify_ai_last_generation
+from g_horse_utils import generate_horses_array
 
 
 def end_game_if_goal_population_is_present(last_generation, pop_size, is_ai_victorious=False):
     counter = 0
     for individual in last_generation:
         b = counter != pop_size
-        b = b and individual.individual_fitness() == goal_value
+        b = b and individual.individual_fitness() == default_goal_evaluation_value
         if b:
             counter += 1
         if counter >= pop_size:
@@ -23,7 +22,7 @@ def end_game_if_goal_population_is_present(last_generation, pop_size, is_ai_vict
 
 
 def generate_ai_genetic_population():
-    population_1: GPopulation = get_population_1()
+    population_1: GPopulation = o.get_population_1()
     pop_1: array = population_1.get_pop()
     pop_size: int = population_1.size()
     total_fitness: int = population_1.fitness()
@@ -52,11 +51,13 @@ def generate_ai_genetic_population():
     last_generation = [i_0, i_1, i_2, i_3]
     jsonify_ai_last_generation(last_generation)
     population_1.set_pop(last_generation)
-    end_game_if_goal_population_is_present(last_generation, pop_size, True)
+    if quest_mode is False:
+        end_game_if_goal_population_is_present(last_generation, pop_size, True)
+    return last_generation
 
 
 def reset_parents():
-    population_0 = get_population_0()
+    population_0 = o.get_population_0()
     pop_0 = population_0.get_pop()
 
     horses = generate_horses_array(pop_0)
@@ -68,7 +69,7 @@ def reset_parents():
 
 
 def generate_player_population():
-    population_0 = get_population_0()
+    population_0 = o.get_population_0()
     pop_size: int = population_0.size()
 
     first_parent = o.first_parents[0]
